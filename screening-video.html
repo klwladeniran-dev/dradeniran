@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catch It Early — Cancer Screening with Dr. Adeniran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* sourced from dradeniran.ca */
+    --nav-bg:#111827;
+    --accent:#2d7d6f;
+    --accent-hover:#236659;
+    --accent-deep:#1f4f45;
+    --accent-light:#e8f4f2;
+    --tint-2:#d1e8e4;
+    --tint-3:#b2d8d2;
+    --emerald:#10b981;
+    --bg:#f9fafb;
+    --white:#fff;
+    --text:#111827;
+    --muted:#6b7280;
+    --border:#e5e7eb;
+    --green-badge:#ecfdf5;
+    --green-badge-text:#065f46;
+    --blue-badge:#eff6ff;
+    --blue-badge-text:#1e40af;
+    --skin:#E7A977;
+    --font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    --shadow:0 24px 60px -28px rgba(17,24,39,.45);
+    --shadow-sm:0 10px 26px -16px rgba(17,24,39,.35);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    font-family:var(--font);color:var(--text);background:var(--bg);
+    min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:clamp(14px,3vw,40px);-webkit-font-smoothing:antialiased;
+  }
+  .wrap{width:min(96vw,1000px)}
+
+  .player{background:var(--white);border-radius:24px;box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden}
+
+  .stage{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--white)}
+
+  /* charcoal header band — mirrors site nav */
+  .topbar{
+    position:absolute;top:0;left:0;right:0;z-index:40;height:clamp(46px,6vw,56px);
+    background:var(--nav-bg);display:flex;align-items:center;justify-content:space-between;
+    padding:0 clamp(16px,2.6vw,26px);
+  }
+  .brand{display:flex;align-items:center;gap:10px;color:#fff}
+  .brand .glyph{width:24px;height:16px;flex:none}
+  .brand .glyph path{fill:none;stroke:var(--emerald);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+  .brand b{font-weight:800;font-size:clamp(12.5px,1.5vw,16px);letter-spacing:.2px;line-height:1}
+  .brand small{display:block;color:rgba(255,255,255,.6);font-size:clamp(9px,1vw,10.5px);font-weight:600;letter-spacing:.8px;text-transform:uppercase;margin-top:2px}
+  .counter{color:#fff;background:var(--accent);border-radius:999px;padding:5px 12px;font-size:clamp(10.5px,1.2vw,12.5px);font-weight:700;letter-spacing:1px}
+
+  /* scenes */
+  .scene{
+    position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:clamp(62px,8vw,84px) clamp(22px,5vw,64px) clamp(46px,6vw,58px);
+    text-align:center;opacity:0;visibility:hidden;transform:translateY(12px);
+    transition:opacity .5s ease,transform .5s ease,visibility .5s;
+  }
+  .scene.is-active{opacity:1;visibility:visible;transform:none;z-index:20}
+
+  .eyebrow{font-weight:800;letter-spacing:2.2px;text-transform:uppercase;font-size:clamp(10px,1.15vw,12px);color:var(--accent);display:inline-flex;align-items:center;gap:8px;margin-bottom:clamp(8px,1.4vw,14px)}
+  .eyebrow::before{content:"";width:20px;height:2px;border-radius:2px;background:var(--accent)}
+
+  h1{font-weight:900;line-height:1.0;margin:0;font-size:clamp(34px,6.6vw,70px);letter-spacing:-2px}
+  h2{font-weight:800;line-height:1.06;margin:0;font-size:clamp(23px,4.4vw,44px);letter-spacing:-1px;max-width:20ch}
+  .lede{font-size:clamp(13.5px,1.85vw,19px);color:var(--muted);font-weight:500;max-width:46ch;margin:clamp(11px,1.7vw,17px) auto 0;line-height:1.5}
+  .accent{color:var(--accent)}
+  .deep{color:var(--accent-deep)}
+  .lede b{color:var(--text);font-weight:800}
+
+  .rise{opacity:0;transform:translateY(14px)}
+  .is-active .rise{animation:rise .55s cubic-bezier(.2,.7,.3,1) forwards}
+  .is-active .rise.d1{animation-delay:.1s}.is-active .rise.d2{animation-delay:.22s}
+  .is-active .rise.d3{animation-delay:.36s}.is-active .rise.d4{animation-delay:.5s}
+  .is-active .rise.d5{animation-delay:.64s}.is-active .rise.d6{animation-delay:.78s}
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  /* scene 1 */
+  .hero{display:flex;flex-direction:column;align-items:center;gap:clamp(8px,1.4vw,16px)}
+  .doc{width:clamp(92px,15vw,142px);height:auto;filter:drop-shadow(0 14px 20px rgba(17,24,39,.18))}
+  .is-active .doc{animation:bobIn .8s cubic-bezier(.2,.8,.3,1) both}
+  @keyframes bobIn{0%{opacity:0;transform:translateY(18px) scale(.92)}100%{opacity:1;transform:none}}
+  .wave-hand{transform-origin:74px 70px}
+  .is-active .wave-hand{animation:wave 1.6s ease-in-out .7s 2}
+  @keyframes wave{0%,100%{transform:rotate(0)}25%{transform:rotate(-16deg)}50%{transform:rotate(8deg)}75%{transform:rotate(-12deg)}}
+  .pill{display:inline-flex;align-items:center;gap:8px;background:var(--accent-light);color:var(--accent-deep);font-weight:700;border-radius:999px;padding:8px 16px;font-size:clamp(12px,1.4vw,15px)}
+  .pill .d{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+
+  /* big number */
+  .bignum{font-weight:900;line-height:.88;font-size:clamp(54px,12.5vw,132px);letter-spacing:-3px;color:var(--accent)}
+  .unit{font-size:.3em;color:var(--muted);font-weight:700;letter-spacing:0}
+
+  .factrow{display:flex;flex-wrap:wrap;gap:clamp(8px,1.3vw,13px);justify-content:center;margin-top:clamp(14px,2vw,22px)}
+  .chip{background:var(--white);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-sm);padding:clamp(9px,1.4vw,14px) clamp(12px,1.7vw,17px);display:flex;align-items:center;gap:10px}
+  .chip .ico{width:30px;height:30px;flex:none}
+  .chip .k{font-weight:900;font-size:clamp(15px,2.2vw,23px);line-height:1;color:var(--text);letter-spacing:-.5px}
+  .chip .l{font-size:clamp(9.5px,1.1vw,12px);color:var(--muted);font-weight:600;text-align:left;line-height:1.15;margin-top:3px}
+
+  /* local */
+  .localgrid{display:flex;align-items:center;gap:clamp(16px,3.4vw,46px);flex-wrap:wrap;justify-content:center;margin-top:clamp(6px,1.3vw,10px)}
+  .mapcard{position:relative;width:clamp(140px,21vw,210px);aspect-ratio:1/1;flex:none}
+  .mapcard svg{width:100%;height:100%;overflow:visible}
+  .ping{transform-origin:center}
+  .is-active .ping{animation:ping 2s ease-out .6s infinite}
+  @keyframes ping{0%{transform:scale(.45);opacity:.55}70%,100%{transform:scale(2.3);opacity:0}}
+  .riskwrap{text-align:left;max-width:31ch}
+  .risk{display:flex;align-items:center;gap:11px;margin:9px 0;font-weight:600;color:var(--text);font-size:clamp(12.5px,1.55vw,16.5px)}
+  .risk .tag{width:25px;height:25px;border-radius:8px;display:grid;place-items:center;flex:none;color:#fff;font-weight:800;font-size:14px;background:var(--accent)}
+  .risk .tag.alt{background:var(--accent-deep)}
+
+  /* bars */
+  .bars{width:min(560px,88%);margin-top:clamp(8px,1.4vw,14px);display:flex;flex-direction:column;gap:clamp(11px,1.7vw,16px)}
+  .bar{display:grid;grid-template-columns:clamp(74px,10vw,108px) 1fr auto;align-items:center;gap:12px}
+  .bar .name{font-weight:700;text-align:left;font-size:clamp(12px,1.5vw,16px);color:var(--text)}
+  .track{position:relative;height:clamp(15px,2.3vw,21px);background:var(--accent-light);border-radius:999px;overflow:hidden}
+  .fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:999px;transition:width 1.2s cubic-bezier(.2,.8,.25,1);background:linear-gradient(90deg,var(--accent),var(--accent-hover))}
+  .fill.focus{background:linear-gradient(90deg,var(--accent-deep),#163a33)}
+  .bar .val{font-weight:900;font-size:clamp(14px,1.85vw,20px);min-width:2.6ch;text-align:right;color:var(--accent)}
+  .bar .val.flag{color:var(--text)}
+  .goal{position:absolute;top:-7px;bottom:-7px;left:60%;width:2px;background:repeating-linear-gradient(var(--nav-bg) 0 4px,transparent 4px 8px);opacity:.55}
+  .goal::after{content:"goal 60%+";position:absolute;top:-16px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:800;color:var(--muted);white-space:nowrap}
+  .belowgoal{font-size:10.5px;font-weight:800;color:var(--text);grid-column:2;justify-self:start;margin-top:-6px;opacity:0}
+  .is-active .belowgoal{animation:rise .5s ease 1.1s forwards}
+
+  /* cards */
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(9px,1.4vw,15px);width:100%;max-width:880px;margin-top:clamp(8px,1.4vw,14px)}
+  .card{background:var(--white);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow-sm);padding:clamp(11px,1.7vw,18px) clamp(9px,1.3vw,15px);display:flex;flex-direction:column;align-items:center;gap:7px}
+  .card .badge{width:clamp(46px,6.8vw,60px);height:clamp(46px,6.8vw,60px);border-radius:16px;display:grid;place-items:center}
+  .card .badge svg{width:62%;height:62%}
+  .card h3{font-weight:800;font-size:clamp(13.5px,1.7vw,18px);margin:2px 0 0}
+  .card .test{font-weight:700;color:var(--accent);font-size:clamp(10.5px,1.3vw,13px)}
+  .card .age{font-size:clamp(9.5px,1.15vw,11.5px);color:var(--muted);font-weight:600;line-height:1.25}
+  .b-green{background:var(--green-badge)}.b-mint{background:var(--accent-light)}.b-blue{background:var(--blue-badge)}
+
+  /* how it helps */
+  .dropstat{display:flex;gap:clamp(16px,4vw,56px);flex-wrap:wrap;justify-content:center;align-items:flex-end;margin-bottom:clamp(8px,1.4vw,12px)}
+  .drop{display:flex;flex-direction:column;align-items:center;gap:3px}
+  .drop .arw{font-size:clamp(20px,2.8vw,28px);color:var(--accent);line-height:1}
+  .drop .n{font-weight:900;font-size:clamp(34px,6.8vw,64px);line-height:.9;color:var(--accent);letter-spacing:-2px}
+  .drop .lab{font-size:clamp(10.5px,1.3vw,13.5px);color:var(--muted);font-weight:600;max-width:16ch;line-height:1.2}
+  .drop.early .arw{color:var(--accent)}
+  .drop.late .arw,.drop.late .n{color:var(--muted)}
+
+  /* CTA */
+  .cta-actions{display:flex;align-items:center;gap:clamp(18px,3.5vw,42px);flex-wrap:wrap;justify-content:center;margin-top:clamp(12px,1.8vw,18px)}
+  .cta-left{display:flex;flex-direction:column;align-items:center;gap:clamp(10px,1.6vw,14px)}
+  .cta-btn{display:inline-flex;align-items:center;gap:11px;text-decoration:none;background:var(--accent);color:#fff;font-weight:800;font-size:clamp(16px,2.2vw,23px);padding:clamp(12px,1.8vw,17px) clamp(20px,2.8vw,30px);border-radius:12px;box-shadow:0 14px 30px -14px rgba(45,125,111,.7);transition:background .2s ease,transform .2s ease}
+  .cta-btn:hover{background:var(--accent-hover);transform:translateY(-2px)}
+  .cta-btn:focus-visible{outline:3px solid var(--nav-bg);outline-offset:3px}
+  .is-active .cta-btn{animation:beat 2s ease-in-out 1s infinite}
+  @keyframes beat{0%,100%{transform:scale(1)}8%{transform:scale(1.04)}16%{transform:scale(1)}24%{transform:scale(1.025)}}
+  .welcome{display:flex;gap:9px;flex-wrap:wrap;justify-content:center}
+  .welcome .w{display:inline-flex;align-items:center;gap:7px;background:var(--green-badge);color:var(--green-badge-text);font-weight:700;border-radius:999px;padding:7px 13px;font-size:clamp(11px,1.3vw,14px)}
+  .welcome .w svg{width:15px;height:15px}
+  .qr-card{background:var(--white);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow-sm);padding:clamp(10px,1.5vw,15px);display:flex;flex-direction:column;align-items:center;gap:7px}
+  .qr-card svg{width:clamp(96px,15vw,138px);height:clamp(96px,15vw,138px);display:block}
+  .qr-card .qlab{font-weight:800;font-size:clamp(11px,1.35vw,13.5px);color:var(--text);display:flex;align-items:center;gap:6px}
+  .qr-card .qlab svg{width:15px;height:15px}
+
+  /* caption */
+  .caption{position:absolute;left:0;right:0;bottom:clamp(12px,2vw,18px);z-index:25;display:flex;justify-content:center;padding:0 clamp(20px,5vw,60px);pointer-events:none}
+  .caption span{background:var(--nav-bg);color:#fff;font-weight:600;font-size:clamp(11px,1.45vw,15px);padding:7px 16px;border-radius:999px;max-width:92%;line-height:1.3;opacity:0;transform:translateY(6px);transition:opacity .4s ease,transform .4s ease}
+  .scene.is-active .caption-on{opacity:1;transform:none}
+
+  /* per-scene source link */
+  .srcchip{display:inline-flex;align-items:center;gap:6px;margin-top:clamp(7px,1.2vw,11px);font-size:clamp(9px,1.05vw,11px);font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--border);background:var(--white);padding:4px 10px;border-radius:999px;transition:color .15s ease,border-color .15s ease}
+  .srcchip:hover{color:var(--accent);border-color:var(--tint-3)}
+  .srcchip svg{width:12px;height:12px;flex:none}
+  .srcchip .u{text-decoration:underline;text-underline-offset:2px}
+
+  /* name pronunciation */
+  .pron{display:inline-flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:clamp(10px,1.5vw,15px);background:var(--accent-light);border:1px solid var(--tint-3);border-radius:12px;padding:8px 15px;font-size:clamp(11px,1.4vw,14.5px);color:var(--accent-deep);font-weight:600}
+  .pron b{font-weight:800}
+  .pron .syl{font-weight:800;letter-spacing:1px;color:var(--accent-deep)}
+  .pron small{color:var(--muted);font-weight:600}
+
+  /* start overlay */
+  .overlay{position:absolute;inset:0;z-index:60;background:rgba(17,24,39,.72);backdrop-filter:blur(3px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:clamp(24px,6vw,60px);transition:opacity .4s ease,visibility .4s}
+  .overlay.hidden{opacity:0;visibility:hidden}
+  .overlay .ov-eyebrow{color:var(--emerald);font-weight:800;letter-spacing:2.4px;text-transform:uppercase;font-size:clamp(10px,1.2vw,12.5px);margin-bottom:10px}
+  .overlay h2{color:#fff;max-width:18ch}
+  .overlay p{color:rgba(255,255,255,.7);font-weight:500;max-width:40ch;margin:12px 0 0;font-size:clamp(13px,1.6vw,16px)}
+  .ov-play{margin-top:clamp(18px,3vw,26px);display:inline-flex;align-items:center;gap:12px;border:none;cursor:pointer;background:var(--accent);color:#fff;font-family:var(--font);font-weight:800;font-size:clamp(16px,2.2vw,21px);padding:clamp(13px,1.9vw,17px) clamp(24px,3.2vw,34px);border-radius:999px;box-shadow:0 16px 34px -14px rgba(45,125,111,.8);transition:transform .2s ease,background .2s ease}
+  .ov-play:hover{background:var(--accent-hover);transform:translateY(-2px) scale(1.02)}
+  .ov-play:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  .ov-play svg{width:22px;height:22px;fill:#fff}
+  .ov-silent{margin-top:14px;background:none;border:none;color:rgba(255,255,255,.75);font-family:var(--font);font-weight:600;font-size:clamp(12px,1.4vw,14px);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+  .ov-silent:hover{color:#fff}
+  .ov-silent:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:4px}
+
+  /* controls */
+  .controls{display:flex;align-items:center;gap:clamp(8px,1.4vw,14px);padding:clamp(11px,1.6vw,17px) clamp(14px,2.2vw,24px);background:var(--white);border-top:1px solid var(--border);flex-wrap:wrap}
+  .btn{border:none;background:var(--accent-light);color:var(--accent-deep);cursor:pointer;width:clamp(38px,4.6vw,46px);height:clamp(38px,4.6vw,46px);border-radius:50%;display:grid;place-items:center;flex:none;transition:background .18s ease,transform .18s ease}
+  .btn:hover{background:var(--tint-2)}
+  .btn:active{transform:scale(.94)}
+  .btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+  .btn svg{width:46%;height:46%;fill:var(--accent-deep)}
+  .btn.play{background:var(--accent);width:clamp(44px,5.6vw,54px);height:clamp(44px,5.6vw,54px)}
+  .btn.play:hover{background:var(--accent-hover)}
+  .btn.play svg{fill:#fff;width:42%;height:42%}
+  .btn.sound.off svg{opacity:.55}
+
+  .timeline{flex:1 1 200px;display:flex;flex-direction:column;gap:7px;min-width:140px}
+  .heart-wrap{position:relative;width:100%;height:32px}
+  .heart-wrap svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+  .ecg-bg{fill:none;stroke:var(--tint-2);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+  .ecg-fg{fill:none;stroke:var(--accent);stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
+  .playhead{fill:var(--emerald)}
+  .is-beating .playhead{animation:phbeat 1.1s ease-in-out infinite}
+  @keyframes phbeat{0%,100%{r:5}50%{r:8}}
+  .dots{display:flex;gap:6px}
+  .dots button{flex:1;height:5px;border:none;border-radius:3px;background:var(--tint-2);cursor:pointer;padding:0;transition:background .25s ease}
+  .dots button[aria-current="true"]{background:var(--accent)}
+  .dots button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  .voicebox{display:flex;align-items:center;gap:7px;flex:none}
+  .voicebox label{font-size:11px;font-weight:700;color:var(--muted);white-space:nowrap}
+  .voicebox select{font-family:var(--font);font-size:12px;font-weight:600;color:var(--text);background:var(--white);border:1px solid var(--border);border-radius:9px;padding:7px 9px;max-width:170px;cursor:pointer}
+  .voicebox select:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+
+  .replay{display:none;align-items:center;gap:8px;border:none;cursor:pointer;background:var(--nav-bg);color:#fff;font-family:var(--font);font-weight:700;padding:0 16px;height:clamp(38px,4.6vw,46px);border-radius:999px;font-size:clamp(12px,1.35vw,14px)}
+  .replay svg{width:15px;height:15px;fill:#fff}
+  .replay.show{display:inline-flex}
+  .replay:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+  .foot{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-top:13px;padding:0 6px;color:var(--muted);font-size:11.5px;font-weight:500;line-height:1.45}
+  .foot b{color:var(--accent-deep);font-weight:700}
+
+  @media (max-width:640px){
+    .stage{aspect-ratio:auto;min-height:84vh}
+    .cards{grid-template-columns:repeat(2,1fr)}
+    .goal::after{content:"60%"}
+    .voicebox label{display:none}
+    .timeline{order:5;flex-basis:100%}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important;transition:opacity .2s linear !important}
+    .scene{transform:none}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="player">
+      <div class="stage" id="stage">
+
+        <div class="topbar">
+          <div class="brand">
+            <svg class="glyph" viewBox="0 0 60 30" aria-hidden="true"><path d="M2 15h12l3-9 5 18 4-12 3 6h26"/></svg>
+            <div><b>Dr. Kolawole Adeniran</b><small>Family Medicine · Windsor</small></div>
+          </div>
+          <div class="counter" id="counter">01 / 07</div>
+        </div>
+
+        <!-- SCENE 1 -->
+        <section class="scene is-active" data-i="0" aria-label="Title">
+          <div class="hero">
+            <svg class="doc" viewBox="0 0 120 150" aria-hidden="true">
+              <ellipse cx="60" cy="142" rx="33" ry="6" fill="#111827" opacity=".1"/>
+              <path d="M30 150c0-26 8-44 30-44s30 18 30 44Z" fill="#2d7d6f"/>
+              <path d="M60 106c-9 0-15 4-19 10l19 16 19-16c-4-6-10-10-19-10Z" fill="#fff"/>
+              <path d="M55 116l5 8 5-8-5-4Z" fill="#1f4f45"/>
+              <circle cx="60" cy="123" r="2.4" fill="#1f4f45"/>
+              <path d="M48 110c-6 8-6 20 4 24" fill="none" stroke="#1f4f45" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="53" cy="135" r="4" fill="#1f4f45"/>
+              <circle cx="60" cy="70" r="26" fill="#E7A977"/>
+              <path d="M34 66c0-18 12-28 26-28s26 10 26 26c0 4-2 8-2 8-2-12-10-18-24-18S38 60 36 74c0 0-2-4-2-8Z" fill="#2b1d12"/>
+              <circle cx="51" cy="70" r="2.7" fill="#2b1d12"/>
+              <circle cx="69" cy="70" r="2.7" fill="#2b1d12"/>
+              <path d="M53 80q7 6 14 0" fill="none" stroke="#2b1d12" stroke-width="2.6" stroke-linecap="round"/>
+              <circle cx="46" cy="77" r="3" fill="#d98a5a" opacity=".5"/>
+              <circle cx="74" cy="77" r="3" fill="#d98a5a" opacity=".5"/>
+              <g class="wave-hand">
+                <path d="M84 108c10-6 18-18 16-30" fill="none" stroke="#2d7d6f" stroke-width="11" stroke-linecap="round"/>
+                <circle cx="98" cy="74" r="7.5" fill="#E7A977"/>
+              </g>
+            </svg>
+            <span class="eyebrow rise d1">A 90-second guide</span>
+            <h1 class="rise d2">Catch it <span class="accent">early.</span></h1>
+            <p class="lede rise d3">Cancer screening, made simple — for the people of Windsor &amp; Essex County.</p>
+            <span class="pill rise d4"><span class="d"></span> Listen along, or step through at your own pace</span>
+          </div>
+          <div class="caption"><span class="caption-on">Most cancers are easier to treat when we find them early. Here&rsquo;s how screening helps.</span></div>
+        </section>
+
+        <!-- SCENE 2 -->
+        <section class="scene" data-i="1" aria-label="Cancer in Ontario">
+          <span class="eyebrow rise d1">The picture in Ontario</span>
+          <div class="bignum rise d2"><span data-count-to="95700">0</span><span class="unit"> new cancer cases<br>projected in Ontario, 2026</span></div>
+          <p class="lede rise d3">About <b>2 in 5</b> of us will be diagnosed with cancer in our lifetime. The good news: many of the most common ones can be screened for.</p>
+          <div class="factrow">
+            <div class="chip rise d4">
+              <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="#e8f4f2"/><path d="M13 22c0-7 4-11 7-11s7 4 7 11" fill="none" stroke="#1f4f45" stroke-width="3" stroke-linecap="round"/><path d="M13 22q7 7 14 0" fill="none" stroke="#1f4f45" stroke-width="3" stroke-linecap="round"/></svg>
+              <div><div class="k"><span data-count-to="10700">0</span></div><div class="l">lung — leads in deaths</div></div>
+            </div>
+            <div class="chip rise d5">
+              <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="#e8f4f2"/><circle cx="20" cy="22" r="6" fill="none" stroke="#2d7d6f" stroke-width="3"/><path d="M20 16c-3-7 4-9 4-3M20 16c3-7-4-9-4-3" fill="none" stroke="#2d7d6f" stroke-width="3" stroke-linecap="round"/></svg>
+              <div><div class="k"><span data-count-to="12420">0</span></div><div class="l">breast — most common</div></div>
+            </div>
+            <div class="chip rise d6">
+              <svg class="ico" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" fill="#e8f4f2"/><path d="M14 12h12v16a6 6 0 0 1-12 0Z" fill="none" stroke="#2d7d6f" stroke-width="3" stroke-linejoin="round"/><path d="M17 12V9h6v3" fill="none" stroke="#2d7d6f" stroke-width="3"/></svg>
+              <div><div class="k"><span data-count-to="8500">0</span></div><div class="l">colorectal — very preventable</div></div>
+            </div>
+          </div>
+          <a class="srcchip" href="https://cancerstats.ca/Incidence/Region" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5M19 5l-9 9M11 5H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/></svg>Source: Canadian Cancer Society — <span class="u">cancerstats.ca</span></a>
+          <div class="caption"><span class="caption-on">Lung, breast, prostate and colorectal cancers make up almost half of all new diagnoses.</span></div>
+        </section>
+
+        <!-- SCENE 3 -->
+        <section class="scene" data-i="2" aria-label="Cancer in our region">
+          <span class="eyebrow rise d1">Closer to home · Erie St. Clair</span>
+          <h2 class="rise d2">Our region carries a <span class="accent">heavier</span> load.</h2>
+          <div class="localgrid">
+            <div class="mapcard rise d3">
+              <svg viewBox="0 0 200 200" aria-hidden="true">
+                <path d="M40 70c14-10 40-16 64-12 26 4 50 2 56 16 6 16-6 34-2 50 4 14-10 24-34 28-30 5-66 2-86-14-16-13-18-40-12-56 4-10 8-12 14-18Z" fill="#e8f4f2" stroke="#d1e8e4" stroke-width="3"/>
+                <path d="M30 150c20 6 44 8 70 4" fill="none" stroke="#2d7d6f" stroke-width="4" stroke-linecap="round" opacity=".5"/>
+                <path d="M150 150c8 8 22 10 30 4" fill="none" stroke="#2d7d6f" stroke-width="4" stroke-linecap="round" opacity=".5"/>
+                <circle class="ping" cx="92" cy="118" r="14" fill="#2d7d6f" opacity=".35"/>
+                <path d="M92 92c-11 0-20 9-20 20 0 14 20 30 20 30s20-16 20-30c0-11-9-20-20-20Z" fill="#2d7d6f"/>
+                <circle cx="92" cy="112" r="7" fill="#fff"/>
+              </svg>
+            </div>
+            <div class="riskwrap">
+              <div class="risk rise d3"><span class="tag">↑</span> Above-average lung, breast &amp; prostate cancer</div>
+              <div class="risk rise d4"><span class="tag">↑</span> Higher rates of smoking, alcohol &amp; excess weight</div>
+              <div class="risk rise d5"><span class="tag alt">↓</span> Historically lower screening than the province</div>
+            </div>
+          </div>
+          <p class="lede rise d6">Windsor-Essex sees more cancer than Ontario as a whole — which makes staying on top of screening matter even more here.</p>
+          <a class="srcchip" href="https://www.wechu.org/reports/chronic-diseases-risk-factors" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5M19 5l-9 9M11 5H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/></svg>Source: Windsor-Essex County Health Unit · Cancer System Quality Index — <span class="u">wechu.org</span></a>
+          <div class="caption"><span class="caption-on">We start with more risk and less screening &mdash; a gap we can close together.</span></div>
+        </section>
+
+        <!-- SCENE 4 -->
+        <section class="scene" data-i="3" aria-label="Screening uptake in Ontario">
+          <span class="eyebrow rise d1">The key issue · who&rsquo;s up to date</span>
+          <h2 class="rise d2">Share of eligible Ontarians screened</h2>
+          <div class="bars">
+            <div class="bar rise d3">
+              <span class="name">Breast</span>
+              <div class="track"><div class="fill" data-w="81"></div><div class="goal"></div></div>
+              <span class="val"><span data-count-to="81">0</span>%</span>
+            </div>
+            <div class="bar rise d4">
+              <span class="name">Cervical</span>
+              <div class="track"><div class="fill" data-w="71"></div><div class="goal"></div></div>
+              <span class="val"><span data-count-to="71">0</span>%</span>
+            </div>
+            <div class="bar rise d5">
+              <span class="name">Colorectal</span>
+              <div class="track"><div class="fill focus" data-w="45"></div><div class="goal"></div></div>
+              <span class="val flag"><span data-count-to="45">0</span>%</span>
+              <span class="belowgoal">↓ below the 60% goal</span>
+            </div>
+          </div>
+          <p class="lede rise d6">Breast and cervical screening are doing well. But <b>colorectal screening lags</b> — even though a simple at-home test can catch it. That&rsquo;s the gap worth closing.</p>
+          <a class="srcchip" href="https://www150.statcan.gc.ca/n1/pub/82-625-x/2025001/article/00002-eng.htm" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5M19 5l-9 9M11 5H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/></svg>Source: Statistics Canada, CCHS 2024 (released Aug 2025) — <span class="u">statcan.gc.ca</span></a>
+          <div class="caption"><span class="caption-on">Fewer than half of eligible Ontarians are up to date on colon cancer screening.</span></div>
+        </section>
+
+        <!-- SCENE 5 -->
+        <section class="scene" data-i="4" aria-label="What you can be screened for">
+          <span class="eyebrow rise d1">What we can screen for</span>
+          <h2 class="rise d2">Four checks. One easy step.</h2>
+          <div class="cards">
+            <div class="card rise d3">
+              <div class="badge b-green"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="23" r="8" fill="none" stroke="#065f46" stroke-width="3.5"/><path d="M20 15c-4-9 5-12 5-3M20 15c4-9-5-12-5-3" fill="none" stroke="#065f46" stroke-width="3.5" stroke-linecap="round"/></svg></div>
+              <h3>Breast</h3><div class="test">Mammogram</div><div class="age">Ages 40&ndash;74 · from 30 if high-risk</div>
+            </div>
+            <div class="card rise d4">
+              <div class="badge b-mint"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="17" cy="17" r="9" fill="none" stroke="#2d7d6f" stroke-width="3.5"/><path d="M24 24l9 9" stroke="#2d7d6f" stroke-width="4" stroke-linecap="round"/><circle cx="14" cy="15" r="2" fill="#2d7d6f"/><circle cx="20" cy="19" r="2" fill="#2d7d6f"/></svg></div>
+              <h3>Cervical</h3><div class="test">HPV test</div><div class="age">Ages 25&ndash;69 · every 5 yrs</div>
+            </div>
+            <div class="card rise d5">
+              <div class="badge b-blue"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="11" width="22" height="18" rx="3" fill="none" stroke="#1e40af" stroke-width="3.2"/><path d="M9 16l11 7 11-7" fill="none" stroke="#1e40af" stroke-width="3.2" stroke-linejoin="round"/></svg></div>
+              <h3>Colorectal</h3><div class="test">At-home FIT kit</div><div class="age">Ages 50&ndash;74</div>
+            </div>
+            <div class="card rise d6">
+              <div class="badge b-mint"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 11v9" stroke="#2d7d6f" stroke-width="3.2" stroke-linecap="round"/><path d="M17 20c0-7-9-6-9 2 0 6 2 9 6 9 3 0 3-4 3-7Z" fill="none" stroke="#2d7d6f" stroke-width="3.2" stroke-linejoin="round"/><path d="M23 20c0-7 9-6 9 2 0 6-2 9-6 9-3 0-3-4-3-7Z" fill="none" stroke="#2d7d6f" stroke-width="3.2" stroke-linejoin="round"/></svg></div>
+              <h3>Lung</h3><div class="test">Low-dose CT</div><div class="age">Ages 55&ndash;80 · 20+ yrs smoking</div>
+            </div>
+          </div>
+          <p class="lede rise d6">Eligibility depends on your age, history and risk — we&rsquo;ll sort out what&rsquo;s right for you.</p>
+          <a class="srcchip" href="https://www.cancercareontario.ca/en/cancer-care-ontario/programs/screening-programs" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5M19 5l-9 9M11 5H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/></svg>Source: Cancer Care Ontario — <span class="u">cancercareontario.ca</span></a>
+          <div class="caption"><span class="caption-on">Some tests are as simple as a kit you do at home and mail back.</span></div>
+        </section>
+
+        <!-- SCENE 6 -->
+        <section class="scene" data-i="5" aria-label="Why screening helps">
+          <span class="eyebrow rise d1">Why it works · colorectal example</span>
+          <h2 class="rise d2">Found early, the odds are <span class="accent">far</span> better.</h2>
+          <div class="dropstat">
+            <div class="drop early rise d3"><span class="arw">&#9650;</span><span class="n"><span data-count-to="92">0</span>%</span><span class="lab">5-year survival when caught early (stage 1)</span></div>
+            <div class="drop late rise d4"><span class="arw">&#9660;</span><span class="n"><span data-count-to="11">0</span>%</span><span class="lab">5-year survival when caught late (stage 4)</span></div>
+          </div>
+          <p class="lede rise d5">Screening finds colorectal cancer before you feel it — and can even catch and remove <b>pre-cancers</b> (polyps) before they ever become cancer. The earlier it&rsquo;s found, the better the outcome.</p>
+          <a class="srcchip" href="https://cancer.ca/en/cancer-information/cancer-types/colorectal/prognosis-and-survival/survival-statistics" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5M19 5l-9 9M11 5H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/></svg>Source: Canadian Cancer Society · survival by stage — <span class="u">cancer.ca</span></a>
+          <div class="caption"><span class="caption-on">Caught early, 5-year survival is about 92% &mdash; versus roughly 11% once it has spread.</span></div>
+        </section>
+
+        <!-- SCENE 7 -->
+        <section class="scene" data-i="6" aria-label="Book your screening">
+          <span class="eyebrow rise d1">Your move</span>
+          <h2 class="rise d2">Let&rsquo;s get you booked.</h2>
+          <p class="lede rise d3">Booking takes about two minutes. Find your screening, pick a time, done.</p>
+          <div class="cta-actions">
+            <div class="cta-left">
+              <a class="cta-btn rise d3" href="https://dradeniran.ca" target="_blank" rel="noopener">
+                Book at dradeniran.ca
+                <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <div class="welcome rise d4">
+                <span class="w"><svg viewBox="0 0 24 24" fill="none" stroke="#065f46" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> New patients welcome</span>
+                <span class="w"><svg viewBox="0 0 24 24" fill="none" stroke="#065f46" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Current patients too</span>
+              </div>
+            </div>
+            <div class="qr-card rise d4">
+              <svg viewBox="-4 -4 33 33" role="img" aria-label="QR code to book at dradeniran.ca">
+                <rect x="-4" y="-4" width="33" height="33" fill="#ffffff"/>
+                <path fill="#111827" d="M0 0h1v1h-1zM1 0h1v1h-1zM2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM9 0h1v1h-1zM11 0h1v1h-1zM12 0h1v1h-1zM14 0h1v1h-1zM18 0h1v1h-1zM19 0h1v1h-1zM20 0h1v1h-1zM21 0h1v1h-1zM22 0h1v1h-1zM23 0h1v1h-1zM24 0h1v1h-1zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h1v1h-1zM10 1h1v1h-1zM13 1h1v1h-1zM14 1h1v1h-1zM16 1h1v1h-1zM18 1h1v1h-1zM24 1h1v1h-1zM0 2h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM8 2h1v1h-1zM11 2h1v1h-1zM12 2h1v1h-1zM15 2h1v1h-1zM18 2h1v1h-1zM20 2h1v1h-1zM21 2h1v1h-1zM22 2h1v1h-1zM24 2h1v1h-1zM0 3h1v1h-1zM2 3h1v1h-1zM3 3h1v1h-1zM4 3h1v1h-1zM6 3h1v1h-1zM8 3h1v1h-1zM10 3h1v1h-1zM12 3h1v1h-1zM13 3h1v1h-1zM14 3h1v1h-1zM16 3h1v1h-1zM18 3h1v1h-1zM20 3h1v1h-1zM21 3h1v1h-1zM22 3h1v1h-1zM24 3h1v1h-1zM0 4h1v1h-1zM2 4h1v1h-1zM3 4h1v1h-1zM4 4h1v1h-1zM6 4h1v1h-1zM9 4h1v1h-1zM12 4h1v1h-1zM13 4h1v1h-1zM16 4h1v1h-1zM18 4h1v1h-1zM20 4h1v1h-1zM21 4h1v1h-1zM22 4h1v1h-1zM24 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM9 5h1v1h-1zM10 5h1v1h-1zM12 5h1v1h-1zM13 5h1v1h-1zM14 5h1v1h-1zM18 5h1v1h-1zM24 5h1v1h-1zM0 6h1v1h-1zM1 6h1v1h-1zM2 6h1v1h-1zM3 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM19 6h1v1h-1zM20 6h1v1h-1zM21 6h1v1h-1zM22 6h1v1h-1zM23 6h1v1h-1zM24 6h1v1h-1zM8 7h1v1h-1zM9 7h1v1h-1zM10 7h1v1h-1zM11 7h1v1h-1zM15 7h1v1h-1zM0 8h1v1h-1zM6 8h1v1h-1zM8 8h1v1h-1zM9 8h1v1h-1zM10 8h1v1h-1zM13 8h1v1h-1zM14 8h1v1h-1zM15 8h1v1h-1zM16 8h1v1h-1zM17 8h1v1h-1zM18 8h1v1h-1zM21 8h1v1h-1zM22 8h1v1h-1zM23 8h1v1h-1zM0 9h1v1h-1zM2 9h1v1h-1zM8 9h1v1h-1zM9 9h1v1h-1zM10 9h1v1h-1zM11 9h1v1h-1zM14 9h1v1h-1zM15 9h1v1h-1zM17 9h1v1h-1zM19 9h1v1h-1zM20 9h1v1h-1zM21 9h1v1h-1zM22 9h1v1h-1zM23 9h1v1h-1zM1 10h1v1h-1zM2 10h1v1h-1zM3 10h1v1h-1zM5 10h1v1h-1zM6 10h1v1h-1zM8 10h1v1h-1zM9 10h1v1h-1zM12 10h1v1h-1zM13 10h1v1h-1zM15 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM21 10h1v1h-1zM23 10h1v1h-1zM24 10h1v1h-1zM0 11h1v1h-1zM2 11h1v1h-1zM5 11h1v1h-1zM7 11h1v1h-1zM9 11h1v1h-1zM11 11h1v1h-1zM12 11h1v1h-1zM14 11h1v1h-1zM19 11h1v1h-1zM21 11h1v1h-1zM24 11h1v1h-1zM1 12h1v1h-1zM2 12h1v1h-1zM6 12h1v1h-1zM8 12h1v1h-1zM9 12h1v1h-1zM12 12h1v1h-1zM16 12h1v1h-1zM18 12h1v1h-1zM19 12h1v1h-1zM24 12h1v1h-1zM0 13h1v1h-1zM1 13h1v1h-1zM4 13h1v1h-1zM7 13h1v1h-1zM9 13h1v1h-1zM15 13h1v1h-1zM16 13h1v1h-1zM19 13h1v1h-1zM23 13h1v1h-1zM0 14h1v1h-1zM2 14h1v1h-1zM3 14h1v1h-1zM4 14h1v1h-1zM5 14h1v1h-1zM6 14h1v1h-1zM9 14h1v1h-1zM11 14h1v1h-1zM12 14h1v1h-1zM15 14h1v1h-1zM18 14h1v1h-1zM19 14h1v1h-1zM20 14h1v1h-1zM21 14h1v1h-1zM23 14h1v1h-1zM24 14h1v1h-1zM0 15h1v1h-1zM5 15h1v1h-1zM7 15h1v1h-1zM8 15h1v1h-1zM9 15h1v1h-1zM10 15h1v1h-1zM11 15h1v1h-1zM15 15h1v1h-1zM17 15h1v1h-1zM18 15h1v1h-1zM19 15h1v1h-1zM21 15h1v1h-1zM22 15h1v1h-1zM24 15h1v1h-1zM0 16h1v1h-1zM2 16h1v1h-1zM5 16h1v1h-1zM6 16h1v1h-1zM7 16h1v1h-1zM9 16h1v1h-1zM10 16h1v1h-1zM11 16h1v1h-1zM16 16h1v1h-1zM17 16h1v1h-1zM18 16h1v1h-1zM19 16h1v1h-1zM20 16h1v1h-1zM22 16h1v1h-1zM8 17h1v1h-1zM9 17h1v1h-1zM12 17h1v1h-1zM13 17h1v1h-1zM16 17h1v1h-1zM20 17h1v1h-1zM0 18h1v1h-1zM1 18h1v1h-1zM2 18h1v1h-1zM3 18h1v1h-1zM4 18h1v1h-1zM5 18h1v1h-1zM6 18h1v1h-1zM9 18h1v1h-1zM10 18h1v1h-1zM11 18h1v1h-1zM16 18h1v1h-1zM18 18h1v1h-1zM20 18h1v1h-1zM24 18h1v1h-1zM0 19h1v1h-1zM6 19h1v1h-1zM10 19h1v1h-1zM12 19h1v1h-1zM13 19h1v1h-1zM15 19h1v1h-1zM16 19h1v1h-1zM20 19h1v1h-1zM23 19h1v1h-1zM24 19h1v1h-1zM0 20h1v1h-1zM2 20h1v1h-1zM3 20h1v1h-1zM4 20h1v1h-1zM6 20h1v1h-1zM12 20h1v1h-1zM14 20h1v1h-1zM15 20h1v1h-1zM16 20h1v1h-1zM17 20h1v1h-1zM18 20h1v1h-1zM19 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM23 20h1v1h-1zM24 20h1v1h-1zM0 21h1v1h-1zM2 21h1v1h-1zM3 21h1v1h-1zM4 21h1v1h-1zM6 21h1v1h-1zM14 21h1v1h-1zM15 21h1v1h-1zM16 21h1v1h-1zM17 21h1v1h-1zM18 21h1v1h-1zM23 21h1v1h-1zM24 21h1v1h-1zM0 22h1v1h-1zM2 22h1v1h-1zM3 22h1v1h-1zM4 22h1v1h-1zM6 22h1v1h-1zM10 22h1v1h-1zM11 22h1v1h-1zM12 22h1v1h-1zM21 22h1v1h-1zM22 22h1v1h-1zM24 22h1v1h-1zM0 23h1v1h-1zM6 23h1v1h-1zM11 23h1v1h-1zM14 23h1v1h-1zM16 23h1v1h-1zM17 23h1v1h-1zM18 23h1v1h-1zM19 23h1v1h-1zM20 23h1v1h-1zM24 23h1v1h-1zM0 24h1v1h-1zM1 24h1v1h-1zM2 24h1v1h-1zM3 24h1v1h-1zM4 24h1v1h-1zM5 24h1v1h-1zM6 24h1v1h-1zM8 24h1v1h-1zM9 24h1v1h-1zM10 24h1v1h-1zM13 24h1v1h-1zM14 24h1v1h-1zM16 24h1v1h-1zM17 24h1v1h-1zM18 24h1v1h-1zM21 24h1v1h-1zM24 24h1v1h-1z"/>
+              </svg>
+              <span class="qlab"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7d6f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3M21 14v3M17 21h4"/></svg> Scan to book</span>
+            </div>
+          </div>
+          <div class="caption"><span class="caption-on">A few minutes today can change everything. See you soon.</span></div>
+        </section>
+
+        <!-- start overlay -->
+        <div class="overlay" id="overlay">
+          <div class="ov-eyebrow">Dr. Kolawole Adeniran · Windsor</div>
+          <h2>Cancer screening — a 90-second guide</h2>
+          <p>A quick, friendly walkthrough with narration. Catch it early — book your screening at the end.</p>
+          <button class="ov-play" id="ovPlay">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            Play with voice
+          </button>
+          <button class="ov-silent" id="ovSilent">Watch without sound</button>
+        </div>
+
+      </div><!-- /stage -->
+
+      <!-- controls -->
+      <div class="controls">
+        <button class="btn play" id="playBtn" aria-label="Play"><svg id="playIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+        <button class="btn" id="prevBtn" aria-label="Previous scene"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6h2v12H7zM10 12l8-6v12z"/></svg></button>
+        <button class="btn" id="nextBtn" aria-label="Next scene"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6h2v12h-2zM6 6l8 6-8 6z"/></svg></button>
+        <button class="btn sound" id="soundBtn" aria-label="Mute narration"><svg id="soundIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 5V4L8 9H4zm12 3a4 4 0 0 0-2-3.5v7A4 4 0 0 0 16 12zm-2-7v2a6 6 0 0 1 0 10v2a8 8 0 0 0 0-14z"/></svg></button>
+
+        <div class="timeline">
+          <div class="heart-wrap">
+            <svg viewBox="0 0 1000 32" preserveAspectRatio="none">
+              <path class="ecg-bg" d="M0,16 L150,16 L165,16 L175,4 L188,28 L198,16 L340,16 L360,16 L372,2 L388,30 L398,16 L540,16 L565,16 L578,5 L595,27 L605,16 L740,16 L770,16 L783,3 L800,29 L810,16 L1000,16"/>
+              <path class="ecg-fg" id="ecgFg" d="M0,16 L150,16 L165,16 L175,4 L188,28 L198,16 L340,16 L360,16 L372,2 L388,30 L398,16 L540,16 L565,16 L578,5 L595,27 L605,16 L740,16 L770,16 L783,3 L800,29 L810,16 L1000,16"/>
+              <circle class="playhead" id="playhead" cx="0" cy="16" r="5"/>
+            </svg>
+          </div>
+          <div class="dots" id="dots" role="tablist" aria-label="Scenes"></div>
+        </div>
+
+        <div class="voicebox">
+          <label for="voiceSel">Voice</label>
+          <select id="voiceSel" aria-label="Narration voice"></select>
+        </div>
+
+        <button class="replay" id="replayBtn" aria-label="Replay from start">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1L7 6l5 5V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg> Replay
+        </button>
+      </div>
+    </div><!-- /player -->
+
+    <div class="foot">
+      <div>Educational summary for patients of <b>Dr. Kolawole Adeniran</b>, Hope Health · Windsor, ON. Not a substitute for medical advice.</div>
+      <div>Sources: Canadian Cancer Society (Ontario projections, 2026) · Statistics Canada CCHS 2024 (screening rates) · Cancer Care Ontario (eligibility) · StatCan Health Reports 2023 / CCS (survival by stage)</div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  var scenes = Array.prototype.slice.call(document.querySelectorAll('.scene'));
+  var N = scenes.length;
+  var labels = ['Intro','Ontario','Our region','The gap','Screening','Why it works','Book now'];
+  var durations = [8000, 10000, 10200, 11200, 11200, 9200, 10000]; // ms pacing per scene
+  var narration = [
+    "Most cancers are far easier to treat when we catch them early. Here's how screening helps, in about ninety seconds.",
+    "This year, Ontario expects about ninety-five thousand, seven hundred new cancer cases. The most common ones, breast, lung, prostate and colorectal, can often be screened for.",
+    "Here in Windsor and Essex County, we see more cancer than the province as a whole, with higher risk, and too often, less screening.",
+    "Breast and cervical screening are doing well. But fewer than half of eligible Ontarians are up to date on colon cancer screening. That's the gap worth closing.",
+    "We can screen for breast, cervical, colorectal and lung cancer. Some are as simple as a kit you do at home. We'll find what's right for you.",
+    "This is why screening matters. Caught early, at stage one, colorectal cancer has about ninety percent five-year survival. But found late, only about one in ten. Screening can even find and remove pre-cancers, before they ever become cancer.",
+    "A few minutes today can change everything. Book online, or scan the code with your phone. New and current patients are both welcome. I'm Doctor Adeniran, and I look forward to meeting you."
+  ];
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasTTS = ('speechSynthesis' in window) && ('SpeechSynthesisUtterance' in window);
+
+  var i = 0, playing = false, soundOn = true, started = false;
+  var playStart = 0, carry = 0, raf = null, safety = null;
+  var voices = [], currentVoice = null;
+
+  var stageEl = document.getElementById('stage');
+  var overlay = document.getElementById('overlay');
+  var ovPlay = document.getElementById('ovPlay');
+  var ovSilent = document.getElementById('ovSilent');
+  var playBtn = document.getElementById('playBtn');
+  var playIcon = document.getElementById('playIcon');
+  var prevBtn = document.getElementById('prevBtn');
+  var nextBtn = document.getElementById('nextBtn');
+  var soundBtn = document.getElementById('soundBtn');
+  var soundIcon = document.getElementById('soundIcon');
+  var replayBtn = document.getElementById('replayBtn');
+  var counter = document.getElementById('counter');
+  var dotsWrap = document.getElementById('dots');
+  var voiceSel = document.getElementById('voiceSel');
+  var ecgFg = document.getElementById('ecgFg');
+  var playhead = document.getElementById('playhead');
+  var heartWrap = document.querySelector('.heart-wrap');
+
+  // dots
+  var dotBtns = [];
+  scenes.forEach(function(s, idx){
+    var b = document.createElement('button');
+    b.setAttribute('role','tab');
+    b.setAttribute('aria-label','Go to scene ' + (idx+1) + ': ' + labels[idx]);
+    b.addEventListener('click', function(){ pause(); go(idx); });
+    dotsWrap.appendChild(b); dotBtns.push(b);
+  });
+
+  // ECG geometry
+  var L = ecgFg.getTotalLength();
+  ecgFg.style.strokeDasharray = L;
+  ecgFg.style.strokeDashoffset = L;
+  function setFrac(frac){
+    frac = Math.max(0, Math.min(1, frac));
+    ecgFg.style.strokeDashoffset = L * (1 - frac);
+    var pt = ecgFg.getPointAtLength(L * frac);
+    playhead.setAttribute('cx', pt.x); playhead.setAttribute('cy', pt.y);
+  }
+  function easeOut(p){ return 1 - Math.pow(1 - p, 3); }
+
+  // icons
+  var P = {play:'M8 5v14l11-7z', pause:'M6 5h4v14H6zM14 5h4v14h-4z'};
+  function setPlayIcon(){ playIcon.innerHTML = '<path d="' + (playing ? P.pause : P.play) + '"/>'; playBtn.setAttribute('aria-label', playing ? 'Pause' : 'Play'); }
+  function setSoundIcon(){
+    soundBtn.classList.toggle('off', !soundOn);
+    soundBtn.setAttribute('aria-label', soundOn ? 'Mute narration' : 'Unmute narration');
+    soundIcon.innerHTML = soundOn
+      ? '<path d="M4 9v6h4l5 5V4L8 9H4zm12 3a4 4 0 0 0-2-3.5v7A4 4 0 0 0 16 12zm-2-7v2a6 6 0 0 1 0 10v2a8 8 0 0 0 0-14z"/>'
+      : '<path d="M4 9v6h4l5 5V4L8 9H4z"/><path d="M16 8l5 8M21 8l-5 8" stroke="#1f4f45" stroke-width="2" fill="none" stroke-linecap="round"/>';
+  }
+
+  // ---- voices ----
+  function scoreVoice(v){
+    var s = 0, lang = (v.lang||'').toLowerCase(), name = (v.name||'');
+    if(lang.indexOf('en-ca') === 0) s += 100;
+    else if(lang.indexOf('en-gb') === 0) s += 45;
+    else if(lang.indexOf('en-au') === 0) s += 35;
+    else if(lang.indexOf('en-us') === 0) s += 30;
+    else if(lang.indexOf('en') === 0) s += 15;
+    if(/\b(male|liam|david|mark|guy|ryan|brian|george|daniel|alex|fred|oliver|james|william|thomas|aaron|arthur)\b/i.test(name)) s += 50;
+    if(/\b(female|woman|zira|susan|linda|hazel|catherine|clara|samantha|victoria|karen|moira|tessa|fiona|emily|joanna|salli)\b/i.test(name)) s -= 45;
+    if(/natural|neural|online|premium/i.test(name)) s += 12;
+    if(/google|microsoft|apple/i.test(name)) s += 6;
+    return s;
+  }
+  function loadVoices(){
+    if(!hasTTS) { voiceSel.innerHTML = '<option>Voice not supported on this device</option>'; voiceSel.disabled = true; return; }
+    var list = window.speechSynthesis.getVoices() || [];
+    if(!list.length) return;
+    // keep English-ish first but include all
+    voices = list.slice().sort(function(a,b){ return scoreVoice(b) - scoreVoice(a); });
+    voiceSel.innerHTML = '';
+    voices.forEach(function(v, idx){
+      var o = document.createElement('option');
+      o.value = idx;
+      var tag = (v.lang||'').toLowerCase().indexOf('en-ca') === 0 ? '🍁 ' : '';
+      o.textContent = tag + v.name + ' (' + v.lang + ')';
+      voiceSel.appendChild(o);
+    });
+    currentVoice = voices[0];
+    voiceSel.value = '0';
+  }
+  voiceSel.addEventListener('change', function(){
+    currentVoice = voices[parseInt(voiceSel.value,10)] || null;
+    if(started && playing && soundOn) speakCurrent();
+  });
+  if(hasTTS){
+    loadVoices();
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+  } else {
+    loadVoices();
+  }
+
+  function soundDriven(){ return soundOn && hasTTS; }
+
+  function speakCurrent(){
+    if(!soundOn || !hasTTS) return;
+    try{
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(narration[i]);
+      if(currentVoice){ u.voice = currentVoice; u.lang = currentVoice.lang; }
+      u.rate = 0.97; u.pitch = 1; u.volume = 1;
+      var spokenFor = i;
+      u.onend = function(){ if(playing && spokenFor === i) advance(); };
+      window.speechSynthesis.speak(u);
+      // safety: advance even if onend never fires
+      clearTimeout(safety);
+      safety = setTimeout(function(){ if(playing && spokenFor === i) advance(); }, durations[i] * 2.4);
+    }catch(e){ /* fall back to timer via frame() */ }
+  }
+
+  function now(){ return (window.performance && performance.now) ? performance.now() : Date.now(); }
+
+  function go(idx){
+    i = Math.max(0, Math.min(N-1, idx));
+    scenes.forEach(function(s, k){ s.classList.toggle('is-active', k === i); });
+    dotBtns.forEach(function(b, k){ b.setAttribute('aria-current', k === i ? 'true' : 'false'); });
+    counter.textContent = ('0'+(i+1)).slice(-2) + ' / 0' + N;
+
+    // counters + bars
+    animate(scenes[i]);
+
+    // playhead segment
+    carry = 0; playStart = now();
+    setFrac(i / N);
+    clearTimeout(safety);
+
+    if(i === N-1){
+      replayBtn.classList.add('show');
+      if(playing){
+        if(soundDriven()){ speakLast(); }
+        else { finish(); }
+        setFrac(1);
+      }
+    } else {
+      replayBtn.classList.remove('show');
+      if(playing && soundDriven()) speakCurrent();
+    }
+  }
+
+  function speakLast(){
+    if(!soundOn || !hasTTS) return;
+    try{
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(narration[i]);
+      if(currentVoice){ u.voice = currentVoice; u.lang = currentVoice.lang; }
+      u.rate = 0.97; u.pitch = 1; u.volume = 1;
+      u.onend = function(){ playing = false; setPlayIcon(); heartWrap.classList.remove('is-beating'); };
+      window.speechSynthesis.speak(u);
+    }catch(e){}
+  }
+
+  function advance(){
+    clearTimeout(safety);
+    if(i < N-1){ go(i+1); }
+    else { finish(); }
+  }
+  function finish(){
+    playing = false; setPlayIcon();
+    heartWrap.classList.remove('is-beating');
+    setFrac(1); replayBtn.classList.add('show');
+    if(hasTTS) try{ window.speechSynthesis.cancel(); }catch(e){}
+  }
+
+  function frame(ts){
+    if(playing){
+      var segStart = i / N, segEnd = (i+1) / N;
+      var elapsed = ts - playStart + carry;
+      var p = Math.min(1, elapsed / durations[i]);
+      setFrac(segStart + (segEnd - segStart) * easeOut(p));
+      if(!soundDriven() && i < N-1 && elapsed >= durations[i]){ advance(); }
+    }
+    raf = requestAnimationFrame(frame);
+  }
+
+  function startPlayback(withSound){
+    soundOn = !!withSound; setSoundIcon();
+    started = true;
+    overlay.classList.add('hidden');
+    playing = true; setPlayIcon();
+    heartWrap.classList.add('is-beating');
+    if(!raf) raf = requestAnimationFrame(frame);
+    go(0);
+  }
+
+  function play(){
+    if(!started){ startPlayback(soundOn); return; }
+    playing = true; setPlayIcon();
+    heartWrap.classList.add('is-beating');
+    playStart = now();
+    if(!raf) raf = requestAnimationFrame(frame);
+    if(i === N-1){ if(soundDriven()) speakLast(); }
+    else if(soundDriven()) speakCurrent();
+  }
+  function pause(){
+    if(playing){ carry += now() - playStart; }
+    playing = false; setPlayIcon();
+    heartWrap.classList.remove('is-beating');
+    clearTimeout(safety);
+    if(hasTTS) try{ window.speechSynthesis.cancel(); }catch(e){}
+  }
+
+  // controls
+  ovPlay.addEventListener('click', function(){ startPlayback(true); });
+  ovSilent.addEventListener('click', function(){ startPlayback(false); });
+  playBtn.addEventListener('click', function(){ if(playing) pause(); else play(); });
+  prevBtn.addEventListener('click', function(){ var was = playing; pause(); go(i-1); if(was) play(); });
+  nextBtn.addEventListener('click', function(){ var was = playing; pause(); go(i+1); if(was) play(); });
+  soundBtn.addEventListener('click', function(){
+    soundOn = !soundOn; setSoundIcon();
+    if(!soundOn){ if(hasTTS) try{ window.speechSynthesis.cancel(); }catch(e){} ; playStart = now(); carry = 0; }
+    else if(started && playing){ playStart = now(); carry = 0; if(soundDriven()) speakCurrent(); }
+  });
+  replayBtn.addEventListener('click', function(){ replayBtn.classList.remove('show'); pause(); go(0); play(); });
+
+  document.addEventListener('keydown', function(e){
+    if(e.target && /select|input|textarea/i.test(e.target.tagName)) return;
+    if(e.code === 'Space'){ e.preventDefault(); if(!started){ startPlayback(true); } else if(playing){ pause(); } else { play(); } }
+    else if(e.code === 'ArrowRight'){ var w=playing; pause(); go(i+1); if(w) play(); }
+    else if(e.code === 'ArrowLeft'){ var w2=playing; pause(); go(i-1); if(w2) play(); }
+  });
+
+  // counters + bars
+  function animate(scene){
+    var nums = scene.querySelectorAll('[data-count-to]');
+    nums.forEach(function(el){
+      var target = parseInt(el.getAttribute('data-count-to'),10);
+      if(reduce){ el.textContent = target.toLocaleString('en-US'); return; }
+      var dur = 1150, t0 = null;
+      el.textContent = '0';
+      function step(ts){ if(!t0) t0 = ts; var k = Math.min(1,(ts-t0)/dur); el.textContent = Math.round(target*(1-Math.pow(1-k,3))).toLocaleString('en-US'); if(k<1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    });
+    var fills = scene.querySelectorAll('.fill');
+    fills.forEach(function(f){
+      var w = f.getAttribute('data-w') + '%';
+      if(reduce){ f.style.width = w; return; }
+      f.style.width = '0';
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ f.style.width = w; }); });
+    });
+  }
+
+  // init (paused on overlay)
+  setPlayIcon(); setSoundIcon(); setFrac(0);
+  go(0); playing = false; setPlayIcon();
+})();
+</script>
+</body>
+</html>

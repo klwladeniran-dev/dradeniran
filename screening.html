@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cancer Screening in Windsor — Dr. Kolawole Adeniran</title>
+<meta name="description" content="A 90-second guide to cancer screening for patients in Windsor & Essex County, plus a free tool to check which screenings you may be due for. Book with Dr. Kolawole Adeniran.">
+<link rel="canonical" href="https://dradeniran.ca/screening.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Google Analytics (same property as the rest of the site) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DMD1SR73HZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DMD1SR73HZ');
+</script>
+
+<style>
+  :root{
+    --nav-bg:#111827; --accent:#2d7d6f; --accent-hover:#236659; --accent-deep:#1f4f45;
+    --accent-light:#e8f4f2; --tint-2:#d1e8e4; --tint-3:#b2d8d2; --emerald:#10b981;
+    --bg:#f9fafb; --white:#fff; --text:#111827; --muted:#6b7280; --border:#e5e7eb;
+    --green-badge:#ecfdf5; --green-text:#065f46; --blue-badge:#eff6ff; --blue-text:#1e40af;
+    --amber-badge:#fffbeb; --amber-line:#d97706; --amber-text:#92400e;
+    --font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    --shadow:0 18px 44px -26px rgba(17,24,39,.4); --shadow-sm:0 10px 26px -18px rgba(17,24,39,.34);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font);color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.55}
+  a{color:var(--accent)}
+  .wrap{width:min(94vw,1060px);margin:0 auto}
+
+  /* ---------- NAV (charcoal, no Hope Health logo) ---------- */
+  nav{background:var(--nav-bg);position:sticky;top:0;z-index:50}
+  .nav-inner{width:min(94vw,1060px);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.7rem 0;gap:1rem}
+  .brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
+  .brand .glyph{width:24px;height:16px;flex:none}
+  .brand .glyph path{fill:none;stroke:var(--emerald);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+  .brand b{font-weight:800;font-size:clamp(13px,1.6vw,16px);letter-spacing:.2px;line-height:1.1}
+  .brand small{display:block;color:rgba(255,255,255,.6);font-size:10px;font-weight:600;letter-spacing:.7px;text-transform:uppercase;margin-top:2px}
+  .nav-right{display:flex;align-items:center;gap:1.1rem}
+  .nav-right a.link{color:rgba(255,255,255,.82);text-decoration:none;font-weight:600;font-size:.92rem}
+  .nav-right a.link:hover{color:#fff}
+  .nav-book{background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:.55rem 1rem;border-radius:9px;font-size:.92rem;transition:background .2s}
+  .nav-book:hover{background:var(--accent-hover)}
+
+  /* ---------- HERO ---------- */
+  .hero{text-align:center;padding:clamp(2.4rem,6vw,4rem) 0 clamp(1.6rem,4vw,2.4rem)}
+  .eyebrow{font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:clamp(10px,1.1vw,12px);color:var(--accent);display:inline-flex;align-items:center;gap:8px}
+  .eyebrow::before,.eyebrow::after{content:"";width:18px;height:2px;border-radius:2px;background:var(--accent)}
+  h1{font-weight:900;letter-spacing:-1.5px;line-height:1.05;font-size:clamp(30px,5.6vw,52px);margin:.5rem 0 0}
+  h1 .accent{color:var(--accent)}
+  .sub{color:var(--muted);font-size:clamp(15px,1.9vw,19px);max-width:54ch;margin:1rem auto 0;font-weight:500}
+  .chips{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin-top:1.3rem}
+  .chip{display:inline-flex;align-items:center;gap:7px;background:var(--white);border:1px solid var(--border);border-radius:999px;padding:.45rem .9rem;font-size:.85rem;font-weight:600;color:var(--accent-deep);box-shadow:var(--shadow-sm)}
+  .chip svg{width:15px;height:15px}
+
+  /* ---------- SECTIONS ---------- */
+  section.block{padding:clamp(1.4rem,3.5vw,2.6rem) 0}
+  .sec-head{text-align:center;margin-bottom:clamp(1.1rem,2.5vw,1.8rem)}
+  .sec-head h2{font-weight:800;letter-spacing:-.6px;font-size:clamp(22px,3.4vw,32px);margin:.3rem 0 0}
+  .sec-head p{color:var(--muted);font-size:clamp(14px,1.7vw,16.5px);margin:.5rem auto 0;max-width:50ch;font-weight:500}
+  .kicker{font-weight:800;letter-spacing:1.6px;text-transform:uppercase;font-size:11px;color:var(--accent)}
+
+  /* ---------- VIDEO ---------- */
+  .video-wrap{aspect-ratio:16/9;width:100%;border-radius:20px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);background:var(--nav-bg)}
+  .video-wrap iframe{display:block;width:100%;height:100%;border:0}
+  @media (max-width:640px){ .video-wrap{aspect-ratio:auto;height:86vh} }
+
+  /* ---------- TOOL ---------- */
+  .tool{background:var(--white);border:1px solid var(--border);border-radius:20px;box-shadow:var(--shadow);padding:clamp(1.2rem,3vw,2rem)}
+  .privacy{display:flex;align-items:center;gap:9px;justify-content:center;background:var(--accent-light);border:1px solid var(--tint-3);color:var(--accent-deep);border-radius:12px;padding:.6rem .9rem;font-size:.82rem;font-weight:600;margin-bottom:1.3rem}
+  .privacy svg{width:16px;height:16px;flex:none}
+  .field{margin-bottom:1.15rem}
+  .field>label.q{display:block;font-weight:700;font-size:.95rem;margin-bottom:.5rem}
+  .hint{color:var(--muted);font-weight:500;font-size:.82rem}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.15rem}
+  @media (max-width:560px){ .grid2{grid-template-columns:1fr} }
+  input[type=number],input[type=month],select{width:100%;font-family:var(--font);font-size:.95rem;color:var(--text);background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:.62rem .7rem}
+  input:focus,select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(45,125,111,.14)}
+  .seg{display:flex;gap:.5rem;flex-wrap:wrap}
+  .seg label{flex:1;min-width:120px;position:relative;cursor:pointer}
+  .seg input{position:absolute;opacity:0;inset:0;cursor:pointer}
+  .seg span{display:block;text-align:center;border:1.5px solid var(--border);border-radius:10px;padding:.6rem .5rem;font-weight:600;font-size:.9rem;color:var(--text);transition:.15s}
+  .seg input:checked+span{border-color:var(--accent);background:var(--accent-light);color:var(--accent-deep)}
+  .seg input:focus-visible+span{box-shadow:0 0 0 3px rgba(45,125,111,.18)}
+  .conditional{display:none}
+  .conditional.show{display:block;animation:slideIn .25s ease}
+  @keyframes slideIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+  details.optional{border:1px dashed var(--border);border-radius:12px;padding:.4rem .9rem;margin:.4rem 0 1.3rem;background:#fcfdfd}
+  details.optional summary{cursor:pointer;font-weight:700;font-size:.9rem;color:var(--accent-deep);padding:.5rem 0;list-style:none}
+  details.optional summary::-webkit-details-marker{display:none}
+  details.optional summary::before{content:"+ ";font-weight:800}
+  details.optional[open] summary::before{content:"– "}
+  .opt-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;align-items:end;margin:.6rem 0}
+  .opt-row .tiny{font-size:.78rem;font-weight:700;color:var(--muted);margin-bottom:.3rem;display:block}
+  @media (max-width:560px){ .opt-row{grid-template-columns:1fr} }
+  .check-btn{width:100%;border:none;cursor:pointer;background:var(--accent);color:#fff;font-family:var(--font);font-weight:800;font-size:1.05rem;padding:.95rem;border-radius:12px;transition:background .2s,transform .15s;box-shadow:0 14px 28px -14px rgba(45,125,111,.7)}
+  .check-btn:hover{background:var(--accent-hover)}
+  .check-btn:active{transform:translateY(1px)}
+  .err{color:#b91c1c;font-weight:600;font-size:.85rem;margin-top:.6rem;text-align:center;display:none}
+  .err.show{display:block}
+
+  /* ---------- RESULTS ---------- */
+  #results{margin-top:1.6rem;display:none}
+  #results.show{display:block}
+  .summary{text-align:center;font-weight:800;font-size:clamp(17px,2.4vw,22px);margin-bottom:1.1rem;letter-spacing:-.4px}
+  .rec{border:1px solid var(--border);border-left-width:5px;border-radius:13px;padding:1rem 1.1rem;margin-bottom:.85rem;background:var(--white);box-shadow:var(--shadow-sm)}
+  .rec .top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .rec .ico{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;flex:none}
+  .rec .ico svg{width:18px;height:18px}
+  .rec h3{font-size:1.02rem;font-weight:800;margin:0;flex:1;min-width:160px}
+  .pill{font-size:.72rem;font-weight:800;padding:.25rem .6rem;border-radius:999px;letter-spacing:.3px;white-space:nowrap}
+  .rec .headline{font-weight:600;margin:.6rem 0 0;font-size:.96rem}
+  .rec .detail{color:var(--muted);font-size:.86rem;margin:.35rem 0 0;font-weight:500}
+  .rec .foot{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:.75rem}
+  .src{display:inline-flex;align-items:center;gap:5px;font-size:.74rem;font-weight:600;color:var(--muted);text-decoration:none}
+  .src:hover{color:var(--accent)}
+  .src svg{width:11px;height:11px}
+  .book-this{display:inline-flex;align-items:center;gap:7px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;font-size:.82rem;padding:.45rem .85rem;border-radius:8px;transition:background .2s}
+  .book-this:hover{background:var(--accent-hover)}
+  /* status colors */
+  .s-up{border-left-color:var(--emerald)} .s-up .ico{background:var(--green-badge)} .s-up .ico svg{stroke:var(--green-text)} .s-up .pill{background:var(--green-badge);color:var(--green-text)}
+  .s-due{border-left-color:var(--accent)} .s-due .ico{background:var(--accent-light)} .s-due .ico svg{stroke:var(--accent-deep)} .s-due .pill{background:var(--accent-light);color:var(--accent-deep)}
+  .s-info{border-left-color:#60a5fa} .s-info .ico{background:var(--blue-badge)} .s-info .ico svg{stroke:var(--blue-text)} .s-info .pill{background:var(--blue-badge);color:var(--blue-text)}
+  .s-provider{border-left-color:var(--amber-line)} .s-provider .ico{background:var(--amber-badge)} .s-provider .ico svg{stroke:var(--amber-text)} .s-provider .pill{background:var(--amber-badge);color:var(--amber-text)}
+  .reset{display:block;margin:1.2rem auto 0;background:none;border:1.5px solid var(--border);color:var(--muted);font-family:var(--font);font-weight:700;font-size:.85rem;padding:.55rem 1.2rem;border-radius:999px;cursor:pointer}
+  .reset:hover{border-color:var(--accent);color:var(--accent)}
+  .disclaimer{font-size:.78rem;color:var(--muted);text-align:center;margin-top:1.3rem;line-height:1.5;font-weight:500}
+
+  /* ---------- BOOK SECTION ---------- */
+  .book-band{background:linear-gradient(180deg,var(--accent-light),#fff);border:1px solid var(--tint-3);border-radius:20px;padding:clamp(1.5rem,4vw,2.4rem);text-align:center}
+  .book-btns{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:560px;margin:1.4rem auto 0}
+  @media (max-width:560px){ .book-btns{grid-template-columns:1fr} }
+  .obtn{display:flex;flex-direction:column;align-items:center;gap:3px;background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem;text-decoration:none;box-shadow:var(--shadow-sm);transition:transform .18s,border-color .18s}
+  .obtn:hover{transform:translateY(-3px);border-color:var(--accent)}
+  .obtn .ic{font-size:1.5rem;line-height:1}
+  .obtn .lab{font-weight:800;color:var(--text);margin-top:.3rem}
+  .obtn .sub{font-size:.78rem;color:var(--muted);font-weight:500}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--nav-bg);color:rgba(255,255,255,.72);margin-top:clamp(2rem,5vw,3.5rem);padding:2.2rem 0;text-align:center;font-size:.85rem}
+  footer a{color:rgba(255,255,255,.72)} footer a:hover{color:#fff}
+  footer .fname{color:#fff;font-weight:800;font-size:1rem;margin-bottom:.4rem}
+  footer .frow{margin:.3rem 0}
+  footer .fsrc{font-size:.72rem;color:rgba(255,255,255,.45);max-width:60ch;margin:.9rem auto 0;line-height:1.5}
+  .back-home{display:inline-block;margin-top:.8rem;color:var(--emerald);font-weight:700;text-decoration:none;font-size:.85rem}
+</style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a class="brand" href="https://dradeniran.ca">
+        <svg class="glyph" viewBox="0 0 60 30" aria-hidden="true"><path d="M2 15h12l3-9 5 18 4-12 3 6h26"/></svg>
+        <span><b>Dr. Kolawole Adeniran</b><small>Family Medicine · Windsor</small></span>
+      </a>
+      <div class="nav-right">
+        <a class="link" href="https://dradeniran.ca">Home</a>
+        <a class="nav-book" href="#book">Book</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Preventive care · Windsor &amp; Essex County</span>
+      <h1>Cancer screening — <span class="accent">catch it early.</span></h1>
+      <p class="sub">Most cancers are far easier to treat when found early. Watch the 90-second guide, then check which screenings you may be due for — it takes about a minute.</p>
+      <div class="chips">
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7d6f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> OHIP accepted</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7d6f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.4"/></svg> 3955 Tecumseh Rd E</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#2d7d6f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M4 10h16"/></svg> New &amp; current patients</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- VIDEO -->
+  <section class="block" id="watch">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Watch</span>
+        <h2>A 90-second guide to screening</h2>
+        <p>Press play (with voice) and follow along.</p>
+      </div>
+      <div class="video-wrap">
+        <iframe src="screening-video.html" title="Cancer screening — a 90-second guide" loading="lazy" allow="autoplay" referrerpolicy="no-referrer"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOL -->
+  <section class="block" id="check">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Check yourself</span>
+        <h2>Am I due for a screening?</h2>
+        <p>Answer a few questions for a personalised summary based on current Ontario programs.</p>
+      </div>
+
+      <div class="tool">
+        <div class="privacy">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Private by design — nothing you enter is saved or sent. It all runs in your browser.
+        </div>
+
+        <div class="grid2">
+          <div class="field">
+            <label class="q" for="age">Your age</label>
+            <input type="number" id="age" min="18" max="110" placeholder="e.g. 52" inputmode="numeric">
+          </div>
+          <div class="field">
+            <label class="q">Sex at birth <span class="hint">(some screens are sex-specific)</span></label>
+            <div class="seg" id="sexSeg">
+              <label><input type="radio" name="sex" value="female"><span>Female</span></label>
+              <label><input type="radio" name="sex" value="male"><span>Male</span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="conditional" id="femaleBlock">
+          <div class="grid2">
+            <div class="field">
+              <label class="q">Have you ever been sexually active?</label>
+              <div class="seg">
+                <label><input type="radio" name="sa" value="yes"><span>Yes</span></label>
+                <label><input type="radio" name="sa" value="no"><span>No</span></label>
+              </div>
+            </div>
+            <div class="field">
+              <label class="q">Breast cancer risk <span class="hint">(high = known gene, strong family history, prior chest radiation)</span></label>
+              <div class="seg">
+                <label><input type="radio" name="brisk" value="average" checked><span>Average</span></label>
+                <label><input type="radio" name="brisk" value="high"><span>High</span></label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Have you smoked cigarettes about daily for 20+ years? <span class="hint">(current or former — gaps are fine)</span></label>
+          <div class="seg">
+            <label><input type="radio" name="smoke" value="yes"><span>Yes</span></label>
+            <label><input type="radio" name="smoke" value="no"><span>No</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="q">Has a parent, sibling, or child had colorectal (colon/rectal) cancer?</label>
+          <div class="seg">
+            <label><input type="radio" name="fh" value="no"><span>No</span></label>
+            <label><input type="radio" name="fh" value="yes"><span>Yes</span></label>
+          </div>
+          <div class="conditional" id="relAgeBlock" style="margin-top:.8rem">
+            <label class="q" for="relage" style="font-weight:600">Their age at diagnosis, if you know it <span class="hint">(optional)</span></label>
+            <input type="number" id="relage" min="20" max="99" placeholder="e.g. 47" inputmode="numeric" style="max-width:200px">
+          </div>
+        </div>
+
+        <details class="optional">
+          <summary>Already had some screening? Add dates for a "due / up-to-date" check</summary>
+          <p class="hint" style="margin:.2rem 0 .6rem">Leave any blank if it doesn't apply or you're not sure.</p>
+
+          <div class="conditional fem-opt" id="cervOpt">
+            <div class="opt-row">
+              <div><span class="tiny">Last cervical (Pap/HPV) test</span><input type="month" id="cervDate"></div>
+              <div><span class="tiny">Result</span><select id="cervResult"><option value="">—</option><option value="normal">Normal</option><option value="abnormal">Abnormal / needed follow-up</option></select></div>
+            </div>
+          </div>
+          <div class="conditional fem-opt" id="mammoOpt">
+            <div class="opt-row">
+              <div><span class="tiny">Last mammogram</span><input type="month" id="mammoDate"></div>
+              <div><span class="tiny">Result</span><select id="mammoResult"><option value="">—</option><option value="normal">Normal</option><option value="abnormal">Abnormal / needed follow-up</option></select></div>
+            </div>
+          </div>
+          <div class="opt-row">
+            <div><span class="tiny">Last colon test type</span><select id="colonType"><option value="none">None / not sure</option><option value="fit">FIT (at-home)</option><option value="colonoscopy">Colonoscopy</option></select></div>
+            <div><span class="tiny">When</span><input type="month" id="colonDate"></div>
+          </div>
+          <div class="opt-row">
+            <div><span class="tiny">Colon result</span><select id="colonResult"><option value="">—</option><option value="normal">Normal</option><option value="abnormal">Abnormal / needed follow-up</option></select></div>
+            <div></div>
+          </div>
+          <div class="conditional smoke-opt" id="lungOpt">
+            <div class="opt-row">
+              <div><span class="tiny">Last lung CT scan</span><input type="month" id="lungDate"></div>
+              <div><span class="tiny">Result</span><select id="lungResult"><option value="">—</option><option value="normal">Normal</option><option value="abnormal">Abnormal / needed follow-up</option></select></div>
+            </div>
+          </div>
+        </details>
+
+        <button class="check-btn" id="checkBtn" type="button">Check my screenings</button>
+        <div class="err" id="err">Please enter your age and sex to continue.</div>
+
+        <div id="results" aria-live="polite"></div>
+
+        <p class="disclaimer">This tool gives general information based on current Ontario screening programs — it isn't medical advice or a diagnosis. Dr.&nbsp;Adeniran may recommend earlier, later, or additional screening based on your personal history.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK -->
+  <section class="block" id="book">
+    <div class="wrap">
+      <div class="book-band">
+        <span class="kicker">Book</span>
+        <h2 style="font-weight:800;letter-spacing:-.5px;font-size:clamp(22px,3.4vw,30px);margin:.3rem 0 0">Book your screening with Dr.&nbsp;Adeniran</h2>
+        <p style="color:var(--muted);max-width:46ch;margin:.6rem auto 0;font-weight:500">Booking takes about two minutes. New and current patients are both welcome.</p>
+        <div class="book-btns">
+          <a class="obtn" id="bookNew" href="https://ocean.tips/dradeniran-new" target="_blank" rel="noopener">
+            <span class="ic">👤</span><span class="lab">New Patient</span><span class="sub">Register &amp; book your first visit</span>
+          </a>
+          <a class="obtn" id="bookExisting" href="https://ocean.tips/dradeniran-existing" target="_blank" rel="noopener">
+            <span class="ic">📅</span><span class="lab">Current Patient</span><span class="sub">Book your next appointment</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="fname">Dr. Kolawole Adeniran</div>
+      <div class="frow">Family Medicine · Windsor, Ontario</div>
+      <div class="frow"><a href="tel:+15192522757">(519) 252-2757</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps?q=3955+Tecumseh+Rd+E,+Windsor,+ON" target="_blank" rel="noopener">3955 Tecumseh Rd E, Windsor, ON</a></div>
+      <div class="frow" style="font-size:.78rem;color:rgba(255,255,255,.5)">Bookings powered by <a href="https://www.oceanmd.com" target="_blank" rel="noopener">Ocean MD</a></div>
+      <a class="back-home" href="https://dradeniran.ca">← Back to dradeniran.ca</a>
+      <div class="fsrc">Screening guidance: Cancer Care Ontario / Ontario Health (ColonCancerCheck, Ontario Breast, Cervical &amp; Lung Screening Programs) · Canadian Cancer Society. Educational summary for patients of Dr. Kolawole Adeniran — not a substitute for medical advice.</div>
+    </div>
+  </footer>
+
+<!-- ===== Screening decision logic (verified against current Ontario programs) ===== -->
+<script>
+(function (root, factory) {
+  if (typeof module === 'object' && module.exports) { module.exports = factory(); }
+  else { root.ScreeningLogic = factory(); }
+}(typeof self !== 'undefined' ? self : this, function () {
+  var SRC = {
+    cervical: { name: 'Ontario Cervical Screening Program', url: 'https://www.cancercareontario.ca/en/types-of-cancer/cervical/screening' },
+    breast:   { name: 'Ontario Breast Screening Program (OBSP)', url: 'https://www.cancercareontario.ca/en/cancer-care-ontario/programs/screening-programs/ontario-breast-obsp' },
+    colon:    { name: 'ColonCancerCheck · Cancer Care Ontario', url: 'https://www.cancercareontario.ca/en/types-of-cancer/colorectal/screening' },
+    lung:     { name: 'Ontario Lung Screening Program', url: 'https://www.cancercareontario.ca/en/cancer-care-ontario/programs/screening-programs/ontario-lung-screening-program' }
+  };
+  function parseDate(s){ if(!s) return null; var str=String(s).trim(); if(!str) return null; if(str.length===7) str+='-01'; var d=new Date(str+'T00:00:00'); return isNaN(d.getTime())?null:d; }
+  function fmt(d){ if(!d||isNaN(d.getTime())) return ''; return d.toLocaleDateString('en-CA',{year:'numeric',month:'short'}); }
+  function addYears(d,y){ var n=new Date(d.getTime()); n.setFullYear(n.getFullYear()+y); return n; }
+  function fromLast(dateStr,years,today){ var last=parseDate(dateStr); if(!last) return {has:false}; var next=addYears(last,years); return {has:true,last:last,next:next,overdue:next.getTime()<today.getTime()}; }
+  function provider(title,key,note){ return {key:key,title:title,status:'provider',pill:'Follow your care plan',headline:'Your last result needed follow-up — please continue with the plan your care team has set.',detail:note||'This tool can\u2019t track an active work-up. Book a visit if you\u2019re unsure where things stand.',book:true,source:SRC[key].name,sourceUrl:SRC[key].url}; }
+
+  function cervical(a,today){ if(a.sex!=='female') return null; if(a.sexuallyActive===false) return null; var key='cervical',title='Cervical cancer (HPV test)';
+    if(a.cervResult==='abnormal') return provider(title,key);
+    if(a.age<25) return {key:key,title:title,status:'info',pill:'Not yet',headline:'Cervical screening in Ontario starts at age 25.',detail:'Primary HPV testing, every 5 years when results are normal.',book:false,source:SRC[key].name,sourceUrl:SRC[key].url};
+    if(a.age>69) return {key:key,title:title,status:'info',pill:'Usually can stop',headline:'After 70, screening can usually stop if your past results were normal.',detail:'Let\u2019s confirm your history to be sure.',book:true,source:SRC[key].name,sourceUrl:SRC[key].url};
+    var d=fromLast(a.cervDate,5,today);
+    if(d.has&&!d.overdue) return {key:key,title:title,status:'up',pill:'Up to date',headline:'Up to date — next HPV test around '+fmt(d.next)+'.',detail:'Every 5 years when results are normal.',chip:'Next: '+fmt(d.next),book:false,source:SRC[key].name,sourceUrl:SRC[key].url};
+    if(d.has&&d.overdue) return {key:key,title:title,status:'due',pill:'Due now',headline:'Due now — your last test was '+fmt(d.last)+'.',detail:'A quick HPV test, every 5 years when normal.',book:true,source:SRC[key].name,sourceUrl:SRC[key].url};
+    return {key:key,title:title,status:'due',pill:'Get started',headline:'You\u2019re eligible for cervical (HPV) screening.',detail:'Every 5 years when results are normal.',book:true,source:SRC[key].name,sourceUrl:SRC[key].url};
+  }
+  function breast(a,today){ if(a.sex!=='female') return null; var key='breast',title='Breast cancer (mammogram)';
+    if(a.mammoResult==='abnormal') return provider(title,key);
+    var high=a.breastRisk==='high';
+    if(high){
+      if(a.age<30) return {key:key,title:title,status:'info',pill:'Not yet',headline:'High-risk breast screening begins at 30.',detail:'Annual mammogram plus MRI — and it needs a referral and genetic/risk assessment.',book:true,source:SRC[key].name,sourceUrl:SRC[key].url};
+      if(a.age>69) return {key:key,title:title,status:'info',pill:'Discuss',headline:'After 69 the high-risk pathway is individual — let\u2019s talk about what\u2019s right for you.',detail:'',book:true,source:SRC[key].name,sourceUrl:SRC[key].url};
+      var hd=fromLast(a.mammoDate,1,today);
+      if(hd.has&&!hd.overdue) return {key:key,title:title,status:'up',pill:'Up to date',headline:'Up to date — next mammogram around '+fmt(hd.next)+'.',detail:'High risk: yearly mammogram (often with MRI).',chip:'Next: '+fmt(hd.next),book:false,source:SRC[key].name,sourceUrl:SRC[key].url};
+      return {key:key,title:title,status:'due',pill:hd.has?'Due now':'Get started',headline:hd.has?'Due now — your last mammogram was '+fmt(hd.last)+'.':'You\u2019re eligible for high-risk breast screening.',detail:'Needs a referral and genetic/risk assessment — Dr. Adeniran can arrange this.',book:true,source:SRC[key].name,sourceUrl:SRC[key].url};
+    }
+    if(a.age<40) return {key:key,title:title,status:'info',pill:'Not yet',headline:'Average-risk breast screening starts at 40 (30 if high risk).',detail:'Mammogram every 2 years; you can self-refer.',book:false,source:SRC[key].name,sourceUrl:SRC[key].url};
+    if(a.age>74) return {key:key,title:title,status:'info',pill:'Discuss',headline:'The program runs to 74; after that it\u2019s a personal decision — let\u2019s discuss.',detail:'',book:true,source:SRC[key].name,sourceUrl:SRC[key].url};
+    var d=fromLast(a.mammoDate,2,today); var choice=(a.age<50)?' At 40\u201349 it\u2019s a personal choice — happy to help you decide.':'';
+    if(d.has&&!d.overdue) return {key:key,title:title,status:'up',pill:'Up to date',headline:'Up to date — next mammogram around '+fmt(d.next)+'.',detail:'Every 2 years for average risk.'+choice,chip:'Next: '+fmt(d.next),book:false,source:SRC[key].name,sourceUrl:SRC[key].url};
+    if(d.has&&d.overdue) return {key:key,title:title,status:'due',pill:'Due now',headline:'Due now — your last mammogram was '+fmt(d.last)+'.',detail:'Every 2 years for average risk.'+choice,book:true,source:SRC[key].name,sourceUrl:SRC[key].url};
+    return {key:key,title:title,status:'due',pill:'Get started',headline:'You\u2019re eligible for breast screening — you can self-refer.',detail:'Mammogram every 2 years.'+choice,book:true,source:SRC[key].name,sourceUrl:SRC[key].url};
+  }
+  function colon(a,today){ var key='colon';
+    if(a.colonResult==='abnormal') return provider('Colorectal cancer',key,'An abnormal FIT is normally followed by a colonoscopy (usually within ~8 weeks). Please follow your care team\u2019s plan.');
+    if(a.colonFH){ var title='Colorectal cancer (colonoscopy)'; var relAge=(typeof a.relAge==='number'&&a.relAge>0)?a.relAge:60; var startAge=Math.max(40,Math.min(50,relAge-10)); var genetics=(relAge<50)?' Because a close relative was diagnosed young, a genetics referral may also help.':'';
+      if(a.age<startAge) return {key:key,title:title,status:'info',pill:'Upcoming',headline:'With your family history, a colonoscopy is recommended from age '+startAge+'.',detail:'That\u2019s 10 years before your relative\u2019s diagnosis, or 50 — whichever comes first.'+genetics,book:true,source:SRC[key].name,sourceUrl:SRC[key].url};
+      if(a.age>74) return {key:key,title:title,status:'info',pill:'Discuss',headline:'After 74, colon screening is individual — let\u2019s talk about what\u2019s right for you.',detail:'',book:true,source:SRC[key].name,sourceUrl:SRC[key].url};
+      var cd=fromLast(a.colonDate,5,today);
+      if(cd.has&&!cd.overdue) return {key:key,title:title,status:'up',pill:'Up to date',headline:'Up to date — next colonoscopy around '+fmt(cd.next)+'.',detail:'Usually every 5 years with family history; your specialist sets the exact timing.',chip:'Next: '+fmt(cd.next),book:false,source:SRC[key].name,sourceUrl:SRC[key].url};
+      return {key:key,title:title,status:'due',pill:cd.has?'Due now':'Get started',headline:cd.has?'Due now — your last colonoscopy was '+fmt(cd.last)+'.':'A colonoscopy is recommended because of your family history.',detail:'Dr. Adeniran can arrange the referral.'+genetics,book:true,source:SRC[key].name,sourceUrl:SRC[key].url};
+    }
+    var ta='Colorectal cancer (FIT)';
+    if(a.age<50) return {key:key,title:ta,status:'info',pill:'Not yet',headline:'Colon screening starts at age 50 for average risk.',detail:'A simple at-home FIT, every 2 years.',book:false,source:SRC[key].name,sourceUrl:SRC[key].url};
+    if(a.age>74) return {key:key,title:ta,status:'info',pill:'Discuss',headline:'After 74, screening is individual — let\u2019s talk about what\u2019s right for you.',detail:'',book:true,source:SRC[key].name,sourceUrl:SRC[key].url};
+    var years=(a.colonType==='colonoscopy')?10:2; var lbl=(a.colonType==='colonoscopy')?'colonoscopy':'FIT'; var d=fromLast(a.colonDate,years,today);
+    if(d.has&&!d.overdue) return {key:key,title:ta,status:'up',pill:'Up to date',headline:'Up to date — next due around '+fmt(d.next)+'.',detail:years===10?'After a normal colonoscopy, the usual interval is about 10 years.':'A simple at-home FIT every 2 years.',chip:'Next: '+fmt(d.next),book:false,source:SRC[key].name,sourceUrl:SRC[key].url};
+    if(d.has&&d.overdue) return {key:key,title:ta,status:'due',pill:'Due now',headline:'Due now — your last '+lbl+' was '+fmt(d.last)+'.',detail:'For average risk, FIT every 2 years is the standard.',book:true,source:SRC[key].name,sourceUrl:SRC[key].url};
+    return {key:key,title:ta,status:'due',pill:'Get started',headline:'You\u2019re eligible for FIT — an easy at-home test.',detail:'Repeated every 2 years when results are normal.',book:true,source:SRC[key].name,sourceUrl:SRC[key].url};
+  }
+  function lung(a,today){ if(a.smoker20!==true) return null; var key='lung',title='Lung cancer (low-dose CT)';
+    if(a.lungResult==='abnormal') return provider(title,key);
+    if(a.age<55) return {key:key,title:title,status:'info',pill:'Not yet',headline:'Lung screening eligibility begins at 55.',detail:'With a 20-year smoking history you\u2019ll likely qualify then. Quit support is available any time.',book:true,source:SRC[key].name,sourceUrl:SRC[key].url};
+    if(a.age>80) return {key:key,title:title,status:'info',pill:'Discuss',headline:'The program runs to age 80 — let\u2019s discuss what\u2019s right for you.',detail:'',book:true,source:SRC[key].name,sourceUrl:SRC[key].url};
+    var d=fromLast(a.lungDate,1,today);
+    if(d.has&&!d.overdue) return {key:key,title:title,status:'up',pill:'Up to date',headline:'Up to date — next scan around '+fmt(d.next)+'.',detail:'A yearly low-dose CT for those who qualify.',chip:'Next: '+fmt(d.next),book:false,source:SRC[key].name,sourceUrl:SRC[key].url};
+    return {key:key,title:title,status:'due',pill:d.has?'Due now':'Get started',headline:d.has?'Due now — your last scan was '+fmt(d.last)+'.':'You likely qualify for lung screening.',detail:'Eligibility is 55\u201380 with a 20-year daily smoking history and OHIP; the screening site confirms with a quick risk assessment.',book:true,source:SRC[key].name,sourceUrl:SRC[key].url};
+  }
+  function evaluate(a,today){ today=today||new Date(); var out=[]; [cervical,breast,colon,lung].forEach(function(fn){ var r=fn(a,today); if(r) out.push(r); }); var due=out.filter(function(r){return r.status==='due'||r.status==='provider';}).length; return {recs:out,dueCount:due}; }
+  return { evaluate: evaluate };
+}));
+</script>
+
+<!-- ===== UI controller ===== -->
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  function checked(name){ var el=document.querySelector('input[name="'+name+'"]:checked'); return el?el.value:''; }
+  function track(name,params){ if(typeof gtag==='function'){ try{ gtag('event',name,params||{}); }catch(e){} } }
+
+  // conditional fields
+  var sexSeg = $('sexSeg'), femaleBlock = $('femaleBlock'), femOpts = document.querySelectorAll('.fem-opt');
+  function syncSex(){ var f = checked('sex')==='female'; femaleBlock.classList.toggle('show', f); femOpts.forEach(function(n){ n.classList.toggle('show', f); }); }
+  document.querySelectorAll('input[name="sex"]').forEach(function(r){ r.addEventListener('change', syncSex); });
+
+  document.querySelectorAll('input[name="fh"]').forEach(function(r){ r.addEventListener('change', function(){ $('relAgeBlock').classList.toggle('show', checked('fh')==='yes'); }); });
+
+  var smokeOpts = document.querySelectorAll('.smoke-opt');
+  document.querySelectorAll('input[name="smoke"]').forEach(function(r){ r.addEventListener('change', function(){ var s=checked('smoke')==='yes'; smokeOpts.forEach(function(n){ n.classList.toggle('show', s); }); }); });
+
+  function val(id){ var el=$(id); return el?el.value:''; }
+  function num(id){ var v=parseInt(val(id),10); return isNaN(v)?null:v; }
+
+  var ICON = {
+    up:'<path d="M20 6L9 17l-5-5"/>',
+    due:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',
+    provider:'<path d="M12 9v4M12 17h.01M10.3 3.2 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.2a2 2 0 0 0-3.4 0z"/>'
+  };
+  var LINKICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5M19 5l-9 9M11 5H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/></svg>';
+
+  function render(res){
+    var box = $('results'); var html='';
+    var n = res.dueCount;
+    var summary = n===0 ? 'Nice — nothing looks overdue right now.' :
+                  (n===1 ? 'You may be due for 1 screening.' : 'You may be due for '+n+' screenings.');
+    html += '<div class="summary">'+summary+'</div>';
+    res.recs.forEach(function(r){
+      html += '<div class="rec s-'+r.status+'">'
+        + '<div class="top">'
+          + '<span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'+ICON[r.status]+'</svg></span>'
+          + '<h3>'+r.title+'</h3>'
+          + '<span class="pill">'+r.pill+'</span>'
+        + '</div>'
+        + '<p class="headline">'+r.headline+'</p>'
+        + (r.detail ? '<p class="detail">'+r.detail+'</p>' : '')
+        + '<div class="foot">'
+          + '<a class="src" href="'+r.sourceUrl+'" target="_blank" rel="noopener">'+LINKICON+'Source: '+r.source+'</a>'
+          + (r.book ? '<a class="book-this" href="#book" data-screen="'+r.key+'">Book this →</a>' : '')
+        + '</div>'
+      + '</div>';
+    });
+    html += '<button class="reset" id="resetBtn" type="button">Start over</button>';
+    box.innerHTML = html;
+    box.classList.add('show');
+    // wire book-this buttons
+    box.querySelectorAll('.book-this').forEach(function(b){
+      b.addEventListener('click', function(){ track('booking_click', {event_category:'Booking', event_label:'Screening tool — '+b.getAttribute('data-screen')}); });
+    });
+    $('resetBtn').addEventListener('click', function(){
+      box.classList.remove('show'); box.innerHTML='';
+      document.querySelectorAll('input[type=radio]').forEach(function(r){ if(r.name!=='brisk') r.checked=false; });
+      document.querySelector('input[name="brisk"][value="average"]').checked=true;
+      ['age','relage','cervDate','mammoDate','colonDate','lungDate'].forEach(function(id){ if($(id)) $(id).value=''; });
+      ['cervResult','mammoResult','colonResult','lungResult'].forEach(function(id){ if($(id)) $(id).value=''; });
+      $('colonType').value='none';
+      syncSex(); $('relAgeBlock').classList.remove('show'); smokeOpts.forEach(function(n){n.classList.remove('show');});
+      window.scrollTo({top:$('check').offsetTop-20,behavior:'smooth'});
+    });
+    box.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  $('checkBtn').addEventListener('click', function(){
+    var age = num('age'); var sex = checked('sex');
+    if(age===null || age<18 || age>110 || !sex){ $('err').classList.add('show'); return; }
+    $('err').classList.remove('show');
+    var a = {
+      age: age, sex: sex,
+      sexuallyActive: sex==='female' ? (checked('sa')!=='no') : true,
+      breastRisk: checked('brisk') || 'average',
+      smoker20: checked('smoke')==='yes',
+      colonFH: checked('fh')==='yes', relAge: num('relage'),
+      colonType: val('colonType') || 'none',
+      cervDate: val('cervDate'), cervResult: val('cervResult'),
+      mammoDate: val('mammoDate'), mammoResult: val('mammoResult'),
+      colonDate: val('colonDate'), colonResult: val('colonResult'),
+      lungDate: val('lungDate'), lungResult: val('lungResult')
+    };
+    var res = ScreeningLogic.evaluate(a);
+    track('screening_check', {event_category:'Engagement', event_label:'Screening tool used', value: res.dueCount});
+    render(res);
+  });
+
+  // booking buttons in the Book section
+  $('bookNew').addEventListener('click', function(){ track('booking_click', {event_category:'Booking', event_label:'New Patient — screening page'}); });
+  $('bookExisting').addEventListener('click', function(){ track('booking_click', {event_category:'Booking', event_label:'Current Patient — screening page'}); });
+})();
+</script>
+</body>
+</html>
