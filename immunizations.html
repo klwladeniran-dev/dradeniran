@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Immunizations &amp; Vaccines — Dr. Kolawole Adeniran, Windsor ON</title>
+<meta name="description" content="Childhood and adult immunization schedules for Windsor & Ontario. A free vaccine due-date calculator for children, an animated lifespan vaccine guide, and answers to the most-searched vaccine questions from WHO and the Public Health Agency of Canada.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://dradeniran.ca/immunizations.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Google Analytics (same property as the rest of the site) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DMD1SR73HZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DMD1SR73HZ');
+</script>
+
+<style>
+  :root{
+    --nav-bg:#111827; --accent:#2d7d6f; --accent-hover:#236659; --accent-deep:#1f4f45;
+    --accent-light:#e8f4f2; --tint:#f1f8f6; --tint-3:#b2d8d2; --emerald:#10b981;
+    --adult:#1e40af; --adult-dark:#1e3a8a; --adult-soft:#eff6ff;
+    --bg:#f9fafb; --white:#fff; --text:#111827; --muted:#6b7280; --border:#e5e7eb;
+    --green-badge:#ecfdf5; --green-text:#065f46; --blue-badge:#eff6ff; --blue-text:#1e40af;
+    --amber-badge:#fffbeb; --amber-line:#d97706; --amber-text:#92400e;
+    --font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    --shadow:0 18px 44px -26px rgba(17,24,39,.4); --shadow-sm:0 10px 26px -18px rgba(17,24,39,.34);
+    --radius:16px; --maxw:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent)}
+  img{max-width:100%}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  h1,h2,h3{line-height:1.18;margin:0 0 .4em}
+  .muted{color:var(--muted)}
+  .center{text-align:center}
+
+  /* ---------- NAV (charcoal, clinic-neutral) ---------- */
+  nav{background:var(--nav-bg);position:sticky;top:0;z-index:50}
+  .nav-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:.7rem 20px;gap:1rem}
+  .brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none}
+  .brand .glyph{width:24px;height:16px;flex:none}
+  .brand .glyph path{fill:none;stroke:var(--emerald);stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+  .brand b{font-weight:800;font-size:clamp(13px,1.6vw,16px);letter-spacing:.2px;line-height:1.1}
+  .brand small{display:block;color:rgba(255,255,255,.6);font-size:10px;font-weight:600;letter-spacing:.7px;text-transform:uppercase;margin-top:2px}
+  .nav-right{display:flex;align-items:center;gap:1.1rem}
+  .nav-right a.link{color:rgba(255,255,255,.82);text-decoration:none;font-weight:600;font-size:.92rem}
+  .nav-right a.link:hover{color:#fff}
+  .nav-book{background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:.55rem 1rem;border-radius:9px;font-size:.92rem;transition:background .2s}
+  .nav-book:hover{background:var(--accent-hover)}
+
+  /* ---------- Buttons ---------- */
+  .btn{display:inline-flex;align-items:center;gap:7px;background:var(--accent);color:#fff;text-decoration:none;padding:.7rem 1.25rem;border-radius:10px;font-weight:700;border:none;cursor:pointer;font-family:var(--font);font-size:.96rem;transition:background .2s,transform .15s}
+  .btn:hover{background:var(--accent-hover);transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--accent-deep);border:1.6px solid var(--accent)}
+  .btn.ghost:hover{background:var(--accent-light)}
+
+  /* ---------- HERO ---------- */
+  .hero{background:linear-gradient(180deg,var(--accent-light),var(--bg) 72%);padding:clamp(2.6rem,6vw,4rem) 0 clamp(1.8rem,4vw,2.6rem);text-align:center}
+  .eyebrow{font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:clamp(10px,1.1vw,12px);color:var(--accent);display:inline-flex;align-items:center;gap:8px}
+  .eyebrow::before,.eyebrow::after{content:"";width:18px;height:2px;border-radius:2px;background:var(--accent)}
+  .hero h1{font-weight:900;letter-spacing:-1.4px;font-size:clamp(28px,5.2vw,48px);margin:.5rem 0 0}
+  .hero h1 .accent{color:var(--accent)}
+  .hero .sub{color:var(--muted);font-size:clamp(15px,1.9vw,18px);max-width:56ch;margin:1rem auto 0;font-weight:500}
+  .chips{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin:1.4rem auto 0}
+  .chip{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);border-radius:999px;padding:.5rem 1rem;font-size:.86rem;font-weight:600;color:var(--accent-deep);box-shadow:var(--shadow-sm)}
+  .chip .ic{font-size:1.05rem}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:1.5rem}
+
+  /* ---------- Sections ---------- */
+  section{padding:clamp(2.2rem,5vw,3.4rem) 0}
+  section.alt{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .sec-head{max-width:720px;margin:0 auto clamp(1.4rem,3vw,2rem);text-align:center}
+  .kicker{font-weight:800;letter-spacing:1.6px;text-transform:uppercase;font-size:11px;color:var(--accent)}
+  .sec-head h2{font-weight:800;letter-spacing:-.6px;font-size:clamp(22px,3.4vw,32px);margin:.3rem 0 0}
+  .sec-head p{color:var(--muted);font-size:clamp(14px,1.7vw,16.5px);margin:.55rem auto 0;font-weight:500}
+
+  /* ---------- Infographic player ---------- */
+  .player{max-width:920px;margin:0 auto;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--border)}
+  .player-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 18px;background:linear-gradient(120deg,var(--accent-deep),var(--accent));color:#fff;transition:background .35s;flex-wrap:wrap}
+  .player.adultmode .player-top{background:linear-gradient(120deg,var(--adult-dark),var(--adult))}
+  .player-top .ttl{font-weight:700;font-size:1.02rem;display:flex;align-items:center;gap:8px}
+  .tabs{display:flex;background:rgba(255,255,255,.16);border-radius:999px;padding:3px}
+  .tab{border:none;background:transparent;color:#fff;font-weight:600;padding:7px 15px;border-radius:999px;cursor:pointer;font-size:.9rem;opacity:.82;font-family:var(--font)}
+  .tab.active{background:#fff;color:var(--accent-deep);opacity:1}
+  .player.adultmode .tab.active{color:var(--adult-dark)}
+  .stage{position:relative;padding:24px 24px 8px;min-height:330px}
+  .frame{display:none;animation:fade .5s ease}
+  .frame.show{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .frame .age-chip{display:inline-block;background:var(--accent-light);color:var(--accent-deep);font-weight:800;padding:6px 16px;border-radius:999px;font-size:1.02rem;margin-bottom:6px}
+  .player.adultmode .frame .age-chip{background:var(--adult-soft);color:var(--adult-dark)}
+  .frame .stage-title{font-size:1.4rem;font-weight:800;margin:4px 0 14px}
+  .vac-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .vac-list li{display:flex;gap:12px;align-items:flex-start;background:var(--tint);border:1px solid var(--border);border-radius:12px;padding:12px 14px;animation:slidein .45s ease both}
+  .player.adultmode .vac-list li{background:var(--adult-soft)}
+  .vac-list li:nth-child(2){animation-delay:.12s}
+  .vac-list li:nth-child(3){animation-delay:.24s}
+  .vac-list li:nth-child(4){animation-delay:.36s}
+  @keyframes slidein{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
+  .vac-list .dot{flex:none;width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:1.05rem}
+  .player.adultmode .vac-list .dot{background:var(--adult)}
+  .vac-list b{display:block}
+  .vac-list small{color:var(--muted)}
+  .player-bottom{padding:10px 20px 20px}
+  .progress-track{display:flex;gap:6px;margin-bottom:12px}
+  .seg{flex:1;height:6px;border-radius:999px;background:var(--border);overflow:hidden;cursor:pointer}
+  .seg span{display:block;height:100%;width:0;background:var(--accent)}
+  .player.adultmode .seg span{background:var(--adult)}
+  .seg.done span{width:100%}
+  .seg.active span{animation:fill var(--dur,4200ms) linear forwards}
+  @keyframes fill{from{width:0}to{width:100%}}
+  .controls{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .controls .left{display:flex;align-items:center;gap:10px}
+  .ctrl-btn{border:1.5px solid var(--accent);background:#fff;color:var(--accent-deep);width:42px;height:42px;border-radius:50%;font-size:1rem;cursor:pointer;display:grid;place-items:center}
+  .player.adultmode .ctrl-btn{border-color:var(--adult);color:var(--adult-dark)}
+  .ctrl-btn:hover{background:var(--accent-light)}
+  .player.adultmode .ctrl-btn:hover{background:var(--adult-soft)}
+  .step-label{font-weight:600;color:var(--muted);font-size:.9rem}
+  .replay-note{font-size:.8rem;color:var(--muted)}
+
+  /* ---------- Reference schedule ---------- */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm);overflow:hidden}
+  .card h3{padding:15px 18px;margin:0;color:#fff;background:var(--accent);display:flex;align-items:center;gap:8px;font-size:1.1rem}
+  .card.adult h3{background:var(--adult)}
+  table{width:100%;border-collapse:collapse;font-size:.93rem}
+  th,td{text-align:left;padding:11px 16px;border-bottom:1px solid var(--border);vertical-align:top}
+  th{background:var(--tint);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  .card.adult th{background:var(--adult-soft)}
+  td.age{font-weight:700;white-space:nowrap;color:var(--accent-deep)}
+  .card.adult td.age{color:var(--adult-dark)}
+
+  /* ---------- Calculator ---------- */
+  .calc{max-width:880px;margin:0 auto;background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px}
+  .calc-row{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end}
+  .field{flex:1;min-width:220px}
+  label{display:block;font-weight:600;margin-bottom:6px}
+  input[type=date]{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:1rem;font-family:inherit;color:var(--text)}
+  input[type=date]:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(45,125,111,.14)}
+  #calcMsg{margin:16px 0 0;font-weight:600}
+  .results{margin-top:20px;display:none;gap:12px;grid-template-columns:1fr}
+  .res-item{display:grid;grid-template-columns:160px 1fr auto;gap:14px;align-items:center;padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--tint)}
+  .res-item .when{font-weight:800;color:var(--accent-deep)}
+  .res-item .when small{display:block;font-weight:600;color:var(--muted)}
+  .res-item ul{margin:0;padding-left:18px}
+  .badge{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:5px 10px;border-radius:999px;white-space:nowrap}
+  .b-done{background:var(--green-badge);color:var(--green-text)}
+  .b-soon{background:var(--amber-badge);color:var(--amber-text)}
+  .b-up{background:#f3f4f6;color:var(--muted)}
+  .summary{background:var(--accent-light);border:1px solid var(--tint-3);border-radius:12px;padding:14px 16px;margin-bottom:8px;font-weight:600;color:var(--accent-deep)}
+  .calc-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .reset-link{background:none;border:none;color:var(--muted);font-family:var(--font);font-weight:700;font-size:.85rem;cursor:pointer;text-decoration:underline;padding:0}
+
+  /* ---------- FAQ ---------- */
+  .faq{max-width:860px;margin:0 auto;display:grid;gap:12px}
+  details{background:#fff;border:1px solid var(--border);border-radius:12px;box-shadow:var(--shadow-sm);overflow:hidden}
+  summary{cursor:pointer;padding:16px 50px 16px 18px;font-weight:700;list-style:none;position:relative;font-size:1.02rem}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:1.5rem;color:var(--accent);font-weight:400}
+  details[open] summary::after{content:"\2013"}
+  .faq-body{padding:0 18px 18px;color:var(--muted)}
+  .faq-body .src{font-size:.82rem;margin-top:8px;color:var(--muted)}
+  .faq-body .src a{color:var(--accent)}
+  .trend-tag{display:inline-block;background:var(--accent-light);color:var(--accent-deep);font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:999px;margin-left:6px;vertical-align:middle}
+
+  /* ---------- Book band ---------- */
+  .book-band{max-width:var(--maxw);background:linear-gradient(180deg,var(--accent-light),#fff);border:1px solid var(--tint-3);border-radius:20px;padding:clamp(1.5rem,4vw,2.4rem);text-align:center}
+  .book-band h2{font-weight:800;letter-spacing:-.5px;font-size:clamp(22px,3.4vw,30px);margin:.3rem 0 0}
+  .book-band p{color:var(--muted);max-width:48ch;margin:.6rem auto 0;font-weight:500}
+  .book-btns{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:560px;margin:1.4rem auto 0}
+  .obtn{display:flex;flex-direction:column;align-items:center;gap:3px;background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem;text-decoration:none;box-shadow:var(--shadow-sm);transition:transform .18s,border-color .18s}
+  .obtn:hover{transform:translateY(-3px);border-color:var(--accent)}
+  .obtn .ic{font-size:1.5rem;line-height:1}
+  .obtn .lab{font-weight:800;color:var(--text);margin-top:.3rem}
+  .obtn .sub{font-size:.78rem;color:var(--muted);font-weight:500}
+  .callrow{margin-top:1.1rem;font-size:.93rem;color:var(--muted)}
+  .callrow a{color:var(--accent-deep);font-weight:700;text-decoration:none}
+
+  /* ---------- Disclaimer / footer ---------- */
+  .disclaimer{max-width:880px;margin:22px auto 0;font-size:.85rem;color:var(--muted);background:#fff;border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:10px;padding:14px 18px}
+  footer{background:var(--nav-bg);color:rgba(255,255,255,.72);padding:2.2rem 0;text-align:center;font-size:.85rem}
+  footer a{color:rgba(255,255,255,.72)} footer a:hover{color:#fff}
+  footer .fname{color:#fff;font-weight:800;font-size:1rem;margin-bottom:.4rem}
+  footer .frow{margin:.3rem 0}
+  footer .back-home{display:inline-block;margin-top:.8rem;color:var(--emerald);font-weight:700;text-decoration:none;font-size:.85rem}
+  footer .fsrc{font-size:.72rem;color:rgba(255,255,255,.45);max-width:64ch;margin:.9rem auto 0;line-height:1.5}
+
+  @media (max-width:820px){
+    .grid2{grid-template-columns:1fr}
+    .res-item{grid-template-columns:1fr;gap:6px}
+    .book-btns{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;scroll-behavior:auto}
+    .seg.active span,.seg.done span{width:100%}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="https://dradeniran.ca">
+      <svg class="glyph" viewBox="0 0 60 30" aria-hidden="true"><path d="M2 15h12l3-9 5 18 4-12 3 6h26"/></svg>
+      <span><b>Dr. Kolawole Adeniran</b><small>Family Medicine · Windsor</small></span>
+    </a>
+    <div class="nav-right">
+      <a class="link" href="https://dradeniran.ca">Home</a>
+      <a class="nav-book" href="#book">Book</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Immunizations &amp; Vaccines · Windsor</span>
+    <h1>Protecting your family — <span class="accent">at every age</span>.</h1>
+    <p class="sub">Vaccines are one of the safest, most effective ways to stay well. Explore Ontario's routine schedule for children and adults, find out when your child's next shots are due, and get clear answers to the questions people search for most.</p>
+    <div class="chips">
+      <span class="chip"><span class="ic">🛡️</span> First baby shots at 2 months</span>
+      <span class="chip"><span class="ic">🎒</span> HPV &amp; more in Grade 7</span>
+      <span class="chip"><span class="ic">👵</span> Free shingles at 65–70</span>
+    </div>
+    <div class="hero-cta">
+      <a class="btn" href="#calculator">📅 Child vaccine calculator</a>
+      <a class="btn ghost" href="#guide">▶ Watch the lifespan guide</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ANIMATED INFOGRAPHIC ============ -->
+<section id="guide">
+  <div class="sec-head">
+    <span class="kicker">Watch</span>
+    <h2>The lifespan vaccine guide</h2>
+    <p>One quick, self-playing guide covering the whole journey. Switch between <strong>Children</strong> and <strong>Adults &amp; older age</strong>, or tap any segment to jump ahead.</p>
+  </div>
+
+  <div class="player" id="player">
+    <div class="player-top">
+      <div class="ttl"><span>💉</span><span id="playerTitle">Childhood schedule · Ontario</span></div>
+      <div class="tabs" role="tablist">
+        <button class="tab active" id="tabChild" role="tab">👶 Children</button>
+        <button class="tab" id="tabAdult" role="tab">🧑‍🦳 Adults &amp; older age</button>
+      </div>
+    </div>
+    <div class="stage" id="stage"><!-- frames injected by JS --></div>
+    <div class="player-bottom">
+      <div class="progress-track" id="track"></div>
+      <div class="controls">
+        <div class="left">
+          <button class="ctrl-btn" id="playPause" aria-label="Play or pause">❚❚</button>
+          <button class="ctrl-btn" id="prevBtn" aria-label="Previous">‹</button>
+          <button class="ctrl-btn" id="nextBtn" aria-label="Next">›</button>
+          <span class="step-label" id="stepLabel"></span>
+        </div>
+        <span class="replay-note">Loops automatically · tap a bar to jump</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REFERENCE SCHEDULE ============ -->
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Reference</span>
+      <h2>The full routine schedule</h2>
+      <p>The complete text version of Ontario's publicly funded schedule. Free of charge when you meet the eligibility criteria.</p>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3>👶 Children &amp; teens</h3>
+        <table>
+          <thead><tr><th>Age</th><th>Vaccines</th></tr></thead>
+          <tbody>
+            <tr><td class="age">2 months</td><td>5-in-1 (DTaP-IPV-Hib), Pneumococcal conjugate, Rotavirus</td></tr>
+            <tr><td class="age">4 months</td><td>5-in-1 (DTaP-IPV-Hib), Pneumococcal conjugate, Rotavirus</td></tr>
+            <tr><td class="age">6 months</td><td>5-in-1 (DTaP-IPV-Hib). Annual flu &amp; COVID-19 begin (every fall, from 6 months)</td></tr>
+            <tr><td class="age">12 months</td><td>Pneumococcal conjugate, Meningococcal C (Men-C-C), MMR</td></tr>
+            <tr><td class="age">15 months</td><td>Varicella (chickenpox)</td></tr>
+            <tr><td class="age">18 months</td><td>5-in-1 (DTaP-IPV-Hib)</td></tr>
+            <tr><td class="age">4–6 years</td><td>Tdap-IPV (4-in-1), MMRV</td></tr>
+            <tr><td class="age">Grade 7</td><td>Meningococcal ACYW, Hepatitis B, HPV</td></tr>
+            <tr><td class="age">14–16 years</td><td>Tdap (tetanus, diphtheria, pertussis)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card adult">
+        <h3>🧑‍🦳 Adults &amp; older age</h3>
+        <table>
+          <thead><tr><th>Stage</th><th>Vaccines</th></tr></thead>
+          <tbody>
+            <tr><td class="age">Every fall</td><td>Flu and COVID-19 — recommended for everyone 6 months and older</td></tr>
+            <tr><td class="age">Every 10 yrs</td><td>Td (tetanus, diphtheria) booster</td></tr>
+            <tr><td class="age">Once as an adult</td><td>Tdap (once in adulthood — and again in every pregnancy)</td></tr>
+            <tr><td class="age">Pregnancy</td><td>Tdap (each pregnancy, ~27–32 wks), flu, COVID-19, RSV — to protect the newborn</td></tr>
+            <tr><td class="age">Age 65</td><td>Pneumococcal (one dose of PNEU-P-23)</td></tr>
+            <tr><td class="age">Age 65–70</td><td>Shingles — Shingrix, 2 doses (free in Ontario for this age group)</td></tr>
+            <tr><td class="age">Age 75+</td><td>RSV vaccine (also for ages 65–74 at higher risk)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <p class="center muted" style="margin-top:18px;font-size:.9rem">If you have a medical condition or other risk factors, additional vaccines may be recommended — and some are free under the publicly funded program. Source: <a href="https://www.ontario.ca/page/ontarios-routine-immunization-schedule" target="_blank" rel="noopener">Ontario's routine immunization schedule</a>.</p>
+  </div>
+</section>
+
+<!-- ============ CALCULATOR ============ -->
+<section id="calculator">
+  <div class="sec-head">
+    <span class="kicker">Check yourself</span>
+    <h2>Child vaccine due-date calculator</h2>
+    <p>Enter your child's date of birth to see the estimated dates for each set of routine vaccines, based on Ontario's schedule. Nothing is saved or sent — it all runs in your browser.</p>
+  </div>
+  <div class="calc">
+    <div class="calc-row">
+      <div class="field">
+        <label for="dob">Child's date of birth</label>
+        <input type="date" id="dob" max="">
+      </div>
+      <button class="btn" id="calcBtn">Show vaccine dates</button>
+      <button class="btn ghost" id="printBtn" style="display:none">🖨️ Print schedule</button>
+    </div>
+    <p id="calcMsg"></p>
+    <div class="results" id="results"></div>
+  </div>
+  <div class="disclaimer">
+    <strong>Please note:</strong> This calculator gives general estimates based on Ontario's routine schedule and is not a personal medical record. Grade 7 and 14–16 year vaccines are usually given through school-based programs, so exact timing varies. Catch-up schedules differ if doses were missed. Always confirm your child's vaccines with Dr. Adeniran or your public health unit. This tool does not store or send any information — everything stays in your browser.
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Answers</span>
+      <h2>Vaccine questions people search most</h2>
+      <p>Drawn from the topics that consistently top vaccine-related searches — safety, side effects, and how vaccines work. Answers come only from the World Health Organization, the Public Health Agency of Canada, Health Canada and Ontario.</p>
+    </div>
+    <div class="faq">
+
+      <details>
+        <summary>Do vaccines cause autism? <span class="trend-tag">top searched</span></summary>
+        <div class="faq-body">
+          <p>No. There is no link between vaccines and autism. Many large, high-quality studies across different countries — looking at different vaccines and different schedules — have found no connection. The single 1998 study that started this claim was found to be flawed, was retracted, and the author lost his medical licence. Autism rates continued to rise even after the ingredient (thimerosal) people worried about was removed from childhood vaccines, which is the opposite of what you'd expect if it were the cause.</p>
+          <p class="src">Sources: <a href="https://www.who.int/news-room/questions-and-answers/item/autism-spectrum-disorders-public-health-vaccines" target="_blank" rel="noopener">WHO</a>; <a href="https://www.canada.ca/en/public-health/services/vaccination-children/safety-concerns-side-effects.html" target="_blank" rel="noopener">Public Health Agency of Canada</a>.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Are vaccine side effects serious? <span class="trend-tag">top searched</span></summary>
+        <div class="faq-body">
+          <p>Most side effects are mild and short-lived — a sore arm, mild fever, or feeling tired for a day or two — and show the immune system is responding. Serious reactions are very rare. Vaccines are tested in thousands of people before approval and are continuously monitored for safety after they're in use. The risks from the diseases vaccines prevent are far greater than the risks from the vaccines themselves.</p>
+          <p class="src">Sources: <a href="https://www.who.int/news-room/feature-stories/detail/how-are-vaccines-developed" target="_blank" rel="noopener">WHO</a>; <a href="https://www.canada.ca/en/public-health/services/vaccination-children/safety-concerns-side-effects.html" target="_blank" rel="noopener">Public Health Agency of Canada</a>.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Can the flu shot give me the flu? <span class="trend-tag">top searched</span></summary>
+        <div class="faq-body">
+          <p>No. The flu shot is made with an inactivated (killed) virus or no virus at all, so it cannot give you the flu. Some people feel mildly unwell or have a sore arm for a day afterward, which is the immune system building protection — not an infection. It takes about two weeks after the shot for full protection to develop.</p>
+          <p class="src">Source: <a href="https://www.canada.ca/en/public-health/services/diseases/flu-influenza/get-your-flu-shot.html" target="_blank" rel="noopener">Public Health Agency of Canada</a>.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Do babies get too many vaccines at once? <span class="trend-tag">top searched</span></summary>
+        <div class="faq-body">
+          <p>No — a baby's immune system handles vaccines easily. Children meet thousands of germs every day, far more than the small number of antigens in vaccines. As the WHO notes, the antigens in vaccines are a tiny fraction of what the body encounters naturally. Giving several vaccines at one visit is safe, means fewer needles and trips, and protects babies sooner during the months they're most vulnerable.</p>
+          <p class="src">Sources: <a href="https://www.who.int/news-room/questions-and-answers/item/vaccines-and-immunization-myths-and-misconceptions" target="_blank" rel="noopener">WHO</a>; <a href="https://www.canada.ca/en/public-health/services/vaccination-children.html" target="_blank" rel="noopener">Public Health Agency of Canada</a>.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Are vaccines safe during pregnancy?</summary>
+        <div class="faq-body">
+          <p>Yes — certain vaccines are recommended in every pregnancy and are an important way to protect your baby. The Tdap vaccine (ideally around 27–32 weeks) lets you pass antibodies to your baby so they're protected against whooping cough in their first months. The flu and COVID-19 vaccines are also recommended in pregnancy, and the RSV vaccine can be given to help protect the newborn. Live vaccines (like MMR) are generally avoided during pregnancy.</p>
+          <p class="src">Sources: <a href="https://www.canada.ca/en/public-health/services/immunization-vaccines/vaccination-pregnancy-during.html" target="_blank" rel="noopener">Public Health Agency of Canada</a>; <a href="https://www.ontario.ca/page/ontarios-routine-immunization-schedule" target="_blank" rel="noopener">Ontario Ministry of Health</a>.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Why does the HPV vaccine matter, and who should get it?</summary>
+        <div class="faq-body">
+          <p>HPV (human papillomavirus) is a common infection that can lead to cervical, throat, anal and other cancers. The HPV vaccine prevents the infections that cause most of these cancers and works best when given before any exposure — which is why it's offered free in Grade 7 in Ontario. It's most effective when the full series is completed.</p>
+          <p class="src">Sources: <a href="https://www.canada.ca/en/public-health/services/publications/healthy-living/canadian-immunization-guide-part-4-active-vaccines/page-9-human-papillomavirus-vaccine.html" target="_blank" rel="noopener">Public Health Agency of Canada</a>; <a href="https://www.ontario.ca/page/ontarios-routine-immunization-schedule" target="_blank" rel="noopener">Ontario Ministry of Health</a>.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>I'm an older adult — which vaccines do I need?</summary>
+        <div class="faq-body">
+          <p>Beyond your yearly flu and COVID-19 shots and a tetanus-diphtheria (Td) booster every 10 years, older adults should ask about: <strong>pneumococcal</strong> vaccine at age 65; the <strong>shingles</strong> vaccine (Shingrix, 2 doses), which is free in Ontario between ages 65 and 70; and the <strong>RSV</strong> vaccine, recommended at age 75 and older (and for those 65–74 at higher risk).</p>
+          <p class="src">Sources: <a href="https://www.ontario.ca/page/get-free-shingles-vaccine" target="_blank" rel="noopener">Ontario — free shingles vaccine</a>; <a href="https://www.canada.ca/en/public-health/services/publications/vaccines-immunization/national-advisory-committee-immunization-summary-statement-prevention-rsv-disease-older-adults.html" target="_blank" rel="noopener">PHAC / NACI — RSV in older adults</a>.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>If a disease is rare now, do we still need the vaccine?</summary>
+        <div class="faq-body">
+          <p>Yes. Diseases are rare <em>because</em> vaccination keeps them under control. When vaccination rates drop, diseases like measles and whooping cough come back quickly — recent measles outbreaks are a clear reminder. Many of these illnesses still circulate elsewhere and are only ever a flight away, so keeping immunity high protects everyone, including babies too young to be vaccinated.</p>
+          <p class="src">Source: <a href="https://www.who.int/news-room/questions-and-answers/item/vaccines-and-immunization-myths-and-misconceptions" target="_blank" rel="noopener">WHO</a>.</p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOK ============ -->
+<section id="book">
+  <div class="wrap">
+    <div class="book-band">
+      <span class="kicker">Book</span>
+      <h2>Due for a vaccine, or not sure?</h2>
+      <p>Whether it's your baby's first shots, a teen's school vaccines, a flu shot, or your shingles and pneumococcal vaccines, Dr. Adeniran can review your record and get you up to date — right here in Windsor.</p>
+      <div class="book-btns">
+        <a class="obtn" id="bookNew" href="https://ocean.tips/dradeniran-new" target="_blank" rel="noopener">
+          <span class="ic">👤</span><span class="lab">New Patient</span><span class="sub">Register &amp; book your first visit</span>
+        </a>
+        <a class="obtn" id="bookExisting" href="https://ocean.tips/dradeniran-existing" target="_blank" rel="noopener">
+          <span class="ic">📅</span><span class="lab">Current Patient</span><span class="sub">Book your next appointment</span>
+        </a>
+      </div>
+      <div class="callrow">Prefer to call? <a href="tel:+15192522757">(519) 252-2757</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="fname">Dr. Kolawole Adeniran</div>
+    <div class="frow">Family Medicine · Windsor, Ontario</div>
+    <div class="frow"><a href="tel:+15192522757">(519) 252-2757</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps?q=3955+Tecumseh+Rd+E,+Windsor,+ON" target="_blank" rel="noopener">3955 Tecumseh Rd E, Windsor, ON</a></div>
+    <div class="frow" style="font-size:.78rem;color:rgba(255,255,255,.5)">Bookings powered by <a href="https://www.oceanmd.com" target="_blank" rel="noopener">Ocean MD</a></div>
+    <a class="back-home" href="https://dradeniran.ca">← Back to dradeniran.ca</a>
+    <div class="fsrc">Schedule: Ontario's routine immunization schedule (Ministry of Health). FAQ answers: World Health Organization, Public Health Agency of Canada &amp; Health Canada. Educational information for patients of Dr. Kolawole Adeniran — not a substitute for medical advice.</div>
+  </div>
+</footer>
+
+<script>
+/* ================= ANIMATED INFOGRAPHIC ================= */
+const DATA = {
+  child: {
+    title: "Childhood schedule · Ontario",
+    frames: [
+      {age:"2 months",  t:"First baby shots",      v:[["💧","5-in-1 (DTaP-IPV-Hib)","Diphtheria, tetanus, whooping cough, polio, Hib"],["🫁","Pneumococcal conjugate","Protects against pneumonia & meningitis"],["💦","Rotavirus","Oral drops — prevents severe diarrhoea"]]},
+      {age:"4 months",  t:"Second round",          v:[["💧","5-in-1 (DTaP-IPV-Hib)","Dose 2"],["🫁","Pneumococcal conjugate","Dose 2"],["💦","Rotavirus","Dose 2"]]},
+      {age:"6 months",  t:"Half a year",           v:[["💧","5-in-1 (DTaP-IPV-Hib)","Dose 3"],["🍂","Flu & COVID-19 begin","Every fall from now on, ages 6 mo +"]]},
+      {age:"12 months", t:"First birthday",        v:[["🫁","Pneumococcal conjugate","Final dose"],["🧠","Meningococcal C","Protects against meningitis"],["🔴","MMR","Measles, mumps, rubella"]]},
+      {age:"15 months", t:"Toddler",               v:[["🐔","Varicella","Chickenpox vaccine"]]},
+      {age:"18 months", t:"Toddler booster",       v:[["💧","5-in-1 (DTaP-IPV-Hib)","Dose 4"]]},
+      {age:"4–6 years", t:"Before school",         v:[["💧","Tdap-IPV (4-in-1)","Pre-school booster"],["🔴","MMRV","Measles, mumps, rubella, chickenpox"]]},
+      {age:"Grade 7",   t:"At school (~11–12)",     v:[["🧠","Meningococcal ACYW","Broader meningitis protection"],["🟠","Hepatitis B","Protects the liver"],["🎗️","HPV","Prevents several cancers"]]},
+      {age:"14–16 yrs", t:"Teen booster",          v:[["💧","Tdap","Tetanus, diphtheria, whooping cough"]]}
+    ]
+  },
+  adult: {
+    title: "Adults & older age · Ontario",
+    frames: [
+      {age:"Every fall", t:"All adults",            v:[["🍂","Flu vaccine","Recommended yearly for everyone 6 mo +"],["🦠","COVID-19","Updated dose each fall"]]},
+      {age:"Every 10 yrs",t:"Stay topped up",       v:[["💧","Td booster","Tetanus & diphtheria — every decade"]]},
+      {age:"Once as adult",t:"If not had as a teen", v:[["💧","Tdap","Once in adulthood (adds whooping cough)"]]},
+      {age:"Pregnancy",  t:"Protecting baby",        v:[["🤰","Tdap each pregnancy","~27–32 weeks — passes protection to baby"],["🍂","Flu & COVID-19","Safe and recommended in pregnancy"],["🛡️","RSV","Helps protect newborn at birth"]]},
+      {age:"Age 65",     t:"Entering older age",     v:[["🫁","Pneumococcal","One dose (PNEU-P-23)"]]},
+      {age:"Age 65–70",  t:"Free in Ontario",        v:[["⚡","Shingles (Shingrix)","2 doses — free this age group"]]},
+      {age:"Age 75 +",   t:"Best protection later",  v:[["🫁","RSV vaccine","Also for 65–74 at higher risk"]]}
+    ]
+  }
+};
+
+const STEP_MS = 4200;
+let mode = "child", idx = 0, timer = null, playing = true;
+const stage = document.getElementById('stage');
+const track = document.getElementById('track');
+const playerTitle = document.getElementById('playerTitle');
+const player = document.getElementById('player');
+const stepLabel = document.getElementById('stepLabel');
+const playPause = document.getElementById('playPause');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function track_event(name,params){ if(typeof gtag==='function'){ try{ gtag('event',name,params||{}); }catch(e){} } }
+
+function buildFrames(){
+  const frames = DATA[mode].frames;
+  playerTitle.textContent = DATA[mode].title;
+  player.classList.toggle('adultmode', mode==='adult');
+  stage.innerHTML = frames.map((f,i)=>`
+    <div class="frame${i===0?' show':''}" data-i="${i}">
+      <span class="age-chip">${f.age}</span>
+      <div class="stage-title">${f.t}</div>
+      <ul class="vac-list">
+        ${f.v.map(x=>`<li><span class="dot">${x[0]}</span><div><b>${x[1]}</b><small>${x[2]}</small></div></li>`).join('')}
+      </ul>
+    </div>`).join('');
+  track.innerHTML = frames.map((_,i)=>`<div class="seg" data-i="${i}"><span></span></div>`).join('');
+  track.querySelectorAll('.seg').forEach(seg=>{
+    seg.querySelector('span').style.setProperty('--dur', STEP_MS+'ms');
+    seg.addEventListener('click',()=>{ goTo(parseInt(seg.dataset.i)); });
+  });
+  idx = 0; render();
+}
+function render(){
+  const frames = DATA[mode].frames;
+  stage.querySelectorAll('.frame').forEach(fr=>fr.classList.toggle('show', parseInt(fr.dataset.i)===idx));
+  track.querySelectorAll('.seg').forEach(seg=>{
+    const i = parseInt(seg.dataset.i);
+    seg.classList.remove('active','done');
+    if(i<idx) seg.classList.add('done');
+    else if(i===idx && playing && !reduceMotion) seg.classList.add('active');
+    else if(i===idx && (!playing||reduceMotion)) seg.classList.add('done');
+  });
+  stepLabel.textContent = `${idx+1} / ${frames.length} · ${frames[idx].age}`;
+}
+function schedule(){ clearTimeout(timer); if(!playing || reduceMotion) return; timer = setTimeout(()=>{ next(); }, STEP_MS); }
+function next(){ idx = (idx+1) % DATA[mode].frames.length; render(); schedule(); }
+function prev(){ idx = (idx-1+DATA[mode].frames.length) % DATA[mode].frames.length; render(); schedule(); }
+function goTo(i){ idx = i; render(); schedule(); }
+function setMode(m){
+  if(m===mode) return;
+  mode = m;
+  document.getElementById('tabChild').classList.toggle('active', m==='child');
+  document.getElementById('tabAdult').classList.toggle('active', m==='adult');
+  buildFrames(); schedule();
+  track_event('guide_tab',{event_category:'Engagement',event_label:'Vaccine guide — '+m});
+}
+document.getElementById('tabChild').addEventListener('click',()=>setMode('child'));
+document.getElementById('tabAdult').addEventListener('click',()=>setMode('adult'));
+document.getElementById('nextBtn').addEventListener('click',()=>{ next(); });
+document.getElementById('prevBtn').addEventListener('click',()=>{ prev(); });
+playPause.addEventListener('click',()=>{ playing = !playing; playPause.textContent = playing ? '❚❚' : '▶'; render(); schedule(); });
+
+buildFrames();
+if(reduceMotion){ playing=false; playPause.textContent='▶'; }
+if('IntersectionObserver' in window && !reduceMotion){
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ if(playing) schedule(); } else { clearTimeout(timer); } });
+  },{threshold:.3});
+  io.observe(player);
+} else { schedule(); }
+
+/* ================= VACCINE CALCULATOR ================= */
+const SCHEDULE = [
+  {m:2,   label:"2 months",   vac:["5-in-1 (DTaP-IPV-Hib)","Pneumococcal conjugate","Rotavirus"]},
+  {m:4,   label:"4 months",   vac:["5-in-1 (DTaP-IPV-Hib)","Pneumococcal conjugate","Rotavirus"]},
+  {m:6,   label:"6 months",   vac:["5-in-1 (DTaP-IPV-Hib)","Annual flu & COVID-19 begin (every fall)"]},
+  {m:12,  label:"12 months",  vac:["Pneumococcal conjugate","Meningococcal C (Men-C-C)","MMR"]},
+  {m:15,  label:"15 months",  vac:["Varicella (chickenpox)"]},
+  {m:18,  label:"18 months",  vac:["5-in-1 (DTaP-IPV-Hib)"]},
+  {m:48,  label:"4–6 years",  vac:["Tdap-IPV (4-in-1)","MMRV"], endM:72, note:"any time between the 4th and 6th birthday"},
+  {m:144, label:"Grade 7 (≈11–12 yrs)", vac:["Meningococcal ACYW","Hepatitis B","HPV"], endM:156, note:"usually given at school"},
+  {m:168, label:"14–16 years", vac:["Tdap"], endM:192, note:"any time between ages 14 and 16"}
+];
+const MS_DAY = 86400000;
+function addMonths(date, months){ const d=new Date(date.getTime()); const day=d.getDate(); d.setMonth(d.getMonth()+months); if(d.getDate()<day) d.setDate(0); return d; }
+function fmt(d){ return d.toLocaleDateString('en-CA',{year:'numeric',month:'long',day:'numeric'}); }
+
+const dobInput = document.getElementById('dob');
+dobInput.max = new Date().toISOString().split('T')[0];
+document.getElementById('calcBtn').addEventListener('click', runCalc);
+dobInput.addEventListener('keyup', e=>{ if(e.key==='Enter') runCalc(); });
+
+function runCalc(){
+  const msg = document.getElementById('calcMsg');
+  const box = document.getElementById('results');
+  const val = dobInput.value;
+  if(!val){ msg.textContent="Please enter a date of birth above."; msg.style.color="var(--amber-text)"; box.style.display="none"; return; }
+  const dob = new Date(val + "T00:00:00");
+  const today = new Date(); today.setHours(0,0,0,0);
+  if(dob > today){ msg.textContent="That date is in the future — please check it."; msg.style.color="var(--amber-text)"; box.style.display="none"; return; }
+
+  const ageDays = Math.floor((today - dob)/MS_DAY);
+  const ageYears = ageDays/365.25;
+  msg.textContent = ""; msg.style.color="var(--text)";
+  const soonCutoff = new Date(today.getTime() + 30*MS_DAY);
+
+  let nextUp = null;
+  const rows = SCHEDULE.map(item=>{
+    const due = addMonths(dob, item.m);
+    const end = item.endM ? addMonths(dob, item.endM) : null;
+    let status, cls;
+    if(today < due){
+      if(due <= soonCutoff){ status="Due soon"; cls="b-soon"; }
+      else { status="Upcoming"; cls="b-up"; }
+      if(!nextUp) nextUp = {item, due, now:false};
+    } else { // today >= due
+      if(end && today <= end){ status="Due now"; cls="b-soon"; if(!nextUp) nextUp={item, due, now:true}; }
+      else if(!end && (today - due) <= 21*MS_DAY){ status="Due now"; cls="b-soon"; if(!nextUp) nextUp={item, due, now:true}; }
+      else { status="Past — confirm done"; cls="b-done"; }
+    }
+    return {item, due, end, status, cls};
+  });
+
+  const ageStr = ageYears<2 ? Math.round(ageDays/30.4)+" months" : Math.floor(ageYears)+" years";
+  let summary = `<div class="summary">Your child is about <strong>${ageStr}</strong> old. `;
+  if(nextUp){
+    if(nextUp.now) summary += `Their <strong>${nextUp.item.label}</strong> vaccines are due now.`;
+    else summary += `Next up: <strong>${nextUp.item.label}</strong> vaccines, around <strong>${fmt(nextUp.due)}</strong>.`;
+  } else {
+    summary += `All routine childhood vaccine ages have passed — book a visit to confirm the record is complete.`;
+  }
+  summary += `</div>`;
+
+  box.innerHTML = summary + rows.map(r=>`
+    <div class="res-item">
+      <div class="when">${r.item.label}<small>${fmt(r.due)}${r.end? " – "+fmt(r.end):""}</small></div>
+      <div><ul>${r.item.vac.map(v=>`<li>${v}</li>`).join('')}</ul>${r.item.note?`<small class="muted">${r.item.note}</small>`:""}</div>
+      <span class="badge ${r.cls}">${r.status}</span>
+    </div>`).join('') + `<button class="reset-link" id="calcReset" type="button">Clear</button>`;
+  box.style.display = "grid";
+  document.getElementById('printBtn').style.display = "inline-flex";
+  document.getElementById('calcReset').addEventListener('click', ()=>{
+    dobInput.value=""; box.style.display="none"; box.innerHTML=""; msg.textContent="";
+    document.getElementById('printBtn').style.display="none";
+  });
+  track_event('vaccine_calc',{event_category:'Engagement',event_label:'Child vaccine calculator'});
+}
+document.getElementById('printBtn').addEventListener('click',()=>window.print());
+
+/* ================= BOOKING EVENTS ================= */
+document.getElementById('bookNew').addEventListener('click',()=>track_event('booking_click',{event_category:'Booking',event_label:'New Patient — immunizations page'}));
+document.getElementById('bookExisting').addEventListener('click',()=>track_event('booking_click',{event_category:'Booking',event_label:'Current Patient — immunizations page'}));
+</script>
+</body>
+</html>
