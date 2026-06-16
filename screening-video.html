@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catch It Early — Cancer Screening with Dr. Adeniran</title>
+<title>Catch It Early — Preventative Screening with Dr. Adeniran</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -286,7 +286,7 @@
             </svg>
             <span class="eyebrow rise d1">A 90-second guide</span>
             <h1 class="rise d2">Catch it <span class="accent">early.</span></h1>
-            <p class="lede rise d3">Cancer screening, made simple — for the people of Windsor &amp; Essex County.</p>
+            <p class="lede rise d3">Preventative screening, made simple — for the people of Windsor &amp; Essex County.</p>
             <span class="pill rise d4"><span class="d"></span> Listen along, or step through at your own pace</span>
           </div>
           <div class="caption"><span class="caption-on">Most cancers are easier to treat when we find them early. Here&rsquo;s how screening helps.</span></div>
@@ -408,8 +408,31 @@
           <div class="caption"><span class="caption-on">Caught early, 5-year survival is about 92% &mdash; versus roughly 11% once it has spread.</span></div>
         </section>
 
-        <!-- SCENE 7 -->
-        <section class="scene" data-i="6" aria-label="Book your screening">
+        <!-- SCENE 7 (AAA — beyond cancer) -->
+        <section class="scene" data-i="6" aria-label="One more check — abdominal aortic aneurysm">
+          <span class="eyebrow rise d1">Beyond cancer · one more check</span>
+          <h2 class="rise d2">A silent risk worth <span class="accent">ruling out</span>.</h2>
+          <div class="cards">
+            <div class="card rise d3">
+              <div class="badge b-blue"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 7v8" fill="none" stroke="#1e40af" stroke-width="3.4" stroke-linecap="round"/><ellipse cx="20" cy="21" rx="7.5" ry="6" fill="none" stroke="#1e40af" stroke-width="3.4"/><path d="M20 27v6" fill="none" stroke="#1e40af" stroke-width="3.4" stroke-linecap="round"/></svg></div>
+              <h3>What</h3><div class="test">Aortic aneurysm</div><div class="age">A bulge in the body&rsquo;s main artery &mdash; usually silent</div>
+            </div>
+            <div class="card rise d4">
+              <div class="badge b-mint"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="15" r="5.5" fill="none" stroke="#2d7d6f" stroke-width="3.4"/><path d="M10 32c0-6 4.5-9.5 10-9.5S30 26 30 32" fill="none" stroke="#2d7d6f" stroke-width="3.4" stroke-linecap="round"/></svg></div>
+              <h3>Who</h3><div class="test">Men, ages 65&ndash;80</div><div class="age">Just once &mdash; higher risk if you&rsquo;ve smoked</div>
+            </div>
+            <div class="card rise d5">
+              <div class="badge b-green"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M11 21a9 9 0 0 1 18 0" fill="none" stroke="#065f46" stroke-width="3.2" stroke-linecap="round"/><path d="M15 25a5 5 0 0 1 10 0" fill="none" stroke="#065f46" stroke-width="3.2" stroke-linecap="round"/><circle cx="20" cy="29" r="1.8" fill="#065f46"/></svg></div>
+              <h3>How</h3><div class="test">One-time ultrasound</div><div class="age">Quick and painless &mdash; no needles</div>
+            </div>
+          </div>
+          <p class="lede rise d6">It rarely causes symptoms until it becomes dangerous &mdash; which is exactly why a single scan, at the right age, can be life-saving.</p>
+          <a class="srcchip" href="https://canadiantaskforce.ca/guidelines/published-guidelines/abdominal-aortic-aneurysm/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5M19 5l-9 9M11 5H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5"/></svg>Source: Canadian Task Force on Preventive Health Care &mdash; <span class="u">canadiantaskforce.ca</span></a>
+          <div class="caption"><span class="caption-on">For men 65&ndash;80, a one-time ultrasound can catch an aneurysm before it ruptures.</span></div>
+        </section>
+
+        <!-- SCENE 8 -->
+        <section class="scene" data-i="7" aria-label="Book your screening">
           <span class="eyebrow rise d1">Your move</span>
           <h2 class="rise d2">Let&rsquo;s get you booked.</h2>
           <p class="lede rise d3">Booking takes about two minutes. Find your screening, pick a time, done.</p>
@@ -438,7 +461,7 @@
         <!-- start overlay -->
         <div class="overlay" id="overlay">
           <div class="ov-eyebrow">Dr. Kolawole Adeniran · Windsor</div>
-          <h2>Cancer screening — a 90-second guide</h2>
+          <h2>Preventative screening — a 90-second guide</h2>
           <p>A quick, friendly walkthrough with narration. Catch it early — book your screening at the end.</p>
           <button class="ov-play" id="ovPlay">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -488,8 +511,8 @@
 (function(){
   var scenes = Array.prototype.slice.call(document.querySelectorAll('.scene'));
   var N = scenes.length;
-  var labels = ['Intro','Ontario','Our region','The gap','Screening','Why it works','Book now'];
-  var durations = [8000, 10000, 10200, 11200, 11200, 9200, 10000]; // ms pacing per scene
+  var labels = ['Intro','Ontario','Our region','The gap','Screening','Why it works','One more','Book now'];
+  var durations = [8000, 10000, 10200, 11200, 11200, 9200, 9800, 10000]; // ms pacing per scene
   var narration = [
     "Most cancers are far easier to treat when we catch them early. Here's how screening helps, in about ninety seconds.",
     "This year, Ontario expects about ninety-five thousand, seven hundred new cancer cases. The most common ones, breast, lung, prostate and colorectal, can often be screened for.",
@@ -497,6 +520,7 @@
     "Breast and cervical screening are doing well. But fewer than half of eligible Ontarians are up to date on colon cancer screening. That's the gap worth closing.",
     "We can screen for breast, cervical, colorectal and lung cancer. Some are as simple as a kit you do at home. We'll find what's right for you.",
     "This is why screening matters. Caught early, at stage one, colorectal cancer has about ninety percent five-year survival. But found late, only about one in ten. Screening can even find and remove pre-cancers, before they ever become cancer.",
+    "There's one more check that isn't a cancer, but can be just as serious. An abdominal aortic aneurysm is a bulge in the body's main artery. For men aged sixty-five to eighty, a single, painless ultrasound can find it, long before it becomes a danger.",
     "A few minutes today can change everything. Book online, or scan the code with your phone. New and current patients are both welcome. I'm Doctor Adeniran, and I look forward to meeting you."
   ];
 
