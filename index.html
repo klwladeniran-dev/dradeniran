@@ -8,7 +8,7 @@
   <title>Dr. Kolawole Adeniran — Family Physician, Windsor ON</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <!-- ===================================================================== -->
 <!--  SEO HEAD BLOCK for dradeniran.ca                                      -->
 <!--  WHERE TO PASTE: inside <head>, just before the closing </head> tag,   -->
@@ -150,6 +150,58 @@
   ]
 }
 </script>
+
+<!-- 5. FAQ STRUCTURED DATA (FAQPage) — mirrors the visible FAQ section below.
+     Lets these Q&As qualify for FAQ rich results in Google Search. Keep the
+     text here matching the on-page wording. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are you accepting new patients, and how do I register?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Dr. Adeniran is accepting new patients of all ages in Windsor and Essex County, often within the same week. To register, choose the New Patient option in the booking section, which registers you and books your first visit through Ocean, or call (519) 252-2757. You do not need a referral to join a family practice." }
+    },
+    {
+      "@type": "Question",
+      "name": "What should I bring to my first appointment?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The most important thing is your valid OHIP card. If you have just applied and do not have the card yet, bring your temporary Ontario health registration certificate. It also helps to bring a list of your current medications (or the bottles), brief notes on your past medical history, surgeries and any specialists you see, and for children their immunization (yellow) card. Arriving a few minutes early gives time to complete intake forms." }
+    },
+    {
+      "@type": "Question",
+      "name": "I am a newcomer or refugee. Am I covered, and what if I do not have OHIP yet?",
+      "acceptedAnswer": { "@type": "Answer", "text": "You are welcome here. This practice accepts OHIP, Medavie Blue Cross, and the Interim Federal Health Program (IFHP). Doctor visits are fully covered under the IFHP for eligible refugees, claimants and protected persons, with no co-payment. Bring your IFHP certificate or refugee document to each visit. Care for newcomers and refugees is a focus of this practice." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you accept walk-ins, or do I need an appointment?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Walk-ins are welcome, and booking ahead usually means a shorter wait and a time that suits you. Existing patients can book a follow-up, renewal or routine visit online; new patients should start with the New Patient option. For anything urgent or life-threatening, call 911 or go to the nearest emergency department." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need a referral to see a family doctor?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. You do not need a referral to register with or see a family doctor. A family physician is usually your first point of contact for most health concerns, and the person who provides referrals to specialists when they are needed." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can my whole family register, including my children?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. This is a family practice caring for all ages, from babies and children to teens, adults and seniors, so you can register your whole family. Please note that each person attending needs their own appointment booked, even when you come in together as a family. Care includes well-baby and childhood checkups, immunizations, women's and seniors' health, chronic conditions and preventive screening." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I book, and can I do it online?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Booking is online through Ocean. Use the New Patient option for your first visit or the Existing Patient option for a follow-up. You can also call (519) 252-2757." }
+    },
+    {
+      "@type": "Question",
+      "name": "Where are you located, and what are the clinic hours?",
+      "acceptedAnswer": { "@type": "Answer", "text": "My current practice is based at Hope Health Central, 3955 Tecumseh Rd E, Windsor, Ontario. Clinic hours and a map are listed on this page." }
+    }
+  ]
+}
+</script>
 <!-- ===================================================================== -->
 <!--  END SEO HEAD BLOCK                                                    -->
 <!-- ===================================================================== -->
@@ -166,6 +218,8 @@
       --border: #e5e7eb;
       --bg: #f9fafb;
       --white: #fff;
+      --emerald: #10b981;
+      --accent-deep: #1f4f45;
       --green-badge: #ecfdf5;
       --green-badge-text: #065f46;
       --blue-badge: #eff6ff;
@@ -182,62 +236,71 @@
       line-height: 1.6;
     }
 
-    /* ── NAV ── */
+    /* ── NAV (identical to screening & immunization pages) ── */
     nav {
       background: var(--nav-bg);
       position: sticky;
       top: 0;
       z-index: 100;
-      padding: 0 2rem;
+    }
+    .nav-inner {
+      width: min(94vw, 1060px);
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 48px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: .7rem 0;
+      gap: 1rem;
     }
-
-    .nav-logo {
+    .brand {
       display: flex;
       align-items: center;
       gap: 10px;
+      color: #fff;
       text-decoration: none;
     }
-
-    .nav-logo img {
-      height: 26px;
-      width: auto;
-      filter: brightness(0) invert(1);
+    .brand .glyph { width: 24px; height: 16px; flex: none; }
+    .brand .glyph path {
+      fill: none;
+      stroke: var(--emerald);
+      stroke-width: 6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      list-style: none;
+    .brand b {
+      font-weight: 800;
+      font-size: clamp(13px, 1.6vw, 16px);
+      letter-spacing: .2px;
+      line-height: 1.1;
     }
-
-    .nav-links a {
-      color: rgba(255,255,255,0.75);
+    .brand small {
+      display: block;
+      color: rgba(255,255,255,.6);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .7px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .nav-right { display: flex; align-items: center; gap: 1.1rem; flex-wrap: wrap; justify-content: flex-end; row-gap: .5rem; }
+    .nav-right a.link {
+      color: rgba(255,255,255,.82);
       text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 400;
-      transition: color 0.15s;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      font-weight: 600;
+      font-size: .92rem;
     }
-
-    .nav-links a:hover { color: #fff; }
-
-    .nav-book-btn {
-      background: var(--accent) !important;
-      color: #fff !important;
-      padding: 6px 14px !important;
-      border-radius: 6px;
-      font-weight: 500 !important;
+    .nav-right a.link:hover { color: #fff; }
+    .nav-book {
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: .55rem 1rem;
+      border-radius: 9px;
+      font-size: .92rem;
+      transition: background .2s;
     }
-
-    .nav-book-btn:hover { background: var(--accent-hover) !important; }
+    .nav-book:hover { background: var(--accent-hover); }
 
     /* ── MAIN ── */
     main {
@@ -663,6 +726,21 @@
       .info-grid { grid-template-columns: 1fr; }
       .approach-note { padding: 1.25rem; }
     }
+    /* ── FAQ (accordion — matches immunization & screening pages) ── */
+    .faq-section { width: min(92vw, 1000px); margin: 0 auto 2.5rem; }
+    .faq-section .faq-head { text-align: center; margin-bottom: 1.4rem; }
+    .faq-section .faq-kicker { font-weight: 800; letter-spacing: 1.6px; text-transform: uppercase; font-size: 11px; color: var(--accent); }
+    .faq-section .faq-head h2 { font-weight: 800; letter-spacing: -.5px; font-size: clamp(22px, 3.4vw, 30px); margin: .35rem 0 0; color: var(--text); }
+    .faq-section .faq-head p { color: var(--muted); font-size: clamp(14px, 1.7vw, 16px); margin: .55rem auto 0; max-width: 54ch; }
+    .faq-list { display: grid; gap: 12px; }
+    .faq-list details { background: var(--white); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 10px 26px -18px rgba(17,24,39,.34); overflow: hidden; }
+    .faq-list summary { cursor: pointer; padding: 16px 50px 16px 18px; font-weight: 700; font-size: 1.02rem; line-height: 1.4; list-style: none; position: relative; color: var(--text); }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after { content: "+"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%); font-size: 1.5rem; color: var(--accent); font-weight: 400; }
+    .faq-list details[open] summary::after { content: "\2013"; }
+    .faq-list .faq-body { padding: 0 18px 18px; color: var(--muted); }
+    .faq-list .faq-body a { color: var(--accent); font-weight: 600; }
+    .trend-tag { display: inline-block; background: var(--accent-light); color: var(--accent-deep); font-size: .7rem; font-weight: 700; padding: 3px 9px; border-radius: 999px; margin-left: 6px; vertical-align: middle; white-space: nowrap; }
   </style>
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DMD1SR73HZ"></script>
@@ -678,23 +756,17 @@
 
   <!-- NAV -->
   <nav aria-label="Main navigation">
-    <a class="nav-logo" href="https://hopehealth.ca" target="_blank" rel="noopener noreferrer" aria-label="Hope Health home">
-      <img src="hope_logo.png" alt="Hope Health" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" />
-      <span style="display:none;color:#fff;font-size:0.95rem;font-weight:600;letter-spacing:-.01em">Hope Health</span>
-    </a>
-    <ul class="nav-links">
-      <li>
-        <a href="tel:+15192522757">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.09 2.18 2 2 0 012.08 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/>
-          </svg>
-          (519) 252-2757
-        </a>
-      </li>
-       <li><a href="screening.html">Preventative Screening</a></li>
-      <li><a href="immunizations.html">Immunizations</a></li>
-      <li><a href="#book" class="nav-book-btn">Book Now</a></li>
-    </ul>
+    <div class="nav-inner">
+      <a class="brand" href="/">
+        <svg class="glyph" viewBox="0 0 60 30" aria-hidden="true"><path d="M2 15h12l3-9 5 18 4-12 3 6h26"/></svg>
+        <span><b>Dr. Kolawole Adeniran</b><small>Family Medicine · Windsor</small></span>
+      </a>
+      <div class="nav-right">
+        <a class="link" href="screening.html">Preventative Screening</a>
+        <a class="link" href="immunizations.html">Immunizations</a>
+        <a class="nav-book" href="#book">Book</a>
+      </div>
+    </div>
   </nav>
 
   <!-- MAIN -->
@@ -1024,6 +1096,80 @@
   </div>
   <a href="immunizations.html" style="background:#2d7d6f;color:#fff;text-decoration:none;font-family:'Inter',sans-serif;font-weight:700;font-size:1rem;padding:.85rem 1.5rem;border-radius:11px;white-space:nowrap;box-shadow:0 14px 28px -14px rgba(45,125,111,.8)">View immunizations →</a>
 </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" aria-label="Frequently asked questions">
+    <div class="faq-head">
+      <span class="faq-kicker">Good to know</span>
+      <h2>Frequently asked questions</h2>
+      <p>The things people most often want to know before booking a new family doctor in Windsor. Still unsure? Call <a href="tel:+15192522757" style="color:var(--accent);font-weight:600;text-decoration:none">(519)&nbsp;252-2757</a>.</p>
+    </div>
+    <div class="faq-list">
+
+      <details>
+        <summary>Are you accepting new patients, and how do I register? <span class="trend-tag">top searched</span></summary>
+        <div class="faq-body">
+          <p>Yes — I'm accepting new patients of all ages across Windsor and Essex County, often within the same week. To register, tap <strong>New Patient</strong> in the booking section above: it registers you and books your first visit through Ocean. Prefer to talk to someone? Call (519)&nbsp;252-2757. You don't need a referral to join a family practice.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What should I bring to my first appointment? <span class="trend-tag">top searched</span></summary>
+        <div class="faq-body">
+          <p>The most important thing is your <strong>valid OHIP card</strong>. If you've just applied and don't have the card yet, bring your temporary Ontario health registration certificate. It also helps to bring:</p>
+          <p>• A list of your current medications (or the bottles/blister packs)<br>
+             • Brief notes on your past medical history, surgeries, and any specialists you see<br>
+             • For children, their immunization (“yellow”) card</p>
+          <p>Arriving a few minutes early gives you time to complete the intake forms so we can spend the visit on your health.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>I'm a newcomer or refugee — am I covered? <span class="trend-tag">top searched</span></summary>
+        <div class="faq-body">
+          <p>You're very welcome here — caring for newcomers and refugees is a focus of this practice. I accept <strong>OHIP</strong>, <strong>Medavie Blue Cross</strong>, and the <strong>Interim Federal Health Program (IFHP)</strong>. Doctor visits are fully covered under the IFHP for eligible refugees, claimants and protected persons, with no co-payment — just bring your IFHP certificate or refugee document to each visit. If your OHIP application is still being processed, come in and we'll help you get connected to care.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Do you accept walk-ins, or do I need an appointment?</summary>
+        <div class="faq-body">
+          <p>Walk-ins are welcome, and booking ahead usually means a shorter wait and a time that suits you. Existing patients can book a follow-up, renewal or routine visit using the <strong>Existing Patient</strong> option above; new patients should start with <strong>New Patient</strong>. For anything urgent or life-threatening, please call 911 or go to your nearest emergency department.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Do I need a referral to see a family doctor?</summary>
+        <div class="faq-body">
+          <p>No. You don't need a referral to register with or see a family doctor. A family physician is usually your first point of contact for most health concerns — and the one who arranges referrals to specialists when they're needed.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Can my whole family register, including my children?</summary>
+        <div class="faq-body">
+          <p>Yes — this is a family practice caring for all ages, from newborns and children to teens, adults and seniors, so you can register the whole family. That includes well-baby and childhood checkups, <a href="immunizations.html">immunizations</a>, women's and seniors' health, chronic condition management, and <a href="screening.html">preventive screening</a>.</p>
+          <p>Please note that each person attending needs their own appointment booked, even when you come in together as a family — that way everyone gets their own dedicated time with me.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How do I book, and can I do it online?</summary>
+        <div class="faq-body">
+          <p>Booking is online through Ocean. Use <strong>New Patient</strong> for your first visit or <strong>Existing Patient</strong> for a follow-up — both are in the booking section near the top of this page. Prefer to call? (519)&nbsp;252-2757.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Where are you located, and what are the hours?</summary>
+        <div class="faq-body">
+          <p>My current practice is based at <strong>Hope Health Central</strong>, 3955 Tecumseh Rd E, Windsor, Ontario. Clinic hours and a map are listed further up this page.</p>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <img class="footer-logo" src="hope_logo.png" alt="Hope Health" onerror="this.style.display='none'" />
