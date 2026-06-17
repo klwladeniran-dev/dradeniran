@@ -9,6 +9,150 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- ===================================================================== -->
+<!--  SEO HEAD BLOCK for dradeniran.ca                                      -->
+<!--  WHERE TO PASTE: inside <head>, just before the closing </head> tag,   -->
+<!--  after your existing <link ... fonts.googleapis.com ...> line.         -->
+<!--                                                                        -->
+<!--  This adds: (1) canonical URL, (2) Open Graph + Twitter share cards,   -->
+<!--  (3) Physician + Person JSON-LD structured data.                       -->
+<!--  TEST AFTER PASTING: https://search.google.com/test/rich-results       -->
+<!--  and https://validator.schema.org/                                     -->
+<!-- ===================================================================== -->
+
+<!-- 1. CANONICAL (tells Google this is the definitive URL) -->
+<link rel="canonical" href="https://dradeniran.ca/" />
+
+<!-- 2. OPEN GRAPH (Facebook, WhatsApp, Messenger, LinkedIn link previews) -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Dr. Kolawole Adeniran — Family Physician, Windsor ON" />
+<meta property="og:title" content="Dr. Kolawole Adeniran — Family Physician in Windsor, ON | Accepting New Patients" />
+<meta property="og:description" content="Family doctor in Windsor accepting new patients (same week) and walk-ins. Care for all ages. OHIP, Medavie Blue Cross & IFH accepted — newcomers and refugees welcome. Book online." />
+<meta property="og:url" content="https://dradeniran.ca/" />
+<meta property="og:locale" content="en_CA" />
+<!-- Dedicated 1200x630 branded share image. Upload og-image.jpg to your -->
+<!-- repo root (the same folder as index.html) so previews resolve. -->
+<meta property="og:image" content="https://dradeniran.ca/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Dr. Kolawole Adeniran, Family Physician at Hope Health Central, Windsor ON — accepting new patients" />
+
+<!-- 3. TWITTER / X CARD -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Dr. Kolawole Adeniran — Family Physician in Windsor, ON" />
+<meta name="twitter:description" content="Accepting new patients in Windsor. All ages. OHIP, Medavie Blue Cross & IFH accepted. Newcomers and refugees welcome. Book online." />
+<meta name="twitter:image" content="https://dradeniran.ca/og-image.jpg" />
+<meta name="twitter:image:alt" content="Dr. Kolawole Adeniran, Family Physician, Windsor ON" />
+
+<!-- 4. STRUCTURED DATA (JSON-LD). Do NOT add // comments inside the script -->
+<!--    below — JSON-LD must stay valid JSON or Google will ignore it.      -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Physician",
+      "@id": "https://dradeniran.ca/#practice",
+      "name": "Dr. Kolawole Adeniran — Family Physician",
+      "description": "Family medicine practice in Windsor, Ontario providing comprehensive primary care for patients of all ages, from newborns to seniors. Currently accepting new patients (same week) and welcoming walk-ins. OHIP, Medavie Blue Cross, and the Interim Federal Health Program (IFH) accepted. Newcomers and refugees welcome.",
+      "url": "https://dradeniran.ca/",
+      "image": "https://dradeniran.ca/drka.jpg",
+      "logo": "https://dradeniran.ca/hope_logo.png",
+      "telephone": "+1-519-252-2757",
+      "medicalSpecialty": "PrimaryCare",
+      "paymentAccepted": "OHIP (Ontario Health Insurance Plan), Medavie Blue Cross, Interim Federal Health Program (IFH), Private pay",
+      "currenciesAccepted": "CAD",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "3955 Tecumseh Rd E",
+        "addressLocality": "Windsor",
+        "addressRegion": "ON",
+        "postalCode": "N8W 1J5",
+        "addressCountry": "CA"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 42.3056178,
+        "longitude": -82.9758267
+      },
+      "hasMap": "https://www.google.com/maps/place/?q=place_id:ChIJkWSaKY8rO4gRWyyaAsSkvFA",
+      "areaServed": [
+        { "@type": "City", "name": "Windsor, Ontario" },
+        { "@type": "AdministrativeArea", "name": "Essex County, Ontario" }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Friday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Thursday",
+          "opens": "11:00",
+          "closes": "19:00"
+        }
+      ],
+      "availableService": [
+        { "@type": "MedicalProcedure", "name": "Family Medicine and Primary Care" },
+        { "@type": "MedicalTest", "name": "Annual Physical Examination" },
+        { "@type": "MedicalTherapy", "name": "Chronic Disease Management", "description": "Diabetes, high blood pressure, asthma and COPD, heart disease, arthritis, thyroid conditions, chronic kidney disease, obesity and weight management" },
+        { "@type": "MedicalTherapy", "name": "Mental Health Support" },
+        { "@type": "MedicalProcedure", "name": "Pediatric and Well-Baby Care" },
+        { "@type": "MedicalProcedure", "name": "Seniors Care and Medication Reviews" },
+        { "@type": "MedicalTest", "name": "Women's Health and Cervical Cancer (Pap) Screening Coordination" },
+        { "@type": "MedicalProcedure", "name": "Immunizations and Vaccinations" },
+        { "@type": "MedicalProcedure", "name": "Minor In-Office Procedures (ear wax removal)" },
+        { "@type": "MedicalProcedure", "name": "Driver's Medical Examinations (Ontario MTO)" },
+        { "@type": "Service", "name": "Medical Forms and Documentation (WSIB, disability, insurance, sick notes)" },
+        { "@type": "Service", "name": "Specialist Referrals" }
+      ],
+      "memberOf": {
+        "@type": "MedicalClinic",
+        "name": "Hope Health Central",
+        "url": "https://hopehealth.ca",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "3955 Tecumseh Rd E",
+          "addressLocality": "Windsor",
+          "addressRegion": "ON",
+          "postalCode": "N8W 1J5",
+          "addressCountry": "CA"
+        }
+      },
+      "sameAs": [
+        "https://www.google.com/maps/place/?q=place_id:ChIJkWSaKY8rO4gRWyyaAsSkvFA"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://dradeniran.ca/#dr-adeniran",
+      "name": "Dr. Kolawole Adeniran",
+      "honorificPrefix": "Dr.",
+      "honorificSuffix": "MD, MPH, MRCGP, CCFP",
+      "jobTitle": "Family Physician",
+      "image": "https://dradeniran.ca/drka.jpg",
+      "url": "https://dradeniran.ca/",
+      "worksFor": { "@id": "https://dradeniran.ca/#practice" },
+      "sameAs": [
+        "https://uk.linkedin.com/in/kolawole-adeniran-md-mph-mrcgp-ccfp-a7a882370",
+        "https://register.cpso.on.ca/physician-info/?cpsonum=280081"
+      ],
+      "knowsLanguage": ["English"],
+      "hasCredential": [
+        { "@type": "EducationalOccupationalCredential", "credentialCategory": "degree", "name": "Doctor of Medicine (MD)" },
+        { "@type": "EducationalOccupationalCredential", "credentialCategory": "degree", "name": "Master of Public Health (MPH)" },
+        { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "Member of the Royal College of General Practitioners (MRCGP, UK)", "recognizedBy": { "@type": "Organization", "name": "Royal College of General Practitioners", "url": "https://www.rcgp.org.uk" } },
+        { "@type": "EducationalOccupationalCredential", "credentialCategory": "certification", "name": "Certificant of the College of Family Physicians of Canada (CCFP)", "recognizedBy": { "@type": "Organization", "name": "College of Family Physicians of Canada", "url": "https://www.cfpc.ca" } }
+      ]
+    }
+  ]
+}
+</script>
+<!-- ===================================================================== -->
+<!--  END SEO HEAD BLOCK                                                    -->
+<!-- ===================================================================== -->
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
