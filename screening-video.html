@@ -492,7 +492,10 @@
 
         <div class="voicebox">
           <label for="voiceSel">Voice</label>
-          <select id="voiceSel" aria-label="Narration voice"></select>
+          <select id="voiceSel" aria-label="Narration voice">
+            <option value="liam" selected>Male voice (Liam)</option>
+            <option value="clara">Female voice (Clara)</option>
+          </select>
         </div>
 
         <button class="replay" id="replayBtn" aria-label="Replay from start">
@@ -529,7 +532,6 @@
 
   var i = 0, playing = false, soundOn = true, started = false;
   var playStart = 0, carry = 0, raf = null, safety = null;
-  var voices = [], currentVoice = null;
 
   var stageEl = document.getElementById('stage');
   var overlay = document.getElementById('overlay');
@@ -582,65 +584,114 @@
       : '<path d="M4 9v6h4l5 5V4L8 9H4z"/><path d="M16 8l5 8M21 8l-5 8" stroke="#1f4f45" stroke-width="2" fill="none" stroke-linecap="round"/>';
   }
 
-  // ---- voices ----
-  function scoreVoice(v){
-    var s = 0, lang = (v.lang||'').toLowerCase(), name = (v.name||'');
+  // ---- narration: pre-recorded Microsoft Neural audio (Liam / Clara) ----
+  // Clips live in an /audio folder next to this page, named <voice>-<scene>.mp3:
+  //   audio/liam-1.mp3 … audio/liam-8.mp3    (male   — en-CA-LiamNeural)
+  //   audio/clara-1.mp3 … audio/clara-8.mp3  (female — en-CA-ClaraNeural)
+  // If a clip can't be loaded, narration falls back to the browser voice so the page is never silent.
+  var AUDIO_BASE = 'audio/', AUDIO_EXT = '.mp3';
+  var VOICE = 'liam';                                   // 'liam' (male) | 'clara' (female)
+  var audioSupported = (typeof Audio !== 'undefined');
+  var audioMissing = false;                             // flips true once we learn the clips aren't deployed yet
+  var narrator = audioSupported ? new Audio() : null;   // one reusable element (most reliable on iOS)
+  if(narrator){ narrator.preload = 'auto'; }
+  var narratingScene = -1;
+
+  // prime the browser voice list so the fallback can pick a good match if it's ever needed
+  if(hasTTS){ try{ window.speechSynthesis.getVoices(); window.speechSynthesis.onvoiceschanged = function(){ try{ window.speechSynthesis.getVoices(); }catch(e){} }; }catch(e){} }
+
+  function clipUrl(voice, idx){ return AUDIO_BASE + voice + '-' + (idx + 1) + AUDIO_EXT; }
+  function prefetchClip(idx){
+    if(audioMissing || idx < 0 || idx >= N) return;
+    try{ fetch(clipUrl(VOICE, idx), { cache: 'force-cache' }).catch(function(){}); }catch(e){}
+  }
+
+  // fallback voice scoring, matched to the chosen gender
+  function scoreVoice(v, wantFemale){
+    var lang = (v.lang||'').toLowerCase(), name = (v.name||''), s = 0;
+    if(/\b(albert|bad news|bahh|bells|boing|bubbles|cellos|wobble|eddy|flo|fred|good news|grandma|grandpa|jester|junior|kathy|organ|ralph|reed|rocko|sandy|shelley|superstar|trinoids|whisper|zarvox|deranged|hysterical|pipe organ|princess)\b/i.test(name)) return -1000;
     if(lang.indexOf('en-ca') === 0) s += 100;
     else if(lang.indexOf('en-gb') === 0) s += 45;
     else if(lang.indexOf('en-au') === 0) s += 35;
     else if(lang.indexOf('en-us') === 0) s += 30;
     else if(lang.indexOf('en') === 0) s += 15;
-    if(/\b(male|liam|david|mark|guy|ryan|brian|george|daniel|alex|fred|oliver|james|william|thomas|aaron|arthur)\b/i.test(name)) s += 50;
-    if(/\b(female|woman|zira|susan|linda|hazel|catherine|clara|samantha|victoria|karen|moira|tessa|fiona|emily|joanna|salli)\b/i.test(name)) s -= 45;
-    if(/natural|neural|online|premium/i.test(name)) s += 12;
-    if(/google|microsoft|apple/i.test(name)) s += 6;
+    var male = /\b(male|liam|david|mark|guy|ryan|brian|george|daniel|alex|oliver|james|william|thomas|aaron|arthur|gordon|rishi|nathan)\b/i.test(name);
+    var female = /\b(female|woman|zira|susan|linda|hazel|catherine|clara|samantha|victoria|karen|moira|tessa|fiona|emily|joanna|salli|martha|nicky|allison)\b/i.test(name);
+    if(wantFemale){ if(female) s += 50; if(male) s -= 45; } else { if(male) s += 50; if(female) s -= 45; }
+    if(/natural|neural|online|premium|enhanced|siri/i.test(name)) s += 14;
+    if(/google|microsoft/i.test(name)) s += 6;
     return s;
   }
-  function loadVoices(){
-    if(!hasTTS) { voiceSel.innerHTML = '<option>Voice not supported on this device</option>'; voiceSel.disabled = true; return; }
+  function ttsVoiceFor(gender){
+    if(!hasTTS) return null;
     var list = window.speechSynthesis.getVoices() || [];
-    if(!list.length) return;
-    // keep English-ish first but include all
-    voices = list.slice().sort(function(a,b){ return scoreVoice(b) - scoreVoice(a); });
-    voiceSel.innerHTML = '';
-    voices.forEach(function(v, idx){
-      var o = document.createElement('option');
-      o.value = idx;
-      var tag = (v.lang||'').toLowerCase().indexOf('en-ca') === 0 ? '🍁 ' : '';
-      o.textContent = tag + v.name + ' (' + v.lang + ')';
-      voiceSel.appendChild(o);
-    });
-    currentVoice = voices[0];
-    voiceSel.value = '0';
-  }
-  voiceSel.addEventListener('change', function(){
-    currentVoice = voices[parseInt(voiceSel.value,10)] || null;
-    if(started && playing && soundOn) speakCurrent();
-  });
-  if(hasTTS){
-    loadVoices();
-    window.speechSynthesis.onvoiceschanged = loadVoices;
-  } else {
-    loadVoices();
+    if(!list.length) return null;
+    var wantFemale = (gender === 'clara');
+    return list.slice().sort(function(a,b){ return scoreVoice(b, wantFemale) - scoreVoice(a, wantFemale); })[0] || null;
   }
 
-  function soundDriven(){ return soundOn && hasTTS; }
+  // narration drives pacing whenever sound is on (audio first, browser voice as fallback)
+  function soundDriven(){ return soundOn && (audioSupported || hasTTS); }
 
-  function speakCurrent(){
-    if(!soundOn || !hasTTS) return;
+  function stopNarration(){
+    narratingScene = -1;
+    if(narrator){ try{ narrator.pause(); narrator.onended = null; narrator.onerror = null; }catch(e){} }
+    if(hasTTS){ try{ window.speechSynthesis.cancel(); }catch(e){} }
+    clearTimeout(safety);
+  }
+
+  // playhead easing tracks the real clip length when known, else the scripted pacing
+  function activeDurMs(){
+    if(narrator && narratingScene === i && isFinite(narrator.duration) && narrator.duration > 0.2){
+      return narrator.duration * 1000;
+    }
+    return durations[i];
+  }
+
+  // browser-voice fallback for one scene
+  function ttsScene(idx, onDone){
+    if(!hasTTS) return false;
     try{
       window.speechSynthesis.cancel();
-      var u = new SpeechSynthesisUtterance(narration[i]);
-      if(currentVoice){ u.voice = currentVoice; u.lang = currentVoice.lang; }
+      var u = new SpeechSynthesisUtterance(narration[idx]);
+      var v = ttsVoiceFor(VOICE);
+      if(v){ u.voice = v; u.lang = v.lang; }
       u.rate = 0.97; u.pitch = 1; u.volume = 1;
-      var spokenFor = i;
-      u.onend = function(){ if(playing && spokenFor === i) advance(); };
+      u.onend = function(){ if(playing && i === idx && onDone) onDone(); };
       window.speechSynthesis.speak(u);
-      // safety: advance even if onend never fires
       clearTimeout(safety);
-      safety = setTimeout(function(){ if(playing && spokenFor === i) advance(); }, durations[i] * 2.4);
-    }catch(e){ /* fall back to timer via frame() */ }
+      safety = setTimeout(function(){ if(playing && i === idx && onDone) onDone(); }, durations[idx] * 2.6);
+      return true;
+    }catch(e){ return false; }
   }
+
+  // play scene `idx` narration; call onDone() when it finishes
+  function narrateScene(idx, onDone){
+    if(!soundOn) return;                                  // muted → frame() timer handles pacing
+    if(audioMissing || !audioSupported){ ttsScene(idx, onDone); return; }
+    narratingScene = idx;
+    narrator.onended = function(){ if(playing && i === idx && onDone) onDone(); };
+    narrator.onerror = function(){                        // clip not found / failed → fall back
+      audioMissing = true;
+      if(playing && i === idx){ ttsScene(idx, onDone); }
+    };
+    try{ narrator.src = clipUrl(VOICE, idx); narrator.currentTime = 0; }catch(e){}
+    var pr; try{ pr = narrator.play(); }catch(e){ pr = null; }
+    if(pr && pr.catch){ pr.catch(function(){}); }         // missing/blocked is handled by onerror
+    clearTimeout(safety);                                 // stall safety only — far longer than any clip
+    safety = setTimeout(function(){ if(playing && i === idx && narratingScene === idx && onDone) onDone(); }, durations[idx] * 3 + 4000);
+    prefetchClip(idx + 1);
+  }
+
+  voiceSel.addEventListener('change', function(){
+    VOICE = (voiceSel.value === 'clara') ? 'clara' : 'liam';
+    audioMissing = false;                                 // re-probe audio for the newly chosen voice
+    prefetchClip(i);
+    if(started && playing && soundOn){
+      stopNarration(); playStart = now(); carry = 0;
+      narrateScene(i, (i === N - 1 ? finish : advance));
+    }
+  });
 
   function now(){ return (window.performance && performance.now) ? performance.now() : Date.now(); }
 
@@ -656,32 +707,21 @@
     // playhead segment
     carry = 0; playStart = now();
     setFrac(i / N);
-    clearTimeout(safety);
+    stopNarration();
 
     if(i === N-1){
       replayBtn.classList.add('show');
       if(playing){
-        if(soundDriven()){ speakLast(); }
-        else { finish(); }
-        setFrac(1);
+        if(soundDriven()){ narrateScene(i, finish); }
+        else { setFrac(1); finish(); }
       }
     } else {
       replayBtn.classList.remove('show');
-      if(playing && soundDriven()) speakCurrent();
+      if(playing && soundDriven()) narrateScene(i, advance);
     }
   }
 
-  function speakLast(){
-    if(!soundOn || !hasTTS) return;
-    try{
-      window.speechSynthesis.cancel();
-      var u = new SpeechSynthesisUtterance(narration[i]);
-      if(currentVoice){ u.voice = currentVoice; u.lang = currentVoice.lang; }
-      u.rate = 0.97; u.pitch = 1; u.volume = 1;
-      u.onend = function(){ playing = false; setPlayIcon(); heartWrap.classList.remove('is-beating'); };
-      window.speechSynthesis.speak(u);
-    }catch(e){}
-  }
+  // (last-scene narration is handled by narrateScene(i, finish) in go())
 
   function advance(){
     clearTimeout(safety);
@@ -692,16 +732,17 @@
     playing = false; setPlayIcon();
     heartWrap.classList.remove('is-beating');
     setFrac(1); replayBtn.classList.add('show');
-    if(hasTTS) try{ window.speechSynthesis.cancel(); }catch(e){}
+    stopNarration();
   }
 
   function frame(ts){
     if(playing){
       var segStart = i / N, segEnd = (i+1) / N;
       var elapsed = ts - playStart + carry;
-      var p = Math.min(1, elapsed / durations[i]);
+      var dur = activeDurMs();
+      var p = Math.min(1, elapsed / dur);
       setFrac(segStart + (segEnd - segStart) * easeOut(p));
-      if(!soundDriven() && i < N-1 && elapsed >= durations[i]){ advance(); }
+      if(!soundDriven() && i < N-1 && elapsed >= dur){ advance(); }
     }
     raf = requestAnimationFrame(frame);
   }
@@ -720,17 +761,17 @@
     if(!started){ startPlayback(soundOn); return; }
     playing = true; setPlayIcon();
     heartWrap.classList.add('is-beating');
+    if(soundDriven()) carry = 0;        // restart the current line together with its audio
     playStart = now();
     if(!raf) raf = requestAnimationFrame(frame);
-    if(i === N-1){ if(soundDriven()) speakLast(); }
-    else if(soundDriven()) speakCurrent();
+    if(i === N-1){ if(soundDriven()) narrateScene(i, finish); }
+    else if(soundDriven()) narrateScene(i, advance);
   }
   function pause(){
     if(playing){ carry += now() - playStart; }
     playing = false; setPlayIcon();
     heartWrap.classList.remove('is-beating');
-    clearTimeout(safety);
-    if(hasTTS) try{ window.speechSynthesis.cancel(); }catch(e){}
+    stopNarration();
   }
 
   // controls
@@ -741,8 +782,8 @@
   nextBtn.addEventListener('click', function(){ var was = playing; pause(); go(i+1); if(was) play(); });
   soundBtn.addEventListener('click', function(){
     soundOn = !soundOn; setSoundIcon();
-    if(!soundOn){ if(hasTTS) try{ window.speechSynthesis.cancel(); }catch(e){} ; playStart = now(); carry = 0; }
-    else if(started && playing){ playStart = now(); carry = 0; if(soundDriven()) speakCurrent(); }
+    if(!soundOn){ stopNarration(); playStart = now(); carry = 0; }
+    else if(started && playing){ playStart = now(); carry = 0; if(soundDriven()) narrateScene(i, (i === N-1 ? finish : advance)); }
   });
   replayBtn.addEventListener('click', function(){ replayBtn.classList.remove('show'); pause(); go(0); play(); });
 
