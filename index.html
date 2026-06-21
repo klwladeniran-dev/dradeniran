@@ -840,7 +840,7 @@
             href="https://ocean.tips/dradeniran-new"
             target="_blank"
             rel="noopener noreferrer"
-            onclick="gtag('event', 'click', {event_category: 'Booking', event_label: 'New Patient'});"
+            onclick="gtag('event', 'booking_click', {patient_type: 'new', event_category: 'Booking', event_label: 'New Patient'});"
             aria-label="Book as a new patient"
           >
             <span class="book-btn-icon" aria-hidden="true">👤</span>
@@ -852,7 +852,7 @@
             href="https://ocean.tips/dradeniran-existing"
             target="_blank"
             rel="noopener noreferrer"
-            onclick="gtag('event', 'click', {event_category: 'Booking', event_label: 'Existing Patient'});"
+            onclick="gtag('event', 'booking_click', {patient_type: 'existing', event_category: 'Booking', event_label: 'Existing Patient'});"
             aria-label="Book as an existing patient"
           >
             <span class="book-btn-icon" aria-hidden="true">📋</span>
@@ -1083,7 +1083,369 @@
     </div>
 
   </main>
-<!-- Preventative Screening teaser -->
+<!-- =====================================================================
+     "THE DIFFERENCE A FAMILY DOCTOR MAKES" — evidence-based slideshow
+     WHERE TO PASTE: in index.html, find the line:
+         <!-- Preventative Screening teaser -->
+     ...and paste this ENTIRE block on the line immediately ABOVE it
+     (i.e. right after the closing </main> tag). It is fully self-
+     contained: its own scoped styles (.wfd-*) and script, so it will
+     not affect anything else on the page.
+
+     Sources are shown on each slide. All claims are paraphrased from:
+       • Pereira Gray et al., BMJ Open 2018 (continuity & mortality)
+       • Annals of Family Medicine 2024, Alberta (ER/hospital use)
+       • CMAJ 2007 & College of Family Physicians of Canada (cfp.ca)
+       • PLOS One 2024 systematic review (chronic disease/continuity)
+     ===================================================================== -->
+<section class="wfd-section" aria-roledescription="carousel" aria-label="The difference a family doctor makes">
+  <div class="wfd-head">
+    <span class="wfd-kicker">Why it matters</span>
+    <h2 class="wfd-title">The difference a family doctor makes</h2>
+    <p class="wfd-sub">Having one doctor who knows you over time isn&rsquo;t just more comfortable &mdash; the evidence links it to real, measurable benefits.</p>
+  </div>
+
+  <div class="wfd-carousel">
+    <div class="wfd-progress" aria-hidden="true"><span class="wfd-progress-bar"></span></div>
+
+    <div class="wfd-viewport">
+      <div class="wfd-track">
+
+        <!-- 1 -->
+        <article class="wfd-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 7: Someone who knows your whole story">
+          <div class="wfd-icon" aria-hidden="true">🤝</div>
+          <h3 class="wfd-h">Someone who knows your whole story</h3>
+          <p class="wfd-body">Care from one doctor you see over time &mdash; not a different stranger at every visit. The relationship between you and your family doctor is one of the founding principles of family medicine, and the trust built over the years leads to more personal, better-informed decisions about your health.</p>
+          <p class="wfd-source"><span>Source</span>College of Family Physicians of Canada</p>
+        </article>
+
+        <!-- 2 -->
+        <article class="wfd-slide" role="group" aria-roledescription="slide" aria-label="2 of 7: Linked to a longer life">
+          <div class="wfd-icon" aria-hidden="true">❤️</div>
+          <h3 class="wfd-h">Linked to a longer life</h3>
+          <p class="wfd-body">Seeing the same doctor over time is linked to living longer. A landmark review of 22 studies across 9 different countries found that, in the large majority, greater continuity of care went hand in hand with significantly lower death rates.</p>
+          <p class="wfd-source"><span>Source</span>Pereira Gray et al., BMJ Open, 2018</p>
+        </article>
+
+        <!-- 3 -->
+        <article class="wfd-slide" role="group" aria-roledescription="slide" aria-label="3 of 7: Fewer ER visits and hospital stays">
+          <div class="wfd-icon" aria-hidden="true">🏥</div>
+          <h3 class="wfd-h">Fewer ER visits and hospital stays</h3>
+          <p class="wfd-body">Patients who consistently see their own family doctor end up in the emergency department, and admitted to hospital, less often. In a large Canadian study this held true for patients at every level of health complexity.</p>
+          <p class="wfd-source"><span>Source</span>Annals of Family Medicine, 2024 (Alberta)</p>
+        </article>
+
+        <!-- 4 -->
+        <article class="wfd-slide" role="group" aria-roledescription="slide" aria-label="4 of 7: Problems caught early">
+          <div class="wfd-icon" aria-hidden="true">🛡️</div>
+          <h3 class="wfd-h">Problems caught early</h3>
+          <p class="wfd-body">A family doctor keeps your check-ups, vaccines and cancer screening on track, and is well placed to spot issues before they become serious. Continuity of care is consistently linked to a higher uptake of preventive care.</p>
+          <p class="wfd-source"><span>Source</span>College of Family Physicians of Canada &middot; CMAJ</p>
+        </article>
+
+        <!-- 5 -->
+        <article class="wfd-slide" role="group" aria-roledescription="slide" aria-label="5 of 7: Ongoing conditions, better controlled">
+          <div class="wfd-icon" aria-hidden="true">📊</div>
+          <h3 class="wfd-h">Ongoing conditions, better controlled</h3>
+          <p class="wfd-body">For things like high blood pressure, diabetes, asthma and thyroid problems, an ongoing relationship is linked to better day-to-day control and outcomes &mdash; your doctor adjusts your care as your needs change.</p>
+          <p class="wfd-source"><span>Source</span>CMAJ, 2007 &middot; PLOS&nbsp;One review, 2024</p>
+        </article>
+
+        <!-- 6 -->
+        <article class="wfd-slide" role="group" aria-roledescription="slide" aria-label="6 of 7: One place that coordinates everything">
+          <div class="wfd-icon" aria-hidden="true">🧭</div>
+          <h3 class="wfd-h">One place that coordinates everything</h3>
+          <p class="wfd-body">Your family doctor is your home base &mdash; making referrals, pulling together results from specialists and the hospital, reviewing your medications and making sure nothing slips through the cracks.</p>
+          <p class="wfd-source"><span>Source</span>College of Family Physicians of Canada</p>
+        </article>
+
+        <!-- 7 — call to action -->
+        <article class="wfd-slide wfd-slide--cta" role="group" aria-roledescription="slide" aria-label="7 of 7: Register as a new patient">
+          <div class="wfd-icon wfd-icon--light" aria-hidden="true">✅</div>
+          <h3 class="wfd-h">Don&rsquo;t have a family doctor yet?</h3>
+          <p class="wfd-body">I&rsquo;m accepting new patients of all ages across Windsor and Essex County &mdash; often within the same week. Registering takes just a couple of minutes.</p>
+          <a class="wfd-cta-btn"
+             href="https://ocean.tips/dradeniran-new"
+             target="_blank" rel="noopener noreferrer"
+             onclick="if(typeof gtag==='function'){gtag('event','click',{event_category:'Booking',event_label:'New Patient (benefits slideshow)'});}">
+             Register as a new patient →
+          </a>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="wfd-controls">
+      <button type="button" class="wfd-arrow wfd-prev" aria-label="Previous benefit">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="wfd-dots" role="tablist" aria-label="Choose a benefit"></div>
+      <button type="button" class="wfd-arrow wfd-next" aria-label="Next benefit">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <p class="wfd-foot">Drawn from peer-reviewed research and guidance from the College of Family Physicians of Canada.</p>
+
+  <style>
+    .wfd-section{
+      width:min(92vw,1000px);
+      margin:3rem auto;
+      box-sizing:border-box;
+      background:#f4faf9;
+      border:1px solid #e2efec;
+      border-radius:24px;
+      padding:clamp(1.5rem,4vw,2.75rem);
+      font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+      color:#111827;
+    }
+    .wfd-section *{box-sizing:border-box;}
+    .wfd-head{text-align:center;max-width:46ch;margin:0 auto .25rem;}
+    .wfd-kicker{
+      display:inline-block;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;
+      font-size:11px;color:#2d7d6f;margin-bottom:.55rem;
+    }
+    .wfd-title{
+      font-family:'Inter',sans-serif;font-weight:800;letter-spacing:-.5px;
+      font-size:clamp(21px,3vw,30px);line-height:1.15;margin:0 0 .5rem;color:#111827;
+    }
+    .wfd-sub{
+      margin:0 auto;font-size:clamp(14px,1.6vw,16px);line-height:1.55;color:#6b7280;
+    }
+
+    .wfd-carousel{position:relative;margin-top:1.5rem;}
+
+    /* card-style viewport */
+    .wfd-progress{
+      position:relative;height:4px;border-radius:4px;overflow:hidden;
+      background:#e2efec;margin:0 auto;width:min(100%,720px);
+    }
+    .wfd-progress-bar{
+      display:block;height:100%;width:0;border-radius:4px;
+      background:linear-gradient(90deg,#2d7d6f,#10b981);
+    }
+    .wfd-viewport{
+      width:min(100%,720px);margin:.9rem auto 0;
+      background:#fff;border:1px solid #e5e7eb;border-radius:18px;
+      box-shadow:0 22px 50px -34px rgba(17,24,39,.45);
+      overflow:hidden;
+    }
+    .wfd-track{display:grid;}
+    .wfd-slide{
+      grid-area:1 / 1;
+      opacity:0;visibility:hidden;pointer-events:none;
+      transition:opacity .45s ease, visibility 0s linear .45s;
+      padding:clamp(1.6rem,4vw,2.4rem);
+      text-align:center;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      min-height:296px;
+    }
+    .wfd-slide.is-active{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .45s ease, visibility 0s;}
+
+    .wfd-icon{
+      width:60px;height:60px;border-radius:50%;
+      background:#e8f4f2;display:flex;align-items:center;justify-content:center;
+      font-size:28px;line-height:1;margin-bottom:1.05rem;flex:none;
+    }
+    .wfd-h{
+      font-family:'Inter',sans-serif;font-weight:800;letter-spacing:-.4px;
+      font-size:clamp(18px,2.4vw,24px);line-height:1.2;margin:0 0 .7rem;color:#111827;
+      max-width:22ch;
+    }
+    .wfd-body{
+      margin:0;font-size:clamp(14.5px,1.7vw,16.5px);line-height:1.6;color:#374151;
+      max-width:52ch;
+    }
+    .wfd-source{
+      margin:1.15rem 0 0;font-size:12px;color:#9ca3af;
+      display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;justify-content:center;
+    }
+    .wfd-source span{
+      font-weight:800;letter-spacing:.8px;text-transform:uppercase;font-size:9.5px;
+      color:#2d7d6f;background:#e8f4f2;padding:.18rem .42rem;border-radius:5px;
+    }
+
+    /* CTA slide */
+    .wfd-slide--cta{
+      background:linear-gradient(135deg,#111827,#1f4f45);
+    }
+    .wfd-slide--cta .wfd-h{color:#fff;}
+    .wfd-slide--cta .wfd-body{color:rgba(255,255,255,.82);}
+    .wfd-icon--light{background:rgba(255,255,255,.12);}
+    .wfd-cta-btn{
+      display:inline-block;margin-top:1.3rem;
+      background:#2d7d6f;color:#fff;text-decoration:none;
+      font-family:'Inter',sans-serif;font-weight:700;font-size:1rem;
+      padding:.8rem 1.5rem;border-radius:11px;white-space:nowrap;
+      box-shadow:0 14px 28px -14px rgba(45,125,111,.8);
+      transition:background .2s,transform .15s;
+    }
+    .wfd-cta-btn:hover{background:#236659;transform:translateY(-1px);}
+
+    /* controls */
+    .wfd-controls{
+      display:flex;align-items:center;justify-content:center;gap:.85rem;margin-top:1.15rem;
+    }
+    .wfd-arrow{
+      width:40px;height:40px;border-radius:50%;flex:none;cursor:pointer;
+      border:1px solid #d6e6e2;background:#fff;color:#1f4f45;
+      display:flex;align-items:center;justify-content:center;
+      transition:background .18s,border-color .18s,color .18s,transform .15s;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .wfd-arrow:hover{background:#2d7d6f;border-color:#2d7d6f;color:#fff;}
+    .wfd-arrow:active{transform:scale(.94);}
+    .wfd-arrow:focus-visible{outline:3px solid rgba(45,125,111,.4);outline-offset:2px;}
+
+    .wfd-dots{display:flex;align-items:center;gap:.5rem;}
+    .wfd-dot{
+      width:9px;height:9px;border-radius:50%;padding:0;cursor:pointer;flex:none;
+      border:none;background:#cbd5cf;transition:background .2s,transform .2s,width .25s;
+      -webkit-tap-highlight-color:transparent;
+    }
+    .wfd-dot:hover{background:#9bb8b1;}
+    .wfd-dot[aria-current="true"]{background:#2d7d6f;width:24px;border-radius:5px;}
+    .wfd-dot:focus-visible{outline:2px solid rgba(45,125,111,.5);outline-offset:2px;}
+
+    .wfd-foot{
+      text-align:center;margin:1.25rem auto 0;font-size:11.5px;color:#9ca3af;line-height:1.5;
+      max-width:54ch;
+    }
+
+    @media (max-width:480px){
+      .wfd-slide{min-height:320px;}
+      .wfd-source{font-size:11px;}
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .wfd-slide{transition:none;}
+      .wfd-cta-btn,.wfd-arrow,.wfd-dot{transition:none;}
+      .wfd-progress{display:none;}
+    }
+  </style>
+
+  <script>
+  (function(){
+    var root = document.currentScript ? document.currentScript.closest('.wfd-section') : null;
+    if(!root){ var all=document.querySelectorAll('.wfd-section'); root=all[all.length-1]; }
+    if(!root) return;
+
+    var slides = Array.prototype.slice.call(root.querySelectorAll('.wfd-slide'));
+    var dotsWrap = root.querySelector('.wfd-dots');
+    var prev = root.querySelector('.wfd-prev');
+    var next = root.querySelector('.wfd-next');
+    var bar  = root.querySelector('.wfd-progress-bar');
+    var n = slides.length;
+    var i = 0;
+    var timer = null;
+    var DURATION = 7000;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // build dots
+    var dots = [];
+    for(var k=0;k<n;k++){
+      (function(k){
+        var b = document.createElement('button');
+        b.type='button';
+        b.className='wfd-dot';
+        b.setAttribute('role','tab');
+        b.setAttribute('aria-label','Go to benefit '+(k+1)+' of '+n);
+        b.addEventListener('click', function(){ go(k,true); });
+        dotsWrap.appendChild(b);
+        dots.push(b);
+      })(k);
+    }
+
+    function paint(){
+      for(var s=0;s<n;s++){
+        var on = (s===i);
+        slides[s].classList.toggle('is-active', on);
+        slides[s].setAttribute('aria-hidden', on ? 'false':'true');
+        dots[s].setAttribute('aria-current', on ? 'true':'false');
+        dots[s].setAttribute('aria-selected', on ? 'true':'false');
+      }
+    }
+
+    function resetProgress(){
+      if(reduce || !bar) return;
+      bar.style.transition='none';
+      bar.style.width='0%';
+      // force reflow then animate
+      void bar.offsetWidth;
+      bar.style.transition='width '+DURATION+'ms linear';
+      bar.style.width='100%';
+    }
+    function stopProgress(){
+      if(!bar) return;
+      var w = getComputedStyle(bar).width;
+      bar.style.transition='none';
+      bar.style.width=w;
+    }
+
+    function go(to, manual){
+      i = (to + n) % n;
+      paint();
+      if(manual){ restart(); } else { resetProgress(); }
+    }
+    function advance(){ go(i+1, false); }
+
+    function start(){
+      if(reduce) return;
+      stop();
+      resetProgress();
+      timer = setInterval(advance, DURATION);
+    }
+    function stop(){
+      if(timer){ clearInterval(timer); timer=null; }
+    }
+    function restart(){ stop(); start(); }
+    function pause(){ stop(); stopProgress(); }
+
+    prev.addEventListener('click', function(){ go(i-1,true); });
+    next.addEventListener('click', function(){ go(i+1,true); });
+
+    // pause on hover / focus / touch
+    root.addEventListener('mouseenter', pause);
+    root.addEventListener('mouseleave', function(){ if(!reduce) start(); });
+    root.addEventListener('focusin', pause);
+    root.addEventListener('focusout', function(e){
+      if(!root.contains(e.relatedTarget) && !reduce){ start(); }
+    });
+
+    // keyboard arrows
+    root.addEventListener('keydown', function(e){
+      if(e.key==='ArrowLeft'){ e.preventDefault(); go(i-1,true); }
+      else if(e.key==='ArrowRight'){ e.preventDefault(); go(i+1,true); }
+    });
+
+    // swipe
+    var x0=null;
+    var vp = root.querySelector('.wfd-viewport');
+    vp.addEventListener('pointerdown', function(e){ x0=e.clientX; pause(); });
+    vp.addEventListener('pointerup', function(e){
+      if(x0===null) return;
+      var dx=e.clientX-x0; x0=null;
+      if(Math.abs(dx)>40){ go(i + (dx<0?1:-1), true); }
+      else if(!reduce){ start(); }
+    });
+    vp.addEventListener('pointercancel', function(){ x0=null; if(!reduce) start(); });
+
+    // pause when tab not visible
+    document.addEventListener('visibilitychange', function(){
+      if(document.hidden){ pause(); } else if(!reduce){ start(); }
+    });
+
+    paint();
+    start();
+  })();
+  </script>
+</section>
+<!-- =====================================================================
+     END "THE DIFFERENCE A FAMILY DOCTOR MAKES" slideshow
+     ===================================================================== -->
+
+  <!-- Preventative Screening teaser -->
 <section style="width:min(92vw,1000px);margin:2.5rem auto;background:linear-gradient(135deg,#111827,#1f4f45);border-radius:20px;padding:clamp(1.6rem,4vw,2.6rem);color:#fff;display:flex;flex-wrap:wrap;align-items:center;gap:1.5rem;justify-content:space-between;box-shadow:0 18px 44px -26px rgba(17,24,39,.5)">
   <div style="flex:1;min-width:260px">
     <div style="font-weight:800;letter-spacing:1.6px;text-transform:uppercase;font-size:11px;color:#73c0b3;margin-bottom:.5rem">Preventive care</div>
