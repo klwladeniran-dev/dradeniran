@@ -817,7 +817,10 @@
     .pn-number { display: inline-block; font-family: 'Inter', sans-serif; font-weight: 800; font-size: 2rem; letter-spacing: -.5px; color: #111827; font-variant-numeric: tabular-nums; text-decoration: none; line-height: 1.1; }
     .pn-number:hover { color: #2d7d6f; }
     .pn-rule { width: 44px; height: 3px; background: #2d7d6f; border-radius: 3px; margin: .55rem auto .85rem; }
-    .pn-sub { color: #6b7280; font-size: .92rem; line-height: 1.55; max-width: 34ch; margin: 0 auto 1.15rem; }
+    .pn-dest { color: #6b7280; font-size: .92rem; line-height: 1.5; max-width: 30ch; margin: .35rem auto .2rem; }
+    .pn-old { background: #f9fafb; border: 1px solid #eef0f2; border-radius: 10px; padding: .6rem .75rem; margin: 0 auto 1.15rem; text-align: center; }
+    .pn-oldnum { display: block; color: #dc2626; text-decoration: line-through; font-weight: 700; font-size: .98rem; font-variant-numeric: tabular-nums; letter-spacing: .2px; }
+    .pn-oldloc { display: block; color: #6b7280; font-size: .82rem; margin-top: 3px; }
     .pn-actions { display: flex; flex-direction: column; gap: .55rem; }
     .pn-call { background: #2d7d6f; color: #fff; text-decoration: none; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1rem; padding: .8rem 1.3rem; border-radius: 11px; box-shadow: 0 14px 28px -14px rgba(45,125,111,.8); }
     .pn-call:hover { background: #236659; }
@@ -1678,15 +1681,19 @@
       <div class="pn-head">
         <svg class="pn-headleaf" viewBox="180 87 268 294" aria-hidden="true"><path d="M201 232l-13.3 4.4 61.4 54c4.7 13.7-1.6 17.8-5.6 25l66.6-8.4-1.6 67 13.9-.3-3.1-66.6 66.7 8c-4.1-8.7-7.8-13.3-4-27.2l61.3-51-10.7-4c-8.8-6.8 3.8-32.6 5.6-48.9 0 0-35.7 12.3-38 5.8l-9.2-17.5-32.6 35.8c-3.5.9-5-.5-5.9-3.5l15-74.8-23.8 13.4q-3.2 1.3-5.2-2.2l-23-46-23.6 47.8q-2.8 2.5-5 .7L264 130.8l13.7 74.1c-1.1 3-3.7 3.8-6.7 2.2l-31.2-35.3c-4 6.5-6.8 17.1-12.2 19.5s-23.5-4.5-35.6-7c4.2 14.8 17 39.6 9 47.7"/></svg>
         <div class="pn-eyebrow">New phone number</div>
-        <h2 id="pnTitle">We&rsquo;ve got a new number</h2>
+        <h2 id="pnTitle">We&rsquo;ve got a direct line</h2>
       </div>
       <div class="pn-body">
         <div class="pn-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.1 2.2z"/></svg>
         </div>
         <a class="pn-number" href="tel:+15198008333" onclick="if(typeof gtag==='function'){gtag('event','call_click',{event_category:'Contact',event_label:'Popup number'});}">(519)&nbsp;800-8333</a>
+        <p class="pn-dest" id="pnSub">Rings Hope Central &mdash; reach us directly now</p>
         <div class="pn-rule" aria-hidden="true"></div>
-        <p class="pn-sub" id="pnSub">Same clinic, same team &mdash; just a new phone line. Please update your contacts. Our previous number is being retired.</p>
+        <div class="pn-old">
+          <span class="pn-oldnum">(519)&nbsp;252-2757</span>
+          <span class="pn-oldloc">Hope Ouellette</span>
+        </div>
         <div class="pn-actions">
           <a class="pn-call" href="tel:+15198008333" onclick="if(typeof gtag==='function'){gtag('event','call_click',{event_category:'Contact',event_label:'Popup call button'});}">Call (519)&nbsp;800-8333</a>
           <button class="pn-ghost" id="pnGot" type="button">Got it, thanks</button>
