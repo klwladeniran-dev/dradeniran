@@ -1697,7 +1697,7 @@
 
   <script>
   (function () {
-    /* Canada Day banner — dismiss + keep sticky scroll offset correct */
+    /* Sticky offset helper + Canada Day banner (auto-off at midnight) */
     var stack = document.querySelector('.cd-topstack');
     function syncTopPad() {
       var h = stack ? stack.offsetHeight : 72;
@@ -1708,23 +1708,32 @@
 
     var banner = document.getElementById('cdBanner');
     var cdDismiss = document.getElementById('cdDismiss');
-    try {
-      if (banner && localStorage.getItem('cd_canada_banner_2026') === 'dismissed') {
-        banner.style.display = 'none';
+    function hideBanner() {
+      if (banner) { banner.style.display = 'none'; syncTopPad(); }
+    }
+    if (banner) {
+      /* Canada Day ends at midnight Eastern — the start of July 2, 2026. */
+      var CANADA_DAY_END = new Date('2026-07-02T00:00:00-04:00').getTime();
+      var now = Date.now();
+      var dismissed = false;
+      try { dismissed = localStorage.getItem('cd_canada_banner_2026') === 'dismissed'; } catch (e) {}
+      if (now >= CANADA_DAY_END || dismissed) {
+        hideBanner();
+      } else {
+        /* If the page is left open past midnight, switch the banner off live. */
+        var msLeft = CANADA_DAY_END - now;
+        if (msLeft > 0 && msLeft < 2147483647) { setTimeout(hideBanner, msLeft); }
       }
-    } catch (e) {}
-    syncTopPad();
-    if (cdDismiss && banner) {
-      cdDismiss.addEventListener('click', function () {
-        banner.style.display = 'none';
-        try { localStorage.setItem('cd_canada_banner_2026', 'dismissed'); } catch (e) {}
-        syncTopPad();
-      });
+      if (cdDismiss) {
+        cdDismiss.addEventListener('click', function () {
+          hideBanner();
+          try { localStorage.setItem('cd_canada_banner_2026', 'dismissed'); } catch (e) {}
+        });
+      }
     }
 
-    /* New-number popup — shows once per visitor */
+    /* New-number popup — shows on every visit / refresh */
     var overlay = document.getElementById('pnOverlay');
-    var KEY = 'cd_phone_notice_v1';
     function onKey(e) { if (e.key === 'Escape') closePopup(); }
     function openPopup() {
       overlay.classList.add('open');
@@ -1736,12 +1745,9 @@
       overlay.classList.remove('open');
       document.body.style.overflow = '';
       document.removeEventListener('keydown', onKey);
-      try { localStorage.setItem(KEY, 'seen'); } catch (e) {}
     }
     if (overlay) {
-      var seen = false;
-      try { seen = localStorage.getItem(KEY) === 'seen'; } catch (e) {}
-      if (!seen) { setTimeout(openPopup, 900); }
+      setTimeout(openPopup, 900);
       document.getElementById('pnClose').addEventListener('click', closePopup);
       document.getElementById('pnGot').addEventListener('click', closePopup);
       overlay.addEventListener('click', function (e) { if (e.target === overlay) closePopup(); });
