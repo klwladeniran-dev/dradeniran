@@ -459,19 +459,34 @@
   }
 
   // ---------- COLORECTAL ----------
+  // Updated for Ontario ColonCancerCheck changes effective July 1, 2026:
+  //  - Average risk: FIT every 2 years, now starting at age 45 (was 50), to 74.
+  //  - Increased risk (a first-degree relative diagnosed under 60, or as reported
+  //    here, a relative diagnosed at any age we treat cautiously): colonoscopy
+  //    every 5 years, starting at age 40, or 10 years before the relative's
+  //    diagnosis age — whichever comes first (was clamped between 40 and 50).
+  //  - A single relative diagnosed at 60 or older is now treated the same as
+  //    average risk (FIT at 45), per the updated guidance.
   function colon(a, today) {
     var key = 'colon';
     if (a.colonResult === 'abnormal') return provider('Colorectal cancer', key,
       'An abnormal FIT is normally followed by a colonoscopy (usually within ~8 weeks). Please follow your care team\u2019s plan.');
 
-    if (a.colonFH) {
+    var relAgeKnown = (typeof a.relAge === 'number' && a.relAge > 0);
+    var relAge = relAgeKnown ? a.relAge : null;
+    // Increased risk applies if there's a family history and the relative's age
+    // at diagnosis is unknown (treated cautiously) or was under 60.
+    var increasedRisk = !!(a.colonFH && (!relAgeKnown || relAge < 60));
+
+    if (increasedRisk) {
       var title = 'Colorectal cancer (colonoscopy)';
-      var relAge = (typeof a.relAge === 'number' && a.relAge > 0) ? a.relAge : 60;
-      var startAge = Math.max(40, Math.min(50, relAge - 10));
-      var genetics = (relAge < 50) ? ' Because a close relative was diagnosed young, a genetics referral may also help.' : '';
+      var effRelAge = relAgeKnown ? relAge : 60;
+      var startAge = Math.min(40, effRelAge - 10);
+      if (startAge < 18) startAge = 18;
+      var genetics = (relAgeKnown && relAge < 50) ? ' Because a close relative was diagnosed young, a genetics referral may also help.' : '';
       if (a.age < startAge) return { key: key, title: title, status: 'info', pill: 'Upcoming',
         headline: 'With your family history, a colonoscopy is recommended from age ' + startAge + '.',
-        detail: 'That\u2019s 10 years before your relative\u2019s diagnosis, or 50 — whichever comes first.' + genetics,
+        detail: 'That\u2019s 10 years before your relative\u2019s diagnosis, or 40 — whichever comes first.' + genetics,
         book: true, source: SRC[key].name, sourceUrl: SRC[key].url };
       if (a.age > 74) return { key: key, title: title, status: 'info', pill: 'Discuss',
         headline: 'After 74, colon screening is individual — let\u2019s talk about what\u2019s right for you.', detail: '',
@@ -487,8 +502,9 @@
     }
 
     var ta = 'Colorectal cancer (FIT)';
-    if (a.age < 50) return { key: key, title: ta, status: 'info', pill: 'Not yet',
-      headline: 'Colon screening starts at age 50 for average risk.', detail: 'A simple at-home FIT, every 2 years.',
+    var famNote = (a.colonFH && relAgeKnown && relAge >= 60) ? ' Since your relative was diagnosed at 60 or older, average-risk screening applies to you.' : '';
+    if (a.age < 45) return { key: key, title: ta, status: 'info', pill: 'Not yet',
+      headline: 'Colon screening starts at age 45 for average risk.', detail: 'A simple at-home FIT, every 2 years.' + famNote,
       book: false, source: SRC[key].name, sourceUrl: SRC[key].url };
     if (a.age > 74) return { key: key, title: ta, status: 'info', pill: 'Discuss',
       headline: 'After 74, screening is individual — let\u2019s talk about what\u2019s right for you.', detail: '',
@@ -498,13 +514,13 @@
     var d = fromLast(a.colonDate, years, today);
     if (d.has && !d.overdue) return { key: key, title: ta, status: 'up', pill: 'Up to date',
       headline: 'Up to date — next due around ' + fmt(d.next) + '.',
-      detail: years === 10 ? 'After a normal colonoscopy, the usual interval is about 10 years.' : 'A simple at-home FIT every 2 years.', chip: 'Next: ' + fmt(d.next),
+      detail: (years === 10 ? 'After a normal colonoscopy, the usual interval is about 10 years.' : 'A simple at-home FIT every 2 years.') + famNote, chip: 'Next: ' + fmt(d.next),
       book: false, source: SRC[key].name, sourceUrl: SRC[key].url };
     if (d.has && d.overdue) return { key: key, title: ta, status: 'due', pill: 'Due now',
-      headline: 'Due now — your last ' + lbl + ' was ' + fmt(d.last) + '.', detail: 'For average risk, FIT every 2 years is the standard.',
+      headline: 'Due now — your last ' + lbl + ' was ' + fmt(d.last) + '.', detail: 'For average risk, FIT every 2 years is the standard.' + famNote,
       book: true, source: SRC[key].name, sourceUrl: SRC[key].url };
     return { key: key, title: ta, status: 'due', pill: 'Get started',
-      headline: 'You\u2019re eligible for FIT — an easy at-home test.', detail: 'Repeated every 2 years when results are normal.',
+      headline: 'You\u2019re eligible for FIT — an easy at-home test.', detail: 'Repeated every 2 years when results are normal.' + famNote,
       book: true, source: SRC[key].name, sourceUrl: SRC[key].url };
   }
 

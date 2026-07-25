@@ -59,6 +59,7 @@
       "image": "https://dradeniran.ca/drka.jpg",
       "logo": "https://dradeniran.ca/hope_logo.png",
       "telephone": "+1-519-800-8333",
+      "faxNumber": "+1-519-800-0529",
       "medicalSpecialty": "PrimaryCare",
       "paymentAccepted": "OHIP (Ontario Health Insurance Plan), Medavie Blue Cross, Interim Federal Health Program (IFH), Private pay",
       "currenciesAccepted": "CAD",
@@ -299,6 +300,30 @@
       transition: background .2s;
     }
     .nav-book:hover { background: var(--accent-hover); }
+
+    /* ── LANGUAGE SWITCHER ── */
+    .lang-switch { position: relative; }
+    .lang-switch select {
+      appearance: none; -webkit-appearance: none; -moz-appearance: none;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.18);
+      color: rgba(255,255,255,.9);
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: .85rem;
+      padding: .45rem 1.9rem .45rem .7rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .2s, border-color .2s;
+    }
+    .lang-switch select:hover { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.3); }
+    .lang-switch select:focus { outline: 2px solid var(--emerald); outline-offset: 1px; }
+    .lang-switch::after {
+      content: ""; position: absolute; right: .65rem; top: 50%; width: 7px; height: 7px;
+      border-right: 1.6px solid rgba(255,255,255,.75); border-bottom: 1.6px solid rgba(255,255,255,.75);
+      transform: translateY(-65%) rotate(45deg); pointer-events: none;
+    }
+    .lang-switch select option { background: #111827; color: #fff; }
 
     /* ── MAIN ── */
     main {
@@ -908,10 +933,31 @@
       <div class="nav-right">
         <a class="link" href="screening.html">Preventative Screening</a>
         <a class="link" href="immunizations.html">Immunizations</a>
+        <div class="lang-switch">
+          <select id="langSwitch" aria-label="Choose a language" onchange="handleLangSwitch(this)">
+            <option value="en" selected>🇨🇦 English</option>
+            <option value="ar">🇸🇦 العربية</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="hi">🇮🇳 हिन्दी</option>
+            <option value="es">🇪🇸 Español</option>
+          </select>
+        </div>
         <a class="nav-book" href="#book">Book</a>
       </div>
     </div>
   </nav>
+  <script>
+    // Language versions are being prepared. English is fully live; other
+    // languages will link to /ar/, /fr/, /hi/, /es/ once translated pages
+    // are published, keeping this same dropdown and select value.
+    function handleLangSwitch(sel) {
+      var lang = sel.value;
+      if (lang === 'en') return;
+      var names = { ar: 'Arabic (العربية)', fr: 'French (Français)', hi: 'Hindi (हिन्दी)', es: 'Spanish (Español)' };
+      alert((names[lang] || lang) + ' version of this site is coming soon. Thank you for your patience — please continue in English for now.');
+      sel.value = 'en';
+    }
+  </script>
 
   </div><!-- /.cd-topstack -->
 
@@ -964,8 +1010,9 @@
         <div class="meta-divider"></div>
 
         <p class="bio">
-          I am a family doctor trained in the UK, and I care for patients of all ages — from newborns
-          to seniors — right here in Windsor. I believe good healthcare is about more than just one
+          I have over 16 years of experience as a physician, and I care for patients of all ages —
+          from newborns to seniors — right here in Windsor. I believe good healthcare is about
+          more than just one
           visit. My goal is to know you and your health over time. Whether you are bringing your baby
           in for their first check-up or vaccinations, dealing with a sudden illness, managing a
           long-term condition, or simply due for your yearly physical or health screening, you will
@@ -1212,6 +1259,7 @@
           3955 Tecumseh Rd E<br />
           Windsor, ON
           <small>Free parking available</small>
+          <small>Fax: (519) 800-0529</small>
         </p>
         <a
           class="location-directions"
@@ -1688,6 +1736,8 @@
     <img class="footer-logo" src="hope_logo.png" alt="Hope Health" onerror="this.style.display='none'" />
     <p>
       <a href="tel:+15198008333">(519) 800-8333</a>
+      &nbsp;·&nbsp;
+      Fax (519) 800-0529
       &nbsp;·&nbsp;
       <a href="https://www.google.com/maps?q=3955+Tecumseh+Rd+E,+Windsor,+ON" target="_blank" rel="noopener noreferrer">3955 Tecumseh Rd E, Windsor, ON</a>
     </p>
