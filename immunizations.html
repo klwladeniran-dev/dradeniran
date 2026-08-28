@@ -22,8 +22,8 @@
 
 <style>
   :root{
-    --nav-bg:#111827; --accent:#2d7d6f; --accent-hover:#236659; --accent-deep:#1f4f45;
-    --accent-light:#e8f4f2; --tint:#f1f8f6; --tint-3:#b2d8d2; --emerald:#10b981;
+    --nav-bg:#111827; --accent:#1e40af; --accent-hover:#1e3a8a; --accent-deep:#172554;
+    --accent-light:#eff6ff; --tint:#eff6ff; --tint-3:#bfdbfe; --emerald:#10b981;
     --adult:#1e40af; --adult-dark:#1e3a8a; --adult-soft:#eff6ff;
     --bg:#f9fafb; --white:#fff; --text:#111827; --muted:#6b7280; --border:#e5e7eb;
     --green-badge:#ecfdf5; --green-text:#065f46; --blue-badge:#eff6ff; --blue-text:#1e40af;
@@ -144,7 +144,7 @@
   .field{flex:1;min-width:220px}
   label{display:block;font-weight:600;margin-bottom:6px}
   input[type=date]{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:1rem;font-family:inherit;color:var(--text)}
-  input[type=date]:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(45,125,111,.14)}
+  input[type=date]:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(30,64,175,.14)}
   #calcMsg{margin:16px 0 0;font-weight:600}
   .results{margin-top:20px;display:none;gap:12px;grid-template-columns:1fr}
   .res-item{display:grid;grid-template-columns:160px 1fr auto;gap:14px;align-items:center;padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--tint)}
@@ -175,7 +175,7 @@
   .book-band{max-width:var(--maxw);background:linear-gradient(180deg,var(--accent-light),#fff);border:1px solid var(--tint-3);border-radius:20px;padding:clamp(1.5rem,4vw,2.4rem);text-align:center}
   .book-band h2{font-weight:800;letter-spacing:-.5px;font-size:clamp(22px,3.4vw,30px);margin:.3rem 0 0}
   .book-band p{color:var(--muted);max-width:48ch;margin:.6rem auto 0;font-weight:500}
-  .book-btns{display:grid;grid-template-columns:1fr 1fr;gap:1rem;max-width:560px;margin:1.4rem auto 0}
+  .book-btns{display:grid;grid-template-columns:1fr;gap:1rem;max-width:320px;margin:1.4rem auto 0}
   .obtn{display:flex;flex-direction:column;align-items:center;gap:3px;background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:1.1rem;text-decoration:none;box-shadow:var(--shadow-sm);transition:transform .18s,border-color .18s}
   .obtn:hover{transform:translateY(-3px);border-color:var(--accent)}
   .obtn .ic{font-size:1.5rem;line-height:1}
@@ -489,11 +489,8 @@
       <h2>Due for a vaccine, or not sure?</h2>
       <p>Whether it's your baby's first shots, a teen's school vaccines, a flu shot, or your shingles and pneumococcal vaccines, Dr. Adeniran can review your record and get you up to date — right here in Windsor.</p>
       <div class="book-btns">
-        <a class="obtn" id="bookNew" href="https://ocean.tips/dradeniran-new" target="_blank" rel="noopener">
-          <span class="ic">👤</span><span class="lab">New Patient</span><span class="sub">Register &amp; book your first visit</span>
-        </a>
-        <a class="obtn" id="bookExisting" href="https://ocean.tips/dradeniran-existing" target="_blank" rel="noopener">
-          <span class="ic">📅</span><span class="lab">Current Patient</span><span class="sub">Book your next appointment</span>
+        <a class="obtn" id="bookOnline" href="https://patient.medeohealth.com/booking/hope-health-central" target="_blank" rel="noopener">
+          <span class="ic">📅</span><span class="lab">Book Appointment Online</span><span class="sub">New and existing patients welcome</span>
         </a>
       </div>
       <div class="callrow">Prefer to call? <a href="tel:+15198008333">(519) 800-8333</a></div>
@@ -507,7 +504,7 @@
     <div class="fname">Dr. Kolawole Adeniran</div>
     <div class="frow">Family Medicine · Windsor, Ontario</div>
     <div class="frow"><a href="tel:+15198008333">(519) 800-8333</a> &nbsp;·&nbsp; <a href="https://www.google.com/maps?q=3955+Tecumseh+Rd+E,+Windsor,+ON" target="_blank" rel="noopener">3955 Tecumseh Rd E, Windsor, ON</a></div>
-    <div class="frow" style="font-size:.78rem;color:rgba(255,255,255,.5)">Bookings powered by <a href="https://www.oceanmd.com" target="_blank" rel="noopener">Ocean MD</a></div>
+    <div class="frow" style="font-size:.78rem;color:rgba(255,255,255,.5)">Bookings powered by <a href="https://medeohealth.com" target="_blank" rel="noopener">Medeo</a></div>
     <a class="back-home" href="https://dradeniran.ca">← Back to dradeniran.ca</a>
     <div class="fsrc">Schedule: Ontario's routine immunization schedule (Ministry of Health). FAQ answers: World Health Organization, Public Health Agency of Canada &amp; Health Canada. Educational information for patients of Dr. Kolawole Adeniran — not a substitute for medical advice.</div>
   </div>
@@ -698,8 +695,7 @@ function runCalc(){
 document.getElementById('printBtn').addEventListener('click',()=>window.print());
 
 /* ================= BOOKING EVENTS ================= */
-document.getElementById('bookNew').addEventListener('click',()=>track_event('booking_click',{event_category:'Booking',event_label:'New Patient — immunizations page'}));
-document.getElementById('bookExisting').addEventListener('click',()=>track_event('booking_click',{event_category:'Booking',event_label:'Current Patient — immunizations page'}));
+document.getElementById('bookOnline').addEventListener('click',()=>track_event('booking_click',{event_category:'Booking',event_label:'Book Appointment — immunizations page'}));
 </script>
 </body>
 </html>
