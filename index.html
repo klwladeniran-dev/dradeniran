@@ -163,7 +163,7 @@
     {
       "@type": "Question",
       "name": "Are you accepting new patients, and how do I register?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Dr. Adeniran is accepting new patients of all ages in Windsor and Essex County, often within the same week. To register, choose the New Patient option in the booking section, which registers you and books your first visit online, or call (519) 800-8333. You do not need a referral to join a family practice." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Dr. Adeniran is accepting new patients of all ages in Windsor and Essex County, often within the same week. To register, click the Book link above, which takes you straight to online booking for your first visit, or call (519) 800-8333. You do not need a referral to join a family practice." }
     },
     {
       "@type": "Question",
@@ -173,7 +173,12 @@
     {
       "@type": "Question",
       "name": "Do you accept walk-ins, or do I need an appointment?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Walk-ins are welcome, and booking ahead usually means a shorter wait and a time that suits you. Existing patients can book a follow-up, renewal or routine visit online; new patients should start with the New Patient option. For anything urgent or life-threatening, call 911 or go to the nearest emergency department." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Walk-ins are welcome, and booking ahead usually means a shorter wait and a time that suits you. Both new and existing patients can book online using the Book link above. For anything urgent or life-threatening, call 911 or go to the nearest emergency department." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I get an opioid or controlled-substance prescription refill as a walk-in?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. As a policy, walk-in visits do not include opioid or other controlled-substance prescription refills. Patients needing this kind of refill should follow up with their own family doctor. For anything urgent or life-threatening, call 911 or go to the nearest emergency department." }
     },
     {
       "@type": "Question",
@@ -184,16 +189,6 @@
       "@type": "Question",
       "name": "Can my whole family register, including my children?",
       "acceptedAnswer": { "@type": "Answer", "text": "Yes. This is a family practice caring for all ages, from babies and children to teens, adults and seniors, so you can register your whole family. Please note that each person attending needs their own appointment booked, even when you come in together as a family. Care includes well-baby and childhood checkups, immunizations, women's and seniors' health, chronic conditions and preventive screening." }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I book, and can I do it online?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Booking is online. Use the New Patient option for your first visit or the Existing Patient option for a follow-up. You can also call (519) 800-8333." }
-    },
-    {
-      "@type": "Question",
-      "name": "Where are you located, and what are the clinic hours?",
-      "acceptedAnswer": { "@type": "Answer", "text": "My current practice is based at Hope Health Central, 3955 Tecumseh Rd E, Windsor, Ontario. Clinic hours and a map are listed on this page." }
     }
   ]
 }
@@ -295,30 +290,6 @@
       transition: background .2s;
     }
     .nav-book:hover { background: var(--accent-hover); }
-
-    /* ── LANGUAGE SWITCHER ── */
-    .lang-switch { position: relative; }
-    .lang-switch select {
-      appearance: none; -webkit-appearance: none; -moz-appearance: none;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.18);
-      color: rgba(255,255,255,.9);
-      font-family: 'Inter', sans-serif;
-      font-weight: 600;
-      font-size: .85rem;
-      padding: .45rem 1.9rem .45rem .7rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background .2s, border-color .2s;
-    }
-    .lang-switch select:hover { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.3); }
-    .lang-switch select:focus { outline: 2px solid var(--emerald); outline-offset: 1px; }
-    .lang-switch::after {
-      content: ""; position: absolute; right: .65rem; top: 50%; width: 7px; height: 7px;
-      border-right: 1.6px solid rgba(255,255,255,.75); border-bottom: 1.6px solid rgba(255,255,255,.75);
-      transform: translateY(-65%) rotate(45deg); pointer-events: none;
-    }
-    .lang-switch select option { background: #111827; color: #fff; }
 
     /* ── MAIN ── */
     main {
@@ -810,7 +781,7 @@
     .trend-tag { display: inline-block; background: var(--accent-light); color: var(--accent-deep); font-size: .7rem; font-weight: 700; padding: 3px 9px; border-radius: 999px; margin-left: 6px; vertical-align: middle; white-space: nowrap; }
 
     /* ===================================================================== */
-    /*  CANADA DAY STICKY BANNER · NEW-NUMBER POPUP · CONTACT / FEEDBACK      */
+    /*  CANADA DAY STICKY BANNER · CONTACT / FEEDBACK                        */
     /* ===================================================================== */
 
     /* Sticky stack — Canada Day banner sits above the nav; both stay pinned */
@@ -855,48 +826,6 @@
       .cd-banner-inner { padding: .42rem 2rem; }
     }
     @media (prefers-reduced-motion: reduce) { .cd-leaf, .cd-drift svg { animation: none !important; } }
-
-    /* New-number announcement popup */
-    .pn-overlay {
-      position: fixed; inset: 0; z-index: 1000; display: none;
-      align-items: center; justify-content: center; padding: 1.2rem;
-      background: rgba(17,24,39,.55); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
-    }
-    .pn-overlay.open { display: flex; animation: pn-fade .3s ease; }
-    .pn-card {
-      position: relative; width: min(94vw, 430px); background: #fff; border-radius: 22px; overflow: hidden;
-      box-shadow: 0 34px 90px -34px rgba(17,24,39,.65); animation: pn-pop .42s cubic-bezier(.2,.8,.2,1);
-    }
-    .pn-head { position: relative; overflow: hidden; background: linear-gradient(135deg,#111827,#172554); color: #fff; padding: 1.35rem 1.5rem 1.25rem; }
-    .pn-eyebrow { font-weight: 800; letter-spacing: 1.6px; text-transform: uppercase; font-size: 11px; color: #73c0b3; }
-    .pn-head h2 { font-family: 'Inter', sans-serif; font-weight: 800; letter-spacing: -.3px; font-size: 1.3rem; margin: .45rem 0 0; }
-    .pn-headleaf { position: absolute; top: -8px; right: -8px; width: 78px; opacity: .13; transform: rotate(14deg); }
-    .pn-headleaf path { fill: #fff; }
-    .pn-body { padding: 1.4rem 1.5rem 1.5rem; text-align: center; }
-    .pn-icon {
-      width: 52px; height: 52px; margin: -2.9rem auto .9rem; border-radius: 50%;
-      background: #1e40af; display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 10px 24px -10px rgba(30,64,175,.8); border: 3px solid #fff; position: relative;
-    }
-    .pn-icon svg { width: 24px; height: 24px; fill: #fff; }
-    .pn-number { display: inline-block; font-family: 'Inter', sans-serif; font-weight: 800; font-size: 2rem; letter-spacing: -.5px; color: #111827; font-variant-numeric: tabular-nums; text-decoration: none; line-height: 1.1; }
-    .pn-number:hover { color: #1e40af; }
-    .pn-rule { width: 44px; height: 3px; background: #1e40af; border-radius: 3px; margin: .55rem auto .85rem; }
-    .pn-dest { color: #6b7280; font-size: .92rem; line-height: 1.5; max-width: 30ch; margin: .35rem auto .2rem; }
-    .pn-old { background: #f9fafb; border: 1px solid #eef0f2; border-radius: 10px; padding: .6rem .75rem; margin: 0 auto 1.15rem; text-align: center; }
-    .pn-oldnum { display: block; color: #dc2626; text-decoration: line-through; font-weight: 700; font-size: .98rem; font-variant-numeric: tabular-nums; letter-spacing: .2px; }
-    .pn-oldloc { display: block; color: #6b7280; font-size: .82rem; margin-top: 3px; }
-    .pn-actions { display: flex; flex-direction: column; gap: .55rem; }
-    .pn-call { background: #1e40af; color: #fff; text-decoration: none; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1rem; padding: .8rem 1.3rem; border-radius: 11px; box-shadow: 0 14px 28px -14px rgba(30,64,175,.8); }
-    .pn-call:hover { background: #1e3a8a; }
-    .pn-ghost { background: transparent; border: 0; color: #6b7280; font-family: 'Inter', sans-serif; font-weight: 600; font-size: .92rem; padding: .5rem; cursor: pointer; border-radius: 8px; }
-    .pn-ghost:hover { color: #111827; }
-    .pn-close { position: absolute; top: .6rem; right: .6rem; z-index: 2; background: rgba(255,255,255,.14); border: 0; color: #fff; width: 30px; height: 30px; border-radius: 9px; font-size: 19px; line-height: 1; cursor: pointer; }
-    .pn-close:hover { background: rgba(255,255,255,.26); }
-    .pn-call:focus-visible, .pn-ghost:focus-visible, .pn-close:focus-visible, .pn-number:focus-visible { outline: 2px solid #1e40af; outline-offset: 2px; }
-    @keyframes pn-fade { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes pn-pop { from { opacity: 0; transform: translateY(16px) scale(.97); } to { opacity: 1; transform: none; } }
-    @media (prefers-reduced-motion: reduce) { .pn-overlay.open, .pn-card { animation: none !important; } }
 
     /* Contact / feedback band */
     .contact-band {
@@ -955,31 +884,10 @@
       <div class="nav-right">
         <a class="link" href="screening.html">Preventative Screening</a>
         <a class="link" href="immunizations.html">Immunizations</a>
-        <div class="lang-switch">
-          <select id="langSwitch" aria-label="Choose a language" onchange="handleLangSwitch(this)">
-            <option value="en" selected>🇨🇦 English</option>
-            <option value="ar">🇸🇦 العربية</option>
-            <option value="fr">🇫🇷 Français</option>
-            <option value="hi">🇮🇳 हिन्दी</option>
-            <option value="es">🇪🇸 Español</option>
-          </select>
-        </div>
-        <a class="nav-book" href="#book">Book</a>
+        <a class="nav-book" href="https://patient.medeohealth.com/booking/hope-health-central" target="_blank" rel="noopener noreferrer" onclick="if(typeof gtag==='function'){gtag('event','booking_click',{event_category:'Booking',event_label:'Nav Book link'});}">Book</a>
       </div>
     </div>
   </nav>
-  <script>
-    // Language versions are being prepared. English is fully live; other
-    // languages will link to /ar/, /fr/, /hi/, /es/ once translated pages
-    // are published, keeping this same dropdown and select value.
-    function handleLangSwitch(sel) {
-      var lang = sel.value;
-      if (lang === 'en') return;
-      var names = { ar: 'Arabic (العربية)', fr: 'French (Français)', hi: 'Hindi (हिन्दी)', es: 'Spanish (Español)' };
-      alert((names[lang] || lang) + ' version of this site is coming soon. Thank you for your patience — please continue in English for now.');
-      sel.value = 'en';
-    }
-  </script>
 
   </div><!-- /.cd-topstack -->
 
@@ -1068,6 +976,13 @@
             <path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
           </svg>
           <span><strong>Video appointments:</strong> Starting September 1, 2026, video visits are available to existing patients only. New patients are seen in person.</span>
+        </div>
+
+        <div class="cancel-note" role="note" aria-label="Walk-in prescription policy">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span><strong>Walk-in prescriptions:</strong> Opioid and other controlled-substance refills are not provided for walk-in visits. Please follow up with your own family doctor.</span>
         </div>
 
         <div class="call-strip">
@@ -1189,12 +1104,6 @@
           <li>Travel vaccines and travel health advice</li>
           <li>COVID-19 and respiratory vaccines (when available)</li>
         </ul>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">🔬</div>
-        <p class="service-title">Minor Procedures</p>
-        <p class="service-desc">I can safely remove ear wax buildup right here in the office — no hospital visit needed.</p>
       </div>
 
       <div class="service-card">
@@ -1352,15 +1261,15 @@
         </article>
 
         <!-- 7 — call to action -->
-        <article class="wfd-slide wfd-slide--cta" role="group" aria-roledescription="slide" aria-label="7 of 7: Register as a new patient">
+        <article class="wfd-slide wfd-slide--cta" role="group" aria-roledescription="slide" aria-label="7 of 7: Book an appointment">
           <div class="wfd-icon wfd-icon--light" aria-hidden="true">✅</div>
           <h3 class="wfd-h">Don&rsquo;t have a family doctor yet?</h3>
-          <p class="wfd-body">I&rsquo;m accepting new patients of all ages across Windsor and Essex County &mdash; often within the same week. Registering takes just a couple of minutes.</p>
+          <p class="wfd-body">I&rsquo;m accepting new patients of all ages across Windsor and Essex County &mdash; often within the same week. Booking takes just a couple of minutes.</p>
           <a class="wfd-cta-btn"
              href="https://patient.medeohealth.com/booking/hope-health-central"
              target="_blank" rel="noopener noreferrer"
-             onclick="if(typeof gtag==='function'){gtag('event','click',{event_category:'Booking',event_label:'New Patient (benefits slideshow)'});}">
-             Register as a new patient →
+             onclick="if(typeof gtag==='function'){gtag('event','click',{event_category:'Booking',event_label:'Book Appointment (benefits slideshow)'});}">
+             Book Appointment Online →
           </a>
         </article>
 
@@ -1668,7 +1577,7 @@
       <details>
         <summary>Are you accepting new patients, and how do I register? <span class="trend-tag">top searched</span></summary>
         <div class="faq-body">
-          <p>Yes — I'm accepting new patients of all ages across Windsor and Essex County, often within the same week. To register, tap <strong>New Patient</strong> in the booking section above: it registers you and books your first visit online. Prefer to talk to someone? Call (519)&nbsp;800-8333. You don't need a referral to join a family practice.</p>
+          <p>Yes — I'm accepting new patients of all ages across Windsor and Essex County, often within the same week. To register, click the <strong>Book</strong> link above — it takes you straight to online booking for your first visit. Prefer to talk to someone? Call (519)&nbsp;800-8333. You don't need a referral to join a family practice.</p>
         </div>
       </details>
 
@@ -1686,7 +1595,14 @@
       <details>
         <summary>Do you accept walk-ins, or do I need an appointment?</summary>
         <div class="faq-body">
-          <p>Walk-ins are welcome, and booking ahead usually means a shorter wait and a time that suits you. Existing patients can book a follow-up, renewal or routine visit using the <strong>Existing Patient</strong> option above; new patients should start with <strong>New Patient</strong>. For anything urgent or life-threatening, please call 911 or go to your nearest emergency department.</p>
+          <p>Walk-ins are welcome, and booking ahead usually means a shorter wait and a time that suits you. Both new and existing patients can book online using the <strong>Book</strong> link above. For anything urgent or life-threatening, please call 911 or go to your nearest emergency department.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Can I get an opioid or controlled-substance prescription refill as a walk-in?</summary>
+        <div class="faq-body">
+          <p>No. As a policy, walk-in visits don't include opioid or other controlled-substance prescription refills — safely managing these requires reviewing your full history and care plan, which we can only do for patients we know well. If you need a refill, please follow up with your own family doctor. If you don't have one and it's urgent, call 911 or go to your nearest emergency department.</p>
         </div>
       </details>
 
@@ -1702,20 +1618,6 @@
         <div class="faq-body">
           <p>Yes — this is a family practice caring for all ages, from newborns and children to teens, adults and seniors, so you can register the whole family. That includes well-baby and childhood checkups, <a href="immunizations.html">immunizations</a>, women's and seniors' health, chronic condition management, and <a href="screening.html">preventive screening</a>.</p>
           <p>Please note that each person attending needs their own appointment booked, even when you come in together as a family — that way everyone gets their own dedicated time with me.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>How do I book, and can I do it online?</summary>
-        <div class="faq-body">
-          <p>Booking is online. Use <strong>New Patient</strong> for your first visit or <strong>Existing Patient</strong> for a follow-up — both are in the booking section near the top of this page. Prefer to call? (519)&nbsp;800-8333.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>Where are you located, and what are the hours?</summary>
-        <div class="faq-body">
-          <p>My current practice is based at <strong>Hope Health Central</strong>, 3955 Tecumseh Rd E, Windsor, Ontario. Clinic hours and a map are listed further up this page.</p>
         </div>
       </details>
 
@@ -1752,34 +1654,6 @@
       © 2026 dradeniran.ca &nbsp;·&nbsp; Dr. Kolawole Adeniran. All rights reserved.
     </p>
   </footer>
-
-  <!-- NEW-NUMBER ANNOUNCEMENT POPUP -->
-  <div class="pn-overlay" id="pnOverlay" role="dialog" aria-modal="true" aria-labelledby="pnTitle" aria-describedby="pnSub">
-    <div class="pn-card">
-      <button class="pn-close" id="pnClose" type="button" aria-label="Close announcement">&times;</button>
-      <div class="pn-head">
-        <svg class="pn-headleaf" viewBox="180 87 268 294" aria-hidden="true"><path d="M201 232l-13.3 4.4 61.4 54c4.7 13.7-1.6 17.8-5.6 25l66.6-8.4-1.6 67 13.9-.3-3.1-66.6 66.7 8c-4.1-8.7-7.8-13.3-4-27.2l61.3-51-10.7-4c-8.8-6.8 3.8-32.6 5.6-48.9 0 0-35.7 12.3-38 5.8l-9.2-17.5-32.6 35.8c-3.5.9-5-.5-5.9-3.5l15-74.8-23.8 13.4q-3.2 1.3-5.2-2.2l-23-46-23.6 47.8q-2.8 2.5-5 .7L264 130.8l13.7 74.1c-1.1 3-3.7 3.8-6.7 2.2l-31.2-35.3c-4 6.5-6.8 17.1-12.2 19.5s-23.5-4.5-35.6-7c4.2 14.8 17 39.6 9 47.7"/></svg>
-        <div class="pn-eyebrow">New phone number</div>
-        <h2 id="pnTitle">We&rsquo;ve got a direct line</h2>
-      </div>
-      <div class="pn-body">
-        <div class="pn-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.1 2.2z"/></svg>
-        </div>
-        <a class="pn-number" href="tel:+15198008333" onclick="if(typeof gtag==='function'){gtag('event','call_click',{event_category:'Contact',event_label:'Popup number'});}">(519)&nbsp;800-8333</a>
-        <p class="pn-dest" id="pnSub">Rings Hope Central &mdash; reach us directly now</p>
-        <div class="pn-rule" aria-hidden="true"></div>
-        <div class="pn-old">
-          <span class="pn-oldnum">(519)&nbsp;252-2757</span>
-          <span class="pn-oldloc">Hope Ouellette</span>
-        </div>
-        <div class="pn-actions">
-          <a class="pn-call" href="tel:+15198008333" onclick="if(typeof gtag==='function'){gtag('event','call_click',{event_category:'Contact',event_label:'Popup call button'});}">Call (519)&nbsp;800-8333</a>
-          <button class="pn-ghost" id="pnGot" type="button">Got it, thanks</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <script>
   (function () {
@@ -1818,26 +1692,6 @@
       }
     }
 
-    /* New-number popup — shows on every visit / refresh */
-    var overlay = document.getElementById('pnOverlay');
-    function onKey(e) { if (e.key === 'Escape') closePopup(); }
-    function openPopup() {
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      document.addEventListener('keydown', onKey);
-      var c = document.getElementById('pnClose'); if (c) c.focus();
-    }
-    function closePopup() {
-      overlay.classList.remove('open');
-      document.body.style.overflow = '';
-      document.removeEventListener('keydown', onKey);
-    }
-    if (overlay) {
-      setTimeout(openPopup, 900);
-      document.getElementById('pnClose').addEventListener('click', closePopup);
-      document.getElementById('pnGot').addEventListener('click', closePopup);
-      overlay.addEventListener('click', function (e) { if (e.target === overlay) closePopup(); });
-    }
   })();
   </script>
 
