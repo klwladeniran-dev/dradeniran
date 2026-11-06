@@ -244,10 +244,27 @@
     #printFooter .ph-src{margin-top:6px;font-size:8pt;color:#9ca3af}
     a[href]:after{content:""!important}
   }
+
+    /* ── LIMITED NEW PATIENT INTAKE BANNER (all pages) ── */
+    .intake-banner { background: #172554; color: #fff; border-bottom: 1px solid rgba(255,255,255,.12); font-family: 'Inter', sans-serif; }
+    .intake-banner .ib-inner { width: min(94vw, 1060px); margin: 0 auto; padding: .55rem .5rem; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .35rem .7rem; text-align: center; font-size: .9rem; line-height: 1.4; }
+    .intake-banner .ib-pill { display: inline-flex; align-items: center; gap: .4rem; background: #fef3c7; color: #92400e; font-weight: 800; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; padding: .22rem .6rem; border-radius: 999px; white-space: nowrap; }
+    .intake-banner .ib-pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #f59e0b; }
+    .intake-banner .ib-text { color: rgba(255,255,255,.92); }
+    .intake-banner .ib-text b { color: #fff; font-weight: 700; }
+    .intake-banner a { color: #fff; font-weight: 700; text-decoration: underline; text-underline-offset: 2px; white-space: nowrap; }
+    @media (max-width: 600px) { .intake-banner .ib-inner { font-size: .82rem; } .intake-banner .ib-more { display: none; } }
 </style>
 </head>
 <body>
 
+<!-- LIMITED NEW PATIENT INTAKE BANNER (keep identical on every page) -->
+    <div class="intake-banner" role="region" aria-label="New patient intake status">
+      <div class="ib-inner">
+        <span class="ib-pill">Limited intake</span>
+        <span class="ib-text"><b>New patient spaces are limited.</b> Please call <a href="tel:+15198008333">(519)&nbsp;800-8333</a> to check availability before booking.<span class="ib-more"> Existing patients &amp; walk-ins welcome.</span></span>
+      </div>
+    </div>
 <!-- ============ NAV ============ -->
 <nav>
   <div class="nav-inner">
@@ -487,10 +504,10 @@
     <div class="book-band">
       <span class="kicker">Book</span>
       <h2>Due for a vaccine, or not sure?</h2>
-      <p>Whether it's your baby's first shots, a teen's school vaccines, a flu shot, or your shingles and pneumococcal vaccines, Dr. Adeniran can review your record and get you up to date — right here in Windsor.</p>
+      <p>Whether it's your baby's first shots, a teen's school vaccines, a flu shot, or your shingles and pneumococcal vaccines, Dr. Adeniran can review your record and get you up to date — right here in Windsor. New patient spaces are limited, so if you're not yet a patient, please call first to check availability.</p>
       <div class="book-btns">
         <a class="obtn" id="bookOnline" href="https://patient.medeohealth.com/booking/hope-health-central" target="_blank" rel="noopener">
-          <span class="ic">📅</span><span class="lab">Book Appointment Online</span><span class="sub">New and existing patients welcome</span>
+          <span class="ic">📅</span><span class="lab">Book Appointment Online</span><span class="sub">Existing patients &amp; walk-ins · New patients: call first</span>
         </a>
       </div>
       <div class="callrow">Prefer to call? <a href="tel:+15198008333">(519) 800-8333</a></div>

@@ -246,9 +246,27 @@
     *{animation:none !important;transition:opacity .2s linear !important}
     .scene{transform:none}
   }
+
+    /* ── LIMITED NEW PATIENT INTAKE BANNER (all pages) ── */
+    .intake-banner { background: #172554; color: #fff; border-bottom: 1px solid rgba(255,255,255,.12); font-family: 'Inter', sans-serif; }
+    .intake-banner .ib-inner { width: min(94vw, 1060px); margin: 0 auto; padding: .55rem .5rem; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .35rem .7rem; text-align: center; font-size: .9rem; line-height: 1.4; }
+    .intake-banner .ib-pill { display: inline-flex; align-items: center; gap: .4rem; background: #fef3c7; color: #92400e; font-weight: 800; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; padding: .22rem .6rem; border-radius: 999px; white-space: nowrap; }
+    .intake-banner .ib-pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #f59e0b; }
+    .intake-banner .ib-text { color: rgba(255,255,255,.92); }
+    .intake-banner .ib-text b { color: #fff; font-weight: 700; }
+    .intake-banner a { color: #fff; font-weight: 700; text-decoration: underline; text-underline-offset: 2px; white-space: nowrap; }
+    @media (max-width: 600px) { .intake-banner .ib-inner { font-size: .82rem; } .intake-banner .ib-more { display: none; } }
 </style>
 </head>
 <body>
+  <!-- LIMITED NEW PATIENT INTAKE BANNER (keep identical on every page) -->
+    <div class="intake-banner" id="intakeBanner" role="region" aria-label="New patient intake status">
+      <div class="ib-inner">
+        <span class="ib-pill">Limited intake</span>
+        <span class="ib-text"><b>New patient spaces are limited.</b> Please call <a href="tel:+15198008333">(519)&nbsp;800-8333</a> to check availability before booking.<span class="ib-more"> Existing patients &amp; walk-ins welcome.</span></span>
+      </div>
+    </div>
+    <script>/* hide when embedded (the host page already shows it) */try{if(window.self!==window.top)document.getElementById('intakeBanner').style.display='none';}catch(e){}</script>
   <div class="wrap">
     <div class="player">
       <div class="stage" id="stage">
@@ -443,8 +461,8 @@
                 <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
               </a>
               <div class="welcome rise d4">
-                <span class="w"><svg viewBox="0 0 24 24" fill="none" stroke="#065f46" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> New patients welcome</span>
-                <span class="w"><svg viewBox="0 0 24 24" fill="none" stroke="#065f46" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Current patients too</span>
+                <span class="w"><svg viewBox="0 0 24 24" fill="none" stroke="#065f46" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Existing patients &amp; walk-ins</span>
+                <span class="w"><svg viewBox="0 0 24 24" fill="none" stroke="#065f46" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> New patients: limited spaces — call (519) 800-8333</span>
               </div>
             </div>
             <div class="qr-card rise d4">
@@ -524,7 +542,7 @@
     "We can screen for breast, cervical, colorectal and lung cancer. Some are as simple as a kit you do at home. We'll find what's right for you.",
     "This is why screening matters. Caught early, at stage one, colorectal cancer has about ninety percent five-year survival. But found late, only about one in ten. Screening can even find and remove pre-cancers, before they ever become cancer.",
     "There's one more check that isn't a cancer, but can be just as serious. An abdominal aortic aneurysm is a bulge in the body's main artery. For men aged sixty-five to eighty, a single, painless ultrasound can find it, long before it becomes a danger.",
-    "A few minutes today can change everything. Book online, or scan the code with your phone. New and current patients are both welcome. I'm Doctor Adeniran, and I look forward to meeting you."
+    "A few minutes today can change everything. Book online, or scan the code with your phone. New patient spaces are limited, so if you're new, please call us first. I'm Doctor Adeniran, and I look forward to meeting you."
   ];
 
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;

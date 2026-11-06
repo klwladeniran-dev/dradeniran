@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Preventative Screening in Windsor — Dr. Kolawole Adeniran</title>
-<meta name="description" content="A 90-second guide to preventative screening for patients in Windsor & Essex County, plus a free tool to check which cancer and aneurysm screenings you may be due for. Book with Dr. Kolawole Adeniran.">
+<meta name="description" content="A 90-second guide to preventative screening for patients in Windsor & Essex County, plus a free tool to check which cancer and aneurysm screenings you may be due for. Existing patients can book with Dr. Kolawole Adeniran; new patient intake is limited.">
 <link rel="canonical" href="https://dradeniran.ca/screening.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -155,10 +155,27 @@
   footer .frow{margin:.3rem 0}
   footer .fsrc{font-size:.72rem;color:rgba(255,255,255,.45);max-width:60ch;margin:.9rem auto 0;line-height:1.5}
   .back-home{display:inline-block;margin-top:.8rem;color:var(--emerald);font-weight:700;text-decoration:none;font-size:.85rem}
+
+    /* ── LIMITED NEW PATIENT INTAKE BANNER (all pages) ── */
+    .intake-banner { background: #172554; color: #fff; border-bottom: 1px solid rgba(255,255,255,.12); font-family: 'Inter', sans-serif; }
+    .intake-banner .ib-inner { width: min(94vw, 1060px); margin: 0 auto; padding: .55rem .5rem; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .35rem .7rem; text-align: center; font-size: .9rem; line-height: 1.4; }
+    .intake-banner .ib-pill { display: inline-flex; align-items: center; gap: .4rem; background: #fef3c7; color: #92400e; font-weight: 800; font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; padding: .22rem .6rem; border-radius: 999px; white-space: nowrap; }
+    .intake-banner .ib-pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #f59e0b; }
+    .intake-banner .ib-text { color: rgba(255,255,255,.92); }
+    .intake-banner .ib-text b { color: #fff; font-weight: 700; }
+    .intake-banner a { color: #fff; font-weight: 700; text-decoration: underline; text-underline-offset: 2px; white-space: nowrap; }
+    @media (max-width: 600px) { .intake-banner .ib-inner { font-size: .82rem; } .intake-banner .ib-more { display: none; } }
 </style>
 </head>
 <body>
 
+<!-- LIMITED NEW PATIENT INTAKE BANNER (keep identical on every page) -->
+    <div class="intake-banner" role="region" aria-label="New patient intake status">
+      <div class="ib-inner">
+        <span class="ib-pill">Limited intake</span>
+        <span class="ib-text"><b>New patient spaces are limited.</b> Please call <a href="tel:+15198008333">(519)&nbsp;800-8333</a> to check availability before booking.<span class="ib-more"> Existing patients &amp; walk-ins welcome.</span></span>
+      </div>
+    </div>
   <nav>
     <div class="nav-inner">
       <a class="brand" href="https://dradeniran.ca">
@@ -181,7 +198,7 @@
       <div class="chips">
         <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> OHIP accepted</span>
         <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.4"/></svg> 3955 Tecumseh Rd E</span>
-        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M4 10h16"/></svg> New &amp; current patients</span>
+        <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#1e40af" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M4 10h16"/></svg> Limited new patient intake</span>
       </div>
     </div>
   </header>
@@ -322,10 +339,10 @@
       <div class="book-band">
         <span class="kicker">Book</span>
         <h2 style="font-weight:800;letter-spacing:-.5px;font-size:clamp(22px,3.4vw,30px);margin:.3rem 0 0">Book your screening with Dr.&nbsp;Adeniran</h2>
-        <p style="color:var(--muted);max-width:46ch;margin:.6rem auto 0;font-weight:500">Booking takes about two minutes. New and current patients are both welcome.</p>
+        <p style="color:var(--muted);max-width:46ch;margin:.6rem auto 0;font-weight:500">Existing patients can book online in about two minutes. New patient spaces are limited — please call <a href="tel:+15198008333" style="color:var(--accent);font-weight:700">(519)&nbsp;800-8333</a> to check availability first.</p>
         <div class="book-btns">
           <a class="obtn" id="bookOnline" href="https://patient.medeohealth.com/booking/hope-health-central" target="_blank" rel="noopener">
-            <span class="ic">📅</span><span class="lab">Book Appointment Online</span><span class="sub">New and existing patients welcome</span>
+            <span class="ic">📅</span><span class="lab">Book Appointment Online</span><span class="sub">Existing patients &amp; walk-ins · New patients: call first</span>
           </a>
         </div>
       </div>
